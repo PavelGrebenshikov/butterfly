@@ -52,7 +52,7 @@ input[type="search"] {
     background-color: var(--background-color);
     border: 2px solid var(--bg-white-color);
     color: var(--bg-white-color);
-    background: url("/icons/search_icon.svg") no-repeat scroll 7px;
+    background: url("../images/icons/search_icon.svg") no-repeat scroll 7px;
     background-size: 30px 30px;
     outline: none;
     padding-left: 50px;
@@ -357,7 +357,7 @@ input[type="email"] {
     height: 55px;
     border: none;
     display: flex;
-    background: url("/icons/arrow_icon.svg") no-repeat;
+    background: url("../images/icons/arrow_icon.svg") no-repeat;
     background-size: 30px 30px;
     background-position: center;
     cursor: pointer;
