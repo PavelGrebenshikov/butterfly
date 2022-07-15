@@ -2,21 +2,66 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock styles %}
 
 {% block head_title %}{% translate "Signup" %}{% endblock %}
 
 {% block inner %}
-<h1>{% translate "Sign Up" %}</h1>
-
-<p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% translate "Sign Up" %} &raquo;</button>
-</form>
+<div class="container">
+  <div class="content">
+      <div class="content__breadcrumbs">
+          <h3>Главная > Регистрация</h3>
+      </div>
+      <div class="content__image">
+          <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
+      </div>
+  </div>
+  <div class="authorization">
+      <div class="registration">
+          <div class="registration__title">
+              <div class="line"></div>
+              <div class="registration__title-text">
+                  Регистрация
+              </div>
+              <div class="line"></div>
+          </div>
+          <div class="registration__reg">
+              <div class="registration__reg-form">
+                  <form method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error | lower }}</li>
+                        {% endfor %}
+                    {% endif %}
+                    {{ form.username }}
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+                    {{ form.email }}
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                      <div class="registration__reg-button">
+                          <input type="submit" value="Создать личный кабинет">
+                      </div>
+                  </form>
+              </div>
+              <div class="erros" style="display: block;" >
+                <ul style="margin-right: 70px;">
+                    {% if form.errors %}
+                        {{ form.errors }}
+                    {% endif %}
+                </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 {% endblock %}

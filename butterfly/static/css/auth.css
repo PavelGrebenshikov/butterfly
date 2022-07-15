@@ -138,6 +138,20 @@ select:-webkit-autofill:focus {
 .authorization__auth-recover > a:hover {
     color: #fff;
 }
+.authorization__auth-register {
+    margin-top: 30px;
+    color: var(--bg-color);
+    font-size: 14px;
+}
+.authorization__auth-register > a {
+    color: var(--bg-color);
+    border-bottom: 1px solid var(--bg-color);
+    font-weight: bold;
+}
+.authorization__auth-register > a:hover {
+    color: rgb(209, 79, 79);
+    border-bottom: 1px solid rgb(209, 79, 79);
+}
 .authorization__auth-button {
     width: 100%;
     display: flex;
@@ -221,4 +235,12 @@ select:-webkit-autofill:focus {
     background-color: var(--background-color);
     color: var(--bg-color);
     transition: .3s; 
+}
+.errors {
+    width: 100%;
+}
+.erros > ul {
+    color: var(--bg-color);
+    margin-top: 50px;
+    padding: 0;
 }

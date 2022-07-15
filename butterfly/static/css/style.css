@@ -335,7 +335,7 @@ select:-webkit-autofill:focus {
     font-size: 20px;
     font-weight: bold;
 }
-input[type="email"] {
+.subscribe__form-email {
     width: 380px;
     height: 50px;
     border-radius: 5px;
