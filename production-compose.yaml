@@ -1,0 +1,7 @@
+version: "3.6"
+
+services:
+  app:
+    build:
+      dockerfile: ./docker/production/Dockerfile
+      context: .
