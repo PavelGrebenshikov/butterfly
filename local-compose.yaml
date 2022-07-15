@@ -2,10 +2,6 @@ version: "3.6"
 
 services:
   app:
-    # extends:
-    #   file: compose-base.py
-    #   service: app
-
     build:
       dockerfile: ./docker/local/Dockerfile
       context: .

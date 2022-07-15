@@ -16,4 +16,4 @@ RUN pip install -r /app/requirements/production.txt
 COPY . /app
 WORKDIR /app
 
-CMD [ "python", "manage.py", "runserver", "--settings", "config.settings.production"]
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000","--settings", "config.settings.production"]
