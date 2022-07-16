@@ -16,6 +16,14 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
 
+    def is_current_user(self, username):
+        return self.request.user.username == username
+
+    def get(self, request, username):
+        if self.is_current_user(username):
+            return render(request, 'users/personal_account.html', context={'username': username})
+        return super().get(request, username)
+
 
 user_detail_view = UserDetailView.as_view()
 
@@ -48,8 +56,3 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
-
-
-@login_required
-def personal_account(request):
-    return render(request, 'users/personal_account.html')
