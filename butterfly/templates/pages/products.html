@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    {% endblock styles %}
+
+    {% block content %}
+
+    <nav class="navigation">
+        <ul class="menu">
+            <li><a href="#">ДЛЯ ЛИЦА</a></li>
+            <li><a href="#">ДЛЯ ВОЛОС</a></li>
+            <li><a href="#">ДЛЯ ТЕЛА</a></li>
+            <li><a href="#">МАКИЯЖ</a></li>
+            <li><a href="#">ПАРФЮМЕРИЯ</a></li>
+            <li><a href="#">ИДЕИ ДЛЯ ПОДАРКОВ</a></li>
+        </ul>
+        <div class="navigation__dropdown">
+            <div class="navigation__dropdown-menu">
+                <div>
+                    <div>
+                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
+                    </div>
+                    <ul>
+                        <li><a href="#">Мицеллярная вода</a></li>
+                        <li><a href="#">Молочко для снятия макияжа</a></li>
+                        <li><a href="#">Гель для умывания</a></li>
+                        <li><a href="#">Лосьон</a></li>
+                        <li><a href="#">Гидролаты</a></li>
+                        <li><a href="#">Посмотреть все</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navigation__dropdown-menu">
+                <div>
+                    <div>
+                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
+                    </div>
+                    <ul>
+                        <li><a href="#">Мицеллярная вода</a></li>
+                        <li><a href="#">Молочко для снятия макияжа</a></li>
+                        <li><a href="#">Гель для умывания</a></li>
+                        <li><a href="#">Лосьон</a></li>
+                        <li><a href="#">Гидролаты</a></li>
+                        <li><a href="#">Посмотреть все</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="wrapper">
+            <div class="content__breadcrumbs">
+                <div class="content__breadcrumbs-item">
+                    Главная > Для лица
+                </div>
+            </div>
+            <div class="content__title">
+                <div class="content__title-category">
+                    Средства для ухода за лицом
+                </div>
+            </div>
+            <div class="content__products">
+                <div class="content__products-found">
+                    Найдено продуктов: 123
+                </div>
+            </div>
+        </div>
+        <div class="content__image">
+            <div class="content__image-cosmetic">
+                <img src="{% static 'images/bg_items_page.jpg' %}" alt="Картинка косметики" srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="sorted">
+        <div class="sorted__wrapper">
+            <div class="sorted__wrapper-item">
+                <a href="#">
+                    Сортировка
+                </a>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="categories">
+            <div class="categories__title">
+                <div class="categories__title-item">
+                    Фильтры
+                </div>
+            </div>
+            <div class="categories__choice">
+                <div class="categories__choice-filter">
+                    <a href="#">Новинки</a>
+                </div>
+                <div class="categories__choice-filter">
+                    <a href="#">Высокий рейтинг</a>
+                </div>
+            </div>
+            <div class="range">
+                <div class="range__price">
+                    <div class="range__price-item">
+                        <form action="#" method="get">
+                            <div class="range__price-wrapper">
+                                <label for="minPrice">от </label>
+                                <input type="text" name="minPrice">
+                                <label for="maxPrice"> до </label>
+                                <input type="text" name="maxPrice">
+                            </div>
+                            <div class="range__price-show">
+                                <input type="submit" value="Показать">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="products__wrapper">
+                <div class="products__items">
+                    <div class="products__items-picture">
+                        <img src="{% static '/images/product_pictures.jpg' %}" alt="" srcset="">
+                    </div>
+                    <div class="products__items-title">
+                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
+                    </div>
+                    <div class="products__items-quantity">
+                        <span>Спрей 75 мл</span>
+                    </div>
+                    <div class="products__items-price">
+                        <span>500 руб</span>
+                    </div>
+                    <div class="products__items-link">
+                        <a href="#">В КОРЗИНУ</a>
+                    </div>
+                </div>
+                <div class="products__items">
+                    <div class="products__items-picture">
+                        <img src="{% static '/images/product_pictures.jpg' %}" alt="" srcset="">
+                    </div>
+                    <div class="products__items-title">
+                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
+                    </div>
+                    <div class="products__items-quantity">
+                        <span>Спрей 75 мл</span>
+                    </div>
+                    <div class="products__items-price">
+                        <span>500 руб</span>
+                    </div>
+                    <div class="products__items-link">
+                        <a href="#">В КОРЗИНУ</a>
+                    </div>
+                </div>
+                <div class="products__items">
+                    <div class="products__items-picture">
+                        <img src="{% static '/images/product_pictures.jpg' %}" alt="" srcset="">
+                    </div>
+                    <div class="products__items-title">
+                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
+                    </div>
+                    <div class="products__items-quantity">
+                        <span>Спрей 75 мл</span>
+                    </div>
+                    <div class="products__items-price">
+                        <span>500 руб</span>
+                    </div>
+                    <div class="products__items-link">
+                        <a href="#">В КОРЗИНУ</a>
+                    </div>
+                </div>
+                <div class="products__items">
+                    <div class="products__items-picture">
+                        <img src="{% static '/images/product_pictures.jpg' %}" alt="" srcset="">
+                    </div>
+                    <div class="products__items-title">
+                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
+                    </div>
+                    <div class="products__items-quantity">
+                        <span>Спрей 75 мл</span>
+                    </div>
+                    <div class="products__items-price">
+                        <span>500 руб</span>
+                    </div>
+                    <div class="products__items-link">
+                        <a href="#">В КОРЗИНУ</a>
+                    </div>
+                </div>
+                <div class="products__items">
+                    <div class="products__items-picture">
+                        <img src="{% static '/images/product_pictures.jpg' %}" alt="" srcset="">
+                    </div>
+                    <div class="products__items-title">
+                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
+                    </div>
+                    <div class="products__items-quantity">
+                        <span>Спрей 75 мл</span>
+                    </div>
+                    <div class="products__items-price">
+                        <span>500 руб</span>
+                    </div>
+                    <div class="products__items-link">
+                        <a href="#">В КОРЗИНУ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock content %}
