@@ -38,7 +38,7 @@ docker-compose -f base-compose.yaml -f local-compose.yaml up
 or Run application in background:
 
 ```bash
-docker-compose -f base-compose.yaml -f local-compose.yaml -d up
+docker-compose -f base-compose.yaml -f local-compose.yaml up -d
 ```
 
 Congratulations! You can visit http://127.0.0.1:8000/
