@@ -24,7 +24,8 @@ class UserAdmin(auth_admin.UserAdmin):
                     "email",
                     'city',
                     'date_of_birth',
-                    'phone_number'
+                    'phone_number',
+                    'image_url'
                 )
             }
         ),

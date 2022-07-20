@@ -11,11 +11,11 @@ class User(AbstractUser):
     check forms.SignupForm and forms.SocialSignupForms accordingly.
     """
 
-    city = CharField(max_length=50, blank=True)
-    date_of_birth = DateField(null=True)
-    phone_number = CharField(max_length=20, blank=True)
+    city = CharField(_('City'), max_length=50, blank=True)
+    date_of_birth = DateField(_('Date of birth'), null=True)
+    phone_number = CharField(_('Phone number'), max_length=20, blank=True)
     last_modified = DateTimeField(auto_now=True)
-    image_url = TextField(default='/static/profile.png')
+    image_url = TextField(_('Image url'), default='/static/profile.png')
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
