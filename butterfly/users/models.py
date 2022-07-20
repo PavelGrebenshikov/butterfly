@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField, TextField, DateField, DateTimeField
+from django.db.models import CharField, ImageField, DateField, DateTimeField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -15,7 +15,7 @@ class User(AbstractUser):
     date_of_birth = DateField(_('Date of birth'), null=True)
     phone_number = CharField(_('Phone number'), max_length=20, blank=True)
     last_modified = DateTimeField(auto_now=True)
-    image_url = TextField(_('Image url'), default='/static/profile.png')
+    image_url = ImageField(_('Image url'), upload_to='users/avatars/', default='/static/images/profile.png')
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
