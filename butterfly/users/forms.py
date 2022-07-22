@@ -36,12 +36,12 @@ class UserSignupForm(SignupForm):
 
     first_name = CharField(widget=TextInput(
         attrs={
-            'placeholder': _('First name (optional)'),
+            'placeholder': _('First name'),
             'autocomplete': 'city'
         }))
     last_name = CharField(widget=TextInput(
         attrs={
-            'placeholder': _('Last name (optional)'),
+            'placeholder': _('Last name'),
             'autocomplete': 'city'
         }))
     city = CharField(widget=TextInput(
