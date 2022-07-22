@@ -7,7 +7,6 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% endblock styles %}
 {% block head_title %}{% translate "Sign In" %}{% endblock %}
@@ -50,11 +49,11 @@
           <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
       </div>
   </div>
-  <div class="authorization">
+  <div class="wrapper">
       <div class="authorization__title">
           <div class="line"></div>
           <div class="authorization__title-text">
-              Авторизация
+            Авторизация
           </div>
           <div class="line"></div>
       </div>
