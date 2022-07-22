@@ -41,7 +41,9 @@ class UserAdmin(auth_admin.UserAdmin):
                 ),
             },
         ),
-        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+        (_("Important dates"), {"fields": ("last_login", "date_joined",
+         'last_modified')}),
     )
+    readonly_fields = ('last_modified',)
     list_display = ["username", 'first_name', 'last_name', "is_superuser"]
     search_fields = ["name"]

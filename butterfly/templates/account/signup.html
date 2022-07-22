@@ -40,10 +40,14 @@
                             <li>{{ error | lower }}</li>
                         {% endfor %}
                     {% endif %}
-                    {{ form.username }}
-                    {{ form.password1 }}
-                    {{ form.password2 }}
-                    {{ form.email }}
+                    {% for field in form %}
+                            {% for error in field.errors %}
+                                    <p class="field-error">{{ error }}</p>
+                            {% endfor %}
+                            
+                            {{ field }}
+                    {% endfor %}
+                    
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
@@ -51,13 +55,6 @@
                           <input type="submit" value="Создать личный кабинет">
                       </div>
                   </form>
-              </div>
-              <div class="erros" style="display: block;" >
-                <ul style="margin-right: 70px;">
-                    {% if form.errors %}
-                        {{ form.errors }}
-                    {% endif %}
-                </ul>
               </div>
           </div>
       </div>
