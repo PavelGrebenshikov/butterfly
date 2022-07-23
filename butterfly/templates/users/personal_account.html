@@ -12,7 +12,7 @@
             <div class="navigation">
                 <div class="navigation__photo">
                     <div class="navigation__photo-elem">
-                        <img src="/images/personal_photo.jpg" alt="You'r photo">
+                        <img src="{{ user.image_url }}" alt="You'r photo">
                     </div>
                 </div>
                 <div class="navigation__menu">
@@ -31,10 +31,30 @@
                     </div>
                     <div class="about__account-information">
                         <ul>
-                            <li><a href="#">Ваше имя: {{username}}</a></li>
-                            <li><a href="#">Ваша фамилия:</a></li>
-                            <li><a href="#">Электронная почта:</a></li>
-                            <li><a href="#">Ваш телефон:</a></li>
+                            <li><b>Имя:</b> {{ user.first_name }}</li>
+                            <li><b>Фамилия:</b> {{ user.last_name }}</li>
+                            <li><b>Электронная почта:</b> {{ user.email }}</li>
+                            <li><b>Tелефон:</b>
+                                {% if user.phone_number %}
+                                        {{ user.phone_number }}
+                                {% else %}
+                                        Не указан
+                                {% endif %}
+                            </li>
+                            <li><b>Город:</b>
+                                {% if user.city %}
+                                        {{ user.city }}
+                                {% else %}
+                                        Не указан
+                                {% endif %}
+                            </li>
+                            <li><b>Дата рождения:</b>
+                                {% if user.date_of_birth %}
+                                        {{ user.date_of_birth }}
+                                {% else %}
+                                        Не указан
+                                {% endif %}
+                            </li>
                         </ul>
                     </div>
                 </div>

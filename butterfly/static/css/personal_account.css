@@ -125,8 +125,10 @@ select:-webkit-autofill:focus {
 .about__account-information> ul {
     list-style: none;
 }
-.about__account-information > ul > li > a {
+.about__account-information > ul > li {
     color: var(--background-color);
+    font-size: 20px;
+    padding-top: 15px;
 }
 .notifications {
     width: 100%;
