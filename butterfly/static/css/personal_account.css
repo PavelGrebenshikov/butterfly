@@ -89,7 +89,10 @@ select:-webkit-autofill:focus {
 }
 .navigation__photo-elem > img {
     width: 335px;
-    height: 230px;
+    height: 335px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 3px solid var(--background-color);
 }
 .navigation__menu-elem {
     padding: 10px 0 0 0;

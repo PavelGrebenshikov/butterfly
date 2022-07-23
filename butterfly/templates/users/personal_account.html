@@ -26,10 +26,11 @@
             </div>
             <div class="about">
                 <div class="about__account">
-                    <div class="about__account-title">
-                        Информация о Вас
-                    </div>
+                    
                     <div class="about__account-information">
+                        <div class="about__account-title">
+                            Информация о Вас
+                        </div>
                         <ul>
                             <li><b>Имя:</b> {{ user.first_name }}</li>
                             <li><b>Фамилия:</b> {{ user.last_name }}</li>
@@ -55,6 +56,16 @@
                                         Не указан
                                 {% endif %}
                             </li>
+                            
+                            
+                        </ul>
+                        <div class="about__account-title">
+                            Информация об аккаунте
+                        </div>
+                        <ul>
+                            <li><b>Дата создания:</b> {{ user.date_joined  }}</li>
+                            <li><b>Дата последнего изменения:</b> {{ user.last_modified }}</li>
+                            <li><b>Дата последнего входа:</b> {{ user.last_login }}</li>
                         </ul>
                     </div>
                 </div>
