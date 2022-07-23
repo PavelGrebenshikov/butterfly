@@ -44,7 +44,7 @@
                                 <p class="field-error">{{ error }}</p>
                         {% endfor %}
                         {{ form.password1 }}
-                        {% for error in form.password1errors %}
+                        {% for error in form.password1.errors %}
                                 <p class="field-error">{{ error }}</p>
                         {% endfor %}
                         {{ form.password2 }}
@@ -68,14 +68,6 @@
                                 {% endif %}
                         {% endif %}     
                         {% endfor %}
-                            <!-- {{ form.username }}
-                            {{ form.password1 }}
-                            {{ form.password2 }}
-                            {{ form.email }}
-                            {{ form.phone_number }}
-                            {{ form.first_name }}
-                            {{ form.last_name }}
-                            {{ form.city }} -->
                     
                         {% if redirect_field_value %}
                             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

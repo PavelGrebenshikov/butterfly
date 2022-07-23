@@ -50,7 +50,16 @@ class UserSignupForm(SignupForm):
             'autocomplete': 'city'
         }
     ), required=False)
-    date_of_birth = DateField(label=_('Date of birth (optional)'), widget=SelectDateWidget(years=range(2010, 1920, -1)))
+
+    date_of_birth = DateField(
+        label=_('Date of birth (optional)'),
+        required=False,
+        widget=SelectDateWidget(
+            years=range(2010, 1920, -1),
+            empty_label=(_('Day'), _('Month'), _('Year'))
+        )
+    )
+
     phone_number = RegexField(widget=TextInput(
         attrs={
             'placeholder': _('Phone number (optional)'),

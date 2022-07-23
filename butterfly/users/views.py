@@ -20,7 +20,8 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
     def get(self, request, username):
         if self.is_current_user(username):
-            return render(request, 'users/personal_account.html', context={'username': username})
+            user = self.request.user
+            return render(request, 'users/personal_account.html', context={'user': user})
         return super().get(request, username)
 
 
