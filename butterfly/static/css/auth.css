@@ -8,7 +8,6 @@ a {
 :root {
     --bg-color: #E5DCBE;
     --background-color: #443A38;
-    --font-size-normal: 18px;
     --font-size-min: 14px;
     --bg-white-color: #fff;
 }
@@ -21,13 +20,9 @@ a {
     align-items: center;
 }
 .header__logo-item > a {
-    text-decoration: none;
     color: var(--bg-color);
     font-size: 32px;
     font-weight: bold;
-}
-.header__logo {
-    margin: 0 118px 0 118px;
 }
 .header__logo, .header__icons {
     margin: 0 118px 0 118px;
@@ -49,21 +44,19 @@ a {
 input[type="search"] {
     width: 370px;
     height: 40px;
+    padding-left: 50px;
     border-radius: 10px;
-    background-color: var(--background-color);
     border: 2px solid var(--bg-white-color);
+    background-color: var(--background-color);
     color: var(--bg-white-color);
     background: url("../images/icons/search_icon.svg") no-repeat scroll 7px;
     background-size: 30px 30px;
     outline: none;
-    padding-left: 50px;
 }
 input[type="search"]::placeholder {
-    transform: translateX(0px);
     color: var(--bg-white-color);
 }
 .container {
-    width: 100%;
     background-color: var(--bg-color);
     height: calc(100vh - 100px);
     display: flex;
@@ -78,7 +71,6 @@ input[type="search"]::placeholder {
     background-color: var(--background-color);
 }
 .content__breadcrumbs {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +91,6 @@ input[type="search"]::placeholder {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .authorization__title {
     display: flex;
     justify-content: center;
@@ -107,20 +98,16 @@ input[type="search"]::placeholder {
 }
 .authorization__title-text {
     width: 20%;
-    text-align: center;
     font-size: 20px;
     font-weight: bold;
-    color: #fff;
     letter-spacing: 1px;
+    color: #fff;
 }
 .line {
     margin: 0 38px 0 38px;
     width: 100%;
     height: 2px;
     background-color: var(--bg-color);
-}
-.authorization__auth {
-    width: 100%;
 }
 .authorization__auth-form {
     margin: 0 38px 0 38px;
@@ -130,13 +117,13 @@ input[type="search"]::placeholder {
     flex-direction: column;
 }
 .authorization__auth-form > form > input {
+    height: 45px;
     margin: 32px 0 0 0;
+    padding-left: 11px;
     border: 1px solid var(--bg-color);
     background-color: var(--background-color);
-    height: 45px;
-    border-radius: 5px;
-    padding-left: 11px;
     color: var(--bg-color);
+    border-radius: 5px;
     outline: none;
 }
 .authorization__auth-form > form > input::placeholder {
@@ -155,16 +142,13 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
-
 .authorization__auth-recover {
-    width: 100%;
     display: flex;
     justify-content: right;
     margin: 14px 0 0 0;
     font-size: 16px;
 }
 .authorization__auth-recover > a {
-    text-decoration: none;
     color: var(--bg-color);
 }
 .authorization__auth-recover > a:hover {
@@ -185,7 +169,6 @@ select:-webkit-autofill:focus {
     border-bottom: 1px solid rgb(209, 79, 79);
 }
 .authorization__auth-button {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,78 +178,16 @@ select:-webkit-autofill:focus {
     width: 280px;
     height: 40px;
     background-color: var(--bg-color);
+    color: var(--background-color);
     border-radius: 10px;
     border: 1px solid var(--bg-color);
-    cursor: pointer;
     font-size: 20px;
-    color: var(--background-color);
+    cursor: pointer;
 }
 .authorization__auth-button > input:hover {
     background-color: var(--background-color);
     color: var(--bg-color);
     transition: .3s;    
-}
-
-
-/* registration */
-.registration {
-    margin: 20px 0 0 0;
-}
-.registration__title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.registration__title-text {
-    width: 20%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
-}
-.registration__reg-form {
-    margin: 0 28px 0 28px;
-}
-.registration__reg-form > form {
-    display: flex;
-    flex-direction: column;
-}
-.registration__reg-form > form > input {
-    margin: 15px 0 0 0;
-    border: 1px solid var(--bg-color);
-    background-color: var(--background-color);
-    height: 40px;
-    border-radius: 5px;
-    padding-left: 11px;
-    color: var(--bg-color);
-    outline: none;
-}
-.registration__reg-form > form > input::placeholder {
-    color: var(--bg-color);
-}
-
-.registration__reg-button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0 0 0;
-}
-.registration__reg-button > input {
-    width: 280px;
-    height: 40px;
-    background-color: var(--bg-color);
-    border-radius: 10px;
-    border: 1px solid var(--bg-color);
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--background-color);
-}
-.registration__reg-button > input:hover {
-    background-color: var(--background-color);
-    color: var(--bg-color);
-    transition: .3s; 
 }
 .errors {
     width: 100%;
