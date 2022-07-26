@@ -41,49 +41,45 @@
 {% endif %}
 
 <div class="container">
-  <div class="content">
-      <div class="content__breadcrumbs">
+  <div class="sidebar">
+      <div class="sidebar__breadcrumbs">
           <h3>Главная > Авторизация</h3>
       </div>
-      <div class="content__image">
+      <div class="sidebar__image">
           <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
       </div>
   </div>
-  <div class="wrapper">
-      <div class="authorization__title">
-          <div class="line"></div>
-          <div class="authorization__title-text">
-            Авторизация
-          </div>
-          <div class="line"></div>
+  <div class="box">
+      <div class="title">
+          <div class="title__line"></div>
+          <div class="title__text">Авторизация</div>
+          <div class="title__line"></div>
       </div>
-      <div class="authorization__auth">
-          <div class="authorization__auth-form">
-              <form method="post" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {{ form.login }}
-                    {{ form.password }}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    <div class="authorization__auth-recover">
-                        <a href="{% url 'account_reset_password' %}">{% translate "Восстановить пароль" %}</a>
-                    </div>
-                    <div class="authorization__auth-button">
-                        <input type="submit" value="Авторизоваться">
-                    </div>
-              </form>
-            <div class="authorization__auth-register">
-              Если у Вас нет аккаунта то <a href="{% url 'account_signup' %}">{% translate "Зарегистрироваться" %} </a>
+      <div class="authorization">
+        <form class="auth-form" method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.login }}
+            {{ form.password }}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            <div class="auth-form__recover">
+                <a href="{% url 'account_reset_password' %}">{% translate "Восстановить пароль" %}</a>
             </div>
-            <div class="erros" style="display: flex; justify-content: center; align-items: center;" >
-              {% if form.non_field_errors %}
-                <ul style="list-style: none; text-align: center;">
-                  {% for error in form.non_field_errors %}
-                    <li>{{ error }}</li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
+            <div class="auth-form__button">
+              <input type="submit" value="Авторизоваться">
             </div>
-          </div>
+        </form>
+        <div class="authorization__register-link">
+          Если у Вас нет аккаунта то <a href="{% url 'account_signup' %}">{% translate "Зарегистрироваться" %} </a>
+        </div>
+        <div class="errors" style="display: flex; justify-content: center; align-items: center;" >
+            {% if form.non_field_errors %}
+              <ul style="list-style: none; text-align: center;">
+                {% for error in form.non_field_errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+        </div>
       </div>
   </div>
 </div>

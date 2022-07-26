@@ -1,6 +1,6 @@
 window.onload = function() {
     let menu = document.querySelector(".menu");
-    let dropMenu = document.querySelector(".navigation__dropdown");
+    let dropMenu = document.querySelector(".dropdown");
 
     console.log(menu)
     console.log(dropMenu)

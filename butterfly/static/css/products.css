@@ -2,7 +2,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
 }
-a {
+a { 
+    color: #222;
     text-decoration: none;
 }
 :root {
@@ -77,28 +78,23 @@ select:-webkit-autofill:focus {
 }
 .navigation {
     height: 40px;
-    margin: 0 118px 0 118px;
 }
 .menu {
     display: flex;
-    list-style: none;
     align-items: center;
     padding: 0;
+    list-style: none;
 }
 .menu > li {
     margin: 0 20px 0 0;
     font-size: 16px;
-}
-.menu > li > a {
-    color: black;
 }
 .menu > li > a:hover {
     border-bottom: 1px solid var(--background-color);
     transition: 3s;
 }
 /* drop down menu */
-
-.navigation__dropdown {
+.dropdown {
     display: none;
     overflow: hidden;
     position: relative;
@@ -109,75 +105,71 @@ select:-webkit-autofill:focus {
     height: 300px;
     background-color: #fff;
 }
-.navigation__dropdown-menu {
+.dropdown__menu {
     margin: 0 30px 0 0;
 }
-.navigation__dropdown-menu > div > div > a {
+.dropdown__menu > div > div > a,
+.dropdown__menu > div > ul > li:last-child {
     font-weight: bold;
     color: var(--background-color);
 }
-.navigation__dropdown-menu > div > ul {
+.dropdown__menu > div > ul {
     list-style: none;
     font-size: 16px;
     padding: 0;
     margin: 20px 0 0 0;
 }
-.navigation__dropdown-menu > div > ul > li {
+.dropdown__menu > div > ul > li {
     margin-top: 20px;
 }
-.navigation__dropdown-menu > div > ul > li:last-child {
-    font-weight: bold;
-}
-.navigation__dropdown-menu > div > ul > li > a {
+.dropdown__menu > div > ul > li > a {
     color: var(--background-color);
+}
+.container {
+    margin: 0 auto;
+    width: calc(100% - 236px);
 }
 .content {
     display: flex;
     width: 100%;
     height: 200px;
 }
-.wrapper {
-    margin: 0 118px 0 118px;
+.box {
     width: 100%;
 }
-.content__breadcrumbs {
+.sidebar__breadcrumbs {
     margin: 19px 0 0 0;
 }
-.content__breadcrumbs-item {
+.breadcrumbs-nav {
     font-size: 16px;
 }
-.content__title {
+.sidebar__title {
     margin: 20px 0 0 0;
 }
-.content__title-category {
+.sidebar__category {
     font-size: 32px;
 }
-.content__products {
+.sidebar__products {
     margin: 30px 0 0 0;
 }
-.content__products-found {
+.sidebar__found {
     font-size: 16px;
 }
-.content__image {
+.sidebar-background {
     width: 100%;
-    margin: 0 118px 0 118px;
 }
-.content__image-cosmetic > img {
+.sidebar-background__image {
     width: 100%;
     height: 150px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    object-fit: cover;
 }
 .sorted {
     width: 100%;
-}
-.sorted__wrapper {
-    margin: 0 118px 0 118px;
-    text-align: right;
-}
-.sorted__wrapper-item {
     font-size: 18px;
+    text-align: right;
 }
 .section {
     display: flex;
@@ -186,26 +178,21 @@ select:-webkit-autofill:focus {
     width: 30%;
 }
 .categories__title {
-    margin: 10px 118px 0 118px;
+    margin: 10px 0px 0 0px;
     text-align: center;
-}
-.categories__title-item {
     font-weight: bold;
 }
 .categories__choice {
     margin: 9px 0 0 0;
     text-align: center;
 }
-.categories__choice-filter {
+.categories-choice__filter {
     font-weight: 500;
     font-size: 14px;
     margin: 9px 0 0 0;
 }
-.categories__choice-filter > a {
+.categories-choice__filter > a {
     color: var(--background-color);
-}
-.products {
-    width: 100%;
 }
 
 /* range search items  */
@@ -213,30 +200,30 @@ select:-webkit-autofill:focus {
 .range {
     width: 100%;
 }
-.range__price {
-    margin: 50px 118px 0 118px;
+.range-price__form {
+    margin: 50px 0 0 0;
 }
-.range__price-wrapper {
+.range-price {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.range__price-wrapper > label {
+.range-price > label {
     margin: 0 5px 0 5px;
     font-size: 16px;
 }
-.range__price-show {
+.range-price__show {
     margin: 5px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.range__price-show > input {
+.range-price__input {
     width: 100px;
     height: 30px;
     cursor: pointer;
 }
-.range__price-wrapper > input {
+.range-price > input {
     color:var(--background-color)
 }
 input[type="text"] {
@@ -245,58 +232,64 @@ input[type="text"] {
 
 /* products */
 
-.products__wrapper {
+.products {
+    margin: 10px 0 0 0;
+    height: 600px;
+}
+.wrap {
     display: flex;
+    align-content: space-between;
     flex-wrap: wrap;
     align-items: center;
 }
-.products__items {
-    margin: 10px 6px 0 0px;
+.product {
+    margin: 5px 5px 0 5px;
     width: 215px;
     height: 445px;
     background-color: var(--background-color);
     border-radius: 5px;
 }
-.products__items-picture > img {
+.product__image > img {
     width: 215px;
     height: 250px;
     border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.products__items-title {
+.products__title {
     color: var(--bg-white-color);
     text-align: center;
-    font-size: 18px;
     font-weight: bold;
 }
-.products__items-title > h3 {
+.products__title > h3 {
     margin: 0;
-    padding: 0;
 }
-.products__items-quantity {
+.products__quantity {
    color: var(--bg-white-color);
    text-align: center;
    font-size: 16px; 
 }
-.products__items-price {
+.products__price {
     padding-top: 25px;
     color: var(--bg-white-color);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
 }
-.products__items-link {
+.products__basket {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.products__items-link > a {
+.products__basket > a {
+    width: 160px;
+    height: 50px;
     margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 160px;
-    height: 50px;
     border-radius: 50px;
     background-color: var(--bg-color);
     border: 2px solid var(--background-color);
@@ -304,9 +297,9 @@ input[type="text"] {
     font-size: 16px;
     font-weight: bold;
 }
-.products__items-link > a:hover {
+.products__basket > a:hover {
     background-color: var(--background-color);
     color: var(--bg-color);
-    transition: .3s;
     border: 1px solid var(--bg-color);
+    transition: .3s;
 }

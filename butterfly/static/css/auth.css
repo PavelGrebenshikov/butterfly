@@ -61,29 +61,24 @@ input[type="search"]::placeholder {
     height: calc(100vh - 100px);
     display: flex;
 }
-.content {
+.sidebar {
     width: 100%;
     height: calc(100vh - 100px);
 }
-.wrapper {
-    width: 100%;
-    height: calc(100vh - 100px);
-    background-color: var(--background-color);
-}
-.content__breadcrumbs {
+.sidebar__breadcrumbs {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.content__breadcrumbs > h3 {
+.sidebar__breadcrumbs > h3 {
     font-size: 20px;
     font-weight: 500;
     color: var(--background-color);
 }
-.content__image {
+.sidebar__image {
     margin: 0 5px 0 5px;
 }
-.content__image > img {
+.sidebar__image > img {
     width: 100%;
     height: 550px;
     border-radius: 5px;
@@ -91,32 +86,38 @@ input[type="search"]::placeholder {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.authorization__title {
+.box {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: var(--background-color);
+}
+.title {
+    margin: 20px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.authorization__title-text {
+.title__text {
     width: 20%;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 1px;
     color: #fff;
 }
-.line {
+.title__line {
     margin: 0 38px 0 38px;
     width: 100%;
     height: 2px;
     background-color: var(--bg-color);
 }
-.authorization__auth-form {
+.authorization {
     margin: 0 38px 0 38px;
 }
-.authorization__auth-form > form {
+.auth-form {
     display: flex;
     flex-direction: column;
 }
-.authorization__auth-form > form > input {
+.auth-form > input {
     height: 45px;
     margin: 32px 0 0 0;
     padding-left: 11px;
@@ -126,7 +127,7 @@ input[type="search"]::placeholder {
     border-radius: 5px;
     outline: none;
 }
-.authorization__auth-form > form > input::placeholder {
+.auth-form > input::placeholder {
     color: var(--bg-color);
 }
 input:-webkit-autofill,
@@ -142,39 +143,39 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
-.authorization__auth-recover {
+.auth-form__recover {
     display: flex;
     justify-content: right;
     margin: 14px 0 0 0;
     font-size: 16px;
 }
-.authorization__auth-recover > a {
+.auth-form__recover > a {
     color: var(--bg-color);
 }
-.authorization__auth-recover > a:hover {
+.auth-form__recover > a:hover {
     color: #fff;
 }
-.authorization__auth-register {
+.authorization__register-link {
     margin-top: 30px;
     color: var(--bg-color);
     font-size: 14px;
 }
-.authorization__auth-register > a {
+.authorization__register-link > a {
     color: var(--bg-color);
     border-bottom: 1px solid var(--bg-color);
     font-weight: bold;
 }
-.authorization__auth-register > a:hover {
+.authorization__register-link > a:hover {
     color: rgb(209, 79, 79);
     border-bottom: 1px solid rgb(209, 79, 79);
 }
-.authorization__auth-button {
+.auth-form__button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0 0 0;
 }
-.authorization__auth-button > input {
+.auth-form__button > input {
     width: 280px;
     height: 40px;
     background-color: var(--bg-color);
@@ -184,7 +185,7 @@ select:-webkit-autofill:focus {
     font-size: 20px;
     cursor: pointer;
 }
-.authorization__auth-button > input:hover {
+.auth-form__button > input:hover {
     background-color: var(--background-color);
     color: var(--bg-color);
     transition: .3s;    
@@ -192,7 +193,7 @@ select:-webkit-autofill:focus {
 .errors {
     width: 100%;
 }
-.erros > ul {
+.errors > ul {
     color: var(--bg-color);
     margin-top: 50px;
     padding: 0;

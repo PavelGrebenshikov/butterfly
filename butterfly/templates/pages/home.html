@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="wrapper">
+<div class="container">
     <nav class="navigation">
         <ul class="menu">
             <li><a href="#">ДЛЯ ЛИЦА</a></li>
@@ -14,8 +14,8 @@
             <li><a href="#">ПАРФЮМЕРИЯ</a></li>
             <li><a href="#">ИДЕИ ДЛЯ ПОДАРКОВ</a></li>
         </ul>
-        <div class="navigation__dropdown">
-            <div class="navigation__dropdown-menu">
+        <div class="dropdown">
+            <div class="dropdown__menu">
                 <div>
                     <div>
                         <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="navigation__dropdown-menu">
+            <div class="dropdown__menu">
                 <div>
                     <div>
                         <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
@@ -47,113 +47,97 @@
             </div>
         </div>
     </nav>
-    <div class="picture">
-        <div class="picture__bg">
-            <img src="{% static 'images/for-store.jpg' %}" alt="welcome picture for you">
-        </div>
+    <div class="background-image">
+        <img src="{% static 'images/for-store.jpg' %}" alt="background picture">
     </div>
     <div class="submenu">
-        <div class="submenu__list">
-            <div class="submenu__list-items">
-                <a href="#">ДЛЯ ЛИЦА</a>
-                <a href="#">ДЛЯ ТЕЛА</a>
-                <a href="#">ДЛЯ ВОЛОС</a>
-                <a href="#">ПАРФЮМЕРИЯ</a>
-            </div>
-        </div>
+        <a href="#">ДЛЯ ЛИЦА</a>
+        <a href="#">ДЛЯ ТЕЛА</a>
+        <a href="#">ДЛЯ ВОЛОС</a>
+        <a href="#">ПАРФЮМЕРИЯ</a>
     </div>
-    <div class="presentation">
-        <div class="presentation__wrapper">
-            <div class="presentation__left">
-                <div class="presentation__left-top">
-                    <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
-                </div>
-                <div class="presentation__left-bottom">
-                    <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
-                </div>
-            </div>
-            <div class="presentation__right">
-                <div class="presentation__right-top">
-                    <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
-                </div>
-                <div class="presentation__right-bottom">
-                    <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
-                </div>
-            </div>
-        </div>
+    <div class="gallery">
+        <figure class="gallery__item gallery__item--1">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--2">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--3">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--3">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--4">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
     </div>
-    <div class="line">
-        <div class="line__middle"></div>
-    </div>
+    <div class="line"></div>
     <div class="products">
-        <div class="products__wrapper">
-            <div class="products__items">
-                <div class="products__items-picture">
+        <div class="wrap">
+            <div class="product">
+                <div class="product__image">
                     <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
                 </div>
-                <div class="products__items-title">
+                <div class="products__title">
                     <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
                 </div>
-                <div class="products__items-quantity">
+                <div class="products__quantity">
                     <span>Спрей 75 мл</span>
                 </div>
-                <div class="products__items-price">
+                <div class="products__price">
                     <span>500 руб</span>
                 </div>
-                <div class="products__items-link">
+                <div class="products__basket">
                     <a href="#">В КОРЗИНУ</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="about">
-        <div class="about__store">
-            <div class="about__store-title">
-                Интернет-магазин косметики и парфюмерии Butterfly
-            </div>
-            <div class="about__store-text">
+        <div class="about__title">
+            Интернет-магазин косметики и парфюмерии Butterfly
+        </div>
+        <div class="about__text">
                 Косметика на основе натуральных ингредиентов — лучший подарок для вашей красоты. В официальном интернет-магазине «Ив Роше» вы найдете все, что нужно для ухода за лицом и телом, декоративную косметику, средства для волос, парфюмерию и аксессуары для домашних бьюти-процедур.
-
                 В магазинах натуральной косметики из Франции постоянно обновляется ассортимент и появляются новые продукты с улучшенными формулами. Соберите коллекцию своих любимых средств и порадуйте близких подарочными наборами.
-
                 В России открыты более 440 бутиков, 20 SPA-салонов и официальный интернет-магазин «Ив Роше», где можно приобрести французскую косметику с бесплатной доставкой в ваш город. Для покупателей действуют акции и бонусная программа. Мы дарим приятный подарок за каждую покупку.
-
                 Доставка осуществляется в Москву, Санкт-Петербург, Казань, Новосибирск и другие города России. При заказе от 2 490 рублей <span style="font-weight: bold;">мы доставим косметику «Ив Роше» бесплатно</span>.
-            </div>
         </div>
     </div>
     <div class="communication">
-        <div class="communication__wrapper">
-            <div class="communication__subscribe">
-                <div class="communication__subscribe-title">
+        <div class="wrapper">
+            <div class="subscribe">
+                <div class="subscribe__title">
                     Подписаться на рассылку
                 </div>
-                <div class="communication__subscribe-form">
+                <div class="subscribe-form">
                     <form action="#" method="post">
-                        <input type="email" class="subscribe__form-email" name="email" id="email" placeholder="Введите Ваш Email">
-                        <div class="communication__subscribe-bg">
-                            <button type="submit"></button>
+                        <input type="email" class="subscribe__input" name="email" id="email" placeholder="Введите Ваш Email">
+                        <div class="button-background">
+                            <button class="subscribe__button" type="submit"></button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="communication__contact">
-                <div class="communication__contact-phone">
+            <div class="contacts">
+                <div class="contact__phone">
                     7(495)787-76-72
                 </div>
-                <div class="communication__contact-time">
+                <div class="working__hours">
                     ежедневно с 8:00 до 22:00 по московскому времени
                 </div>
             </div>
         </div>
     </div>
     <div class="footer">
-        <div class="footer__wrapper">
-            <div class="footer__social">
-                <div class="footer__social-text">
+        <div class="wrapper">
+            <div class="social">
+                <div class="social__text">
                     Мы в социальных сетях
                 </div>
-                <div class="footer__social-icons">
+                <div class="social__icons">
                     <a href="#">
                         <img src="{% static 'images/icons/vk_icon.svg' %}" alt="" srcset="">
                     </a>
@@ -165,14 +149,14 @@
                     </a>
                 </div>
             </div>
-            <div class="footer__info">
-                <div class="footer__info-items">
-                    <ul class="footer__info-list">
+            <div class="footer-menu">
+                <div class="footer-menu__items">
+                    <ul class="footer-menu__list">
                         <li><a href="#">Условия продажи</a></li>
                         <li><a href="#">Персональные данные</a></li>
                         <li><a href="#">Cookies</a></li>
                     </ul>
-                    <ul class="footer__info-list">
+                    <ul class="footer-menu__list">
                         <li><a href="#">Карта сайта</a></li>
                         <li><a href="#">Магазины</a></li>
                         <li><a href="#">Cookies</a></li>
