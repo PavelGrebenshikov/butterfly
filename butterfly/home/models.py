@@ -15,6 +15,8 @@ class Category(Model):
 
     class Meta:
         app_label = 'home'
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
 
 class Subcategory(Model):
@@ -26,6 +28,8 @@ class Subcategory(Model):
 
     class Meta:
         app_label = 'home'
+        verbose_name = _('Subcategory')
+        verbose_name_plural = _('Subcategories')
 
 
 class Product(Model):
