@@ -10,45 +10,20 @@
     <div class="container">
     <nav class="navigation">
         <ul class="menu">
-            <li><a href="#">ДЛЯ ЛИЦА</a></li>
-            <li><a href="#">ДЛЯ ВОЛОС</a></li>
-            <li><a href="#">ДЛЯ ТЕЛА</a></li>
-            <li><a href="#">МАКИЯЖ</a></li>
-            <li><a href="#">ПАРФЮМЕРИЯ</a></li>
-            <li><a href="#">ИДЕИ ДЛЯ ПОДАРКОВ</a></li>
+            {% for category in categories %}
+                    <li>
+                        <a href="#">{{ category.name }}</a>
+                        <div class="dropdown__list">
+                            <ul>
+                                {% for subcategory in category.subcategory_set.all %}
+                                        <li><a href="#">{{ subcategory.name }}</a></li>
+                                {% endfor %}
+                                
+                            </ul>
+                        </div>
+                    </li>
+            {% endfor %}   
         </ul>
-        <div class="dropdown">
-            <div class="dropdown__menu">
-                <div>
-                    <div>
-                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
-                    </div>
-                    <ul>
-                        <li><a href="#">Мицеллярная вода</a></li>
-                        <li><a href="#">Молочко для снятия макияжа</a></li>
-                        <li><a href="#">Гель для умывания</a></li>
-                        <li><a href="#">Лосьон</a></li>
-                        <li><a href="#">Гидролаты</a></li>
-                        <li><a href="#">Посмотреть все</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="dropdown__menu">
-                <div>
-                    <div>
-                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
-                    </div>
-                    <ul>
-                        <li><a href="#">Мицеллярная вода</a></li>
-                        <li><a href="#">Молочко для снятия макияжа</a></li>
-                        <li><a href="#">Гель для умывания</a></li>
-                        <li><a href="#">Лосьон</a></li>
-                        <li><a href="#">Гидролаты</a></li>
-                        <li><a href="#">Посмотреть все</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </nav>
     <div class="content">
         <div class="box">

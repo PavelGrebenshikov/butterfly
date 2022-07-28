@@ -86,45 +86,35 @@ select:-webkit-autofill:focus {
     list-style: none;
 }
 .menu > li {
+    position: relative;
     margin: 0 20px 0 0;
+    font-size: 18px;
+}
+
+.dropdown__list {
+    display: none;
+    position: absolute;
     font-size: 16px;
+    background-color: var(--bg-color);
+}
+
+.dropdown__list > ul {
+    list-style: none;
+    padding: 0;
+}
+.dropdown__list > ul > li {
+    padding: 15px 15px 9px 13px;
 }
 .menu > li > a:hover {
     border-bottom: 1px solid var(--background-color);
     transition: 3s;
 }
-/* drop down menu */
-.dropdown {
-    display: none;
-    overflow: hidden;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 300px;
-    height: 300px;
-    background-color: #fff;
+
+.menu > li:hover > .dropdown__list {
+    display: block;
 }
-.dropdown__menu {
-    margin: 0 30px 0 0;
-}
-.dropdown__menu > div > div > a,
-.dropdown__menu > div > ul > li:last-child {
-    font-weight: bold;
-    color: var(--background-color);
-}
-.dropdown__menu > div > ul {
-    list-style: none;
-    font-size: 16px;
-    padding: 0;
-    margin: 20px 0 0 0;
-}
-.dropdown__menu > div > ul > li {
-    margin-top: 20px;
-}
-.dropdown__menu > div > ul > li > a {
-    color: var(--background-color);
-}
+
+
 .container {
     margin: 0 auto;
     width: calc(100% - 236px);
