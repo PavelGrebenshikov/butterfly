@@ -1,9 +1,9 @@
-from django.urls import include, path
+from django.urls import path
 
-# here import from views.py functions
 from .views import index, products
 
 urlpatterns = [
+    path('', index, name='home'),
     path('index/', index, name="home"),
     path('products/', products, name="products")
-] 
+]

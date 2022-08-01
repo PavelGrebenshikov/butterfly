@@ -1,0 +1,37 @@
+.navigation {
+    height: 40px;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+}
+.menu > li {
+    position: relative;
+    margin: 0 20px 0 0;
+    font-size: 18px;
+}
+
+.dropdown__list {
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    background-color: var(--bg-color);
+}
+
+.dropdown__list > ul {
+    list-style: none;
+    padding: 0;
+}
+.dropdown__list > ul > li {
+    padding: 15px 15px 9px 13px;
+}
+.menu > li > a:hover {
+    border-bottom: 1px solid var(--background-color);
+    transition: 3s;
+}
+
+.menu > li:hover > .dropdown__list {
+    display: block;
+}

@@ -1,52 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
+{% endblock styles %}
 
 
 {% block content %}
 
 <div class="container">
-    <nav class="navigation">
-        <ul class="menu">
-            <li><a href="#">ДЛЯ ЛИЦА</a></li>
-            <li><a href="#">ДЛЯ ВОЛОС</a></li>
-            <li><a href="#">ДЛЯ ТЕЛА</a></li>
-            <li><a href="#">МАКИЯЖ</a></li>
-            <li><a href="#">ПАРФЮМЕРИЯ</a></li>
-            <li><a href="#">ИДЕИ ДЛЯ ПОДАРКОВ</a></li>
-        </ul>
-        <div class="dropdown">
-            <div class="dropdown__menu">
-                <div>
-                    <div>
-                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
-                    </div>
-                    <ul>
-                        <li><a href="#">Мицеллярная вода</a></li>
-                        <li><a href="#">Молочко для снятия макияжа</a></li>
-                        <li><a href="#">Гель для умывания</a></li>
-                        <li><a href="#">Лосьон</a></li>
-                        <li><a href="#">Гидролаты</a></li>
-                        <li><a href="#">Посмотреть все</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="dropdown__menu">
-                <div>
-                    <div>
-                        <a href="#">ОЧИЩЕНИЕ И СНЯТИЕ МАКИЯЖА </a>                       
-                    </div>
-                    <ul>
-                        <li><a href="#">Мицеллярная вода</a></li>
-                        <li><a href="#">Молочко для снятия макияжа</a></li>
-                        <li><a href="#">Гель для умывания</a></li>
-                        <li><a href="#">Лосьон</a></li>
-                        <li><a href="#">Гидролаты</a></li>
-                        <li><a href="#">Посмотреть все</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% include "include/dropdown_menu.html" %}
     <div class="background-image">
         <img src="{% static 'images/for-store.jpg' %}" alt="background picture">
     </div>
