@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="box">
+        <div class="wrap">
+            <div class="picture">
+                <img class="picture__image" src="{% static 'images/product_pictures.jpg' %}" alt="Product image">    
+            </div>
+            <div class="data">
+                <div class="title">
+                    Шампунь-Уход ПРОТИВ ВЫПАДЕНИЯ ВОЛОС - Для ослабленных волос
+                </div>
+                <div class="format">
+                    Формат: Флакон 300мл
+                </div>
+                <div class="code-product">
+                    Код продукта: 3DBD#
+                </div>
+                <div class="count">
+                    Количество: 1
+                </div>
+                <div class="price">
+                    Цена: 500 руб
+                </div>
+                <div class="add-to-basket">
+                    <button class="add-to-basket__button">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <div class="description-title">Описание</div>
+            <div class="description-text">
+                "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация 
+    листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum
+            </div>
+        </div>
+    </div>
+{% endblock content %}
