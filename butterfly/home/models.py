@@ -3,6 +3,7 @@ from django.db.models import (
     DecimalField, DateTimeField, ForeignKey, ManyToManyField,
     ImageField, CASCADE
 )
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
@@ -46,6 +47,20 @@ class Product(Model):
 
     def __repr__(self):
         return f'<Product {self.name}>'
+
+    def get_absolute_url(self):
+        """
+        NOTE: This is real product url. But now we are using fictive url.
+
+        return reverse("products:detail", kwargs={"name": self.name})
+        """
+        return '#'
+
+    def get_image_url(self):
+        if str(self.image_url).startswith('/static'):
+            return self.image_url
+        else:
+            return f'/media/{self.image_url}'
 
     class Meta:
         app_label = 'home'

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
-    {% block styles %}
-        <link rel="stylesheet" href="{% static 'css/normalize.css'  %}">
-        <link rel="stylesheet" href="{% static 'css/products.css' %}">
-        <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
-    {% endblock styles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
+{% endblock styles %}
 
-    {% block content %}
-    <div class="container">
+{% block content %}
+<div class="container">
     {% include 'include/dropdown_menu.html' %}
     <div class="content">
         <div class="box">
@@ -66,94 +66,12 @@
         </div>
         <div class="products">
             <div class="wrap">
-                <div class="product">
-                    <div class="product__image">
-                        <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
-                    </div>
-                    <div class="products__title">
-                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
-                    </div>
-                    <div class="products__quantity">
-                        <span>Спрей 75 мл</span>
-                    </div>
-                    <div class="products__price">
-                        <span>500 руб</span>
-                    </div>
-                    <div class="products__basket">
-                        <a href="#">В КОРЗИНУ</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="product__image">
-                        <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
-                    </div>
-                    <div class="products__title">
-                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
-                    </div>
-                    <div class="products__quantity">
-                        <span>Спрей 75 мл</span>
-                    </div>
-                    <div class="products__price">
-                        <span>500 руб</span>
-                    </div>
-                    <div class="products__basket">
-                        <a href="#">В КОРЗИНУ</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="product__image">
-                        <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
-                    </div>
-                    <div class="products__title">
-                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
-                    </div>
-                    <div class="products__quantity">
-                        <span>Спрей 75 мл</span>
-                    </div>
-                    <div class="products__price">
-                        <span>500 руб</span>
-                    </div>
-                    <div class="products__basket">
-                        <a href="#">В КОРЗИНУ</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="product__image">
-                        <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
-                    </div>
-                    <div class="products__title">
-                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
-                    </div>
-                    <div class="products__quantity">
-                        <span>Спрей 75 мл</span>
-                    </div>
-                    <div class="products__price">
-                        <span>500 руб</span>
-                    </div>
-                    <div class="products__basket">
-                        <a href="#">В КОРЗИНУ</a>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="product__image">
-                        <img src="{% static 'images/product_pictures.jpg' %}" alt="" srcset="">
-                    </div>
-                    <div class="products__title">
-                        <h3>Туалетная Вода  «Натюрэль», 75 мл</h3>
-                    </div>
-                    <div class="products__quantity">
-                        <span>Спрей 75 мл</span>
-                    </div>
-                    <div class="products__price">
-                        <span>500 руб</span>
-                    </div>
-                    <div class="products__basket">
-                        <a href="#">В КОРЗИНУ</a>
-                    </div>
-                </div>
+              {% for product in products %}
+                  {% include 'include/product.html' %}
+              {% endfor %}
             </div>
         </div>
     </section>
 </div>
 
-    {% endblock content %}
+{% endblock content %}

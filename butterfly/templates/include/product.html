@@ -1,0 +1,17 @@
+{% load static %}
+<div class="product">
+  <div class="product__image">
+    <img src="{{ product.get_image_url }}" alt="" srcset="" />
+  </div>
+  <div class="products__title">
+    <a href="{{ product.get_absolute_url }}">
+      <h3>{{ product.name }}</h3>
+    </a>
+  </div>
+  <div class="products__price">
+    <span>{{ product.price }} руб</span>
+  </div>
+  <div class="products__basket">
+    <a href="#">В КОРЗИНУ</a>
+  </div>
+</div>
