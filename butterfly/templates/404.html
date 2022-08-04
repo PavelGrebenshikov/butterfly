@@ -1,9 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Page not found{% endblock %}
 
-{% block content %}
-<h1>Page not found</h1>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock styles %}
 
-<p>{% if exception %}{{ exception }}{% else %}This is not the page you were looking for.{% endif %}</p>
-{% endblock content %}
+{% block content %}
+<div class="box" style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 100px); background-color: #E5DCBE;">
+    <div class="wrap" style="font-size: 64px; font-weight: bold; text-align: center; color: #443A38;">
+         <div class="title">
+             <h2 style="margin: 0; padding: 0;">{% if exception %}{{ exception }}{% else %}Это не та страница, которую вы искали.{% endif %}</h2>
+         </div>
+    </div>
+ </div>
+ {% endblock content %}

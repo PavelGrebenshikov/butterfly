@@ -1,9 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock styles %}
 
 {% block title %}Forbidden (403){% endblock %}
 
 {% block content %}
-<h1>Forbidden (403)</h1>
-
-<p>{% if exception %}{{ exception }}{% else %}You're not allowed to access this page.{% endif %}</p>
-{% endblock content %}
+<div class="box" style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 100px); background-color: #E5DCBE;">
+    <div class="wrap" style="font-size: 32px; font-weight: bold; text-align: center; color: #443A38;">
+         <div class="title">
+             <h2 style="margin: -50px 0 0 0; padding: 0;">Forbidden (403)</h2>
+             <h3>{% if exception %}{{ exception }}{% else %}Вам не разрешен доступ к этой странице.{% endif %}</h3>
+         </div>
+    </div>
+ </div>
+ {% endblock content %}
