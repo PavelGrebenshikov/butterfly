@@ -5,7 +5,8 @@ from .models import Category, Product
 
 def index(request):
     context = {
-        'categories': Category.objects.all()
+        'categories': Category.objects.all(),
+        'products': Product.objects.all()
     }
     return render(request, 'home/home.html', context=context)
 
@@ -13,6 +14,6 @@ def index(request):
 def products(request):
     context = {
         'categories': Category.objects.all(),
-        'products': Product.objects.all()
+        'products': Product.objects.all()[:5]
     }
     return render(request, 'home/products.html', context=context)
