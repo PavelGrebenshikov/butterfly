@@ -12,7 +12,7 @@
             <div class="navigation">
                 <div class="navigation__photo">
                     <div class="navigation__photo-elem">
-                        <img src="{{ user.image_url }}" alt="You'r photo">
+                        <img src="{% if user.image.url %}{{ user.image_url }}{% else %}{% static 'images/personal_photo.jpg' %}{% endif %}" alt="You'r photo">
                     </div>
                 </div>
                 <div class="navigation__menu">

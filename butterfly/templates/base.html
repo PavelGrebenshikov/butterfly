@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/normalize.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block styles %}
-        <link rel="stylesheet" href="{% static 'css/normalize.css'  %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock styles %}
 
     <title>Интернет-магазин Butterfly</title>
@@ -17,7 +17,7 @@
     <header class="header">
         <div class="header__logo">
             <div class="header__logo-item">
-                <a href="#">
+                <a href="{% url 'home' %}">
                     Butterfly
                 </a>
             </div>
@@ -34,7 +34,7 @@
                 <a href="#">
                     <img src="{% static 'images/icons/basket_icon.svg' %}" alt="basket" srcset="">
                 </a>
-                <a href="#">
+                <a href="{% url 'users:redirect' %}">
                     <img src="{% static 'images/icons/personal_profile_icon.svg' %}" alt="personal account" srcset="">
                 </a>
             </div>
