@@ -54,7 +54,7 @@ class Product(Model):
 
         return reverse("products:detail", kwargs={"name": self.name})
         """
-        return '#'
+        return reverse("product_page", kwargs={'pk':self.pk})
 
     def get_image_url(self):
         if str(self.image_url).startswith('/static'):
