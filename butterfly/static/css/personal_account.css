@@ -2,7 +2,7 @@
     width: 100%;
     height: calc(100vh - 130px);
 }
-.wrapper {
+.box {
     display: flex;
     margin: 30px 118px 0 118px;
 }
@@ -15,6 +15,10 @@
     border-radius: 5px;
     box-sizing: border-box;
     border: 3px solid var(--background-color);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
 }
 .navigation__menu-elem {
     padding: 10px 0 0 0;
@@ -35,28 +39,28 @@
  
 .navigation__menu {
     width: 335px;
-    height: 360px;
+    min-height: 200px;
     border-radius: 5px;
     background-color: var(--background-color);
 }
 .about {
     width: 100%;
 }
-.about__account-title {
+.about__title {
     padding: 11px 0 0 0;
     text-align: center;
     font-weight: bold;
 }
-.about__account-information> ul {
+.about > ul {
     list-style: none;
 }
-.about__account-information > ul > li {
+.about > ul > li {
     color: var(--background-color);
-    font-size: 20px;
-    padding-top: 15px;
+    font-size: 14px;
 }
 .notifications {
     width: 100%;
+    margin-left: 20px;
 }
 .notifications__wrapper {
     width: 100%;
