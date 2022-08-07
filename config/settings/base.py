@@ -81,7 +81,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "butterfly.users",
-    'butterfly.home'
+    'butterfly.products'
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

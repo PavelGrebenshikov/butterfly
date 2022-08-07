@@ -15,7 +15,7 @@ class Category(Model):
         return f'<Category {self.name}>'
 
     class Meta:
-        app_label = 'home'
+        app_label = 'products'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
@@ -28,7 +28,7 @@ class Subcategory(Model):
         return f'<Subcategory {self.name}>'
 
     class Meta:
-        app_label = 'home'
+        app_label = 'products'
         verbose_name = _('Subcategory')
         verbose_name_plural = _('Subcategories')
 
@@ -63,4 +63,4 @@ class Product(Model):
             return f'/media/{self.image_url}'
 
     class Meta:
-        app_label = 'home'
+        app_label = 'products'
