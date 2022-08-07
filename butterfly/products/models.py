@@ -49,12 +49,7 @@ class Product(Model):
         return f'<Product {self.name}>'
 
     def get_absolute_url(self):
-        """
-        NOTE: This is real product url. But now we are using fictive url.
-
-        return reverse("products:detail", kwargs={"name": self.name})
-        """
-        return reverse("product_page", kwargs={'pk':self.pk})
+        return reverse("product_page", kwargs={'pk': self.pk})
 
     def get_image_url(self):
         if str(self.image_url).startswith('/static'):

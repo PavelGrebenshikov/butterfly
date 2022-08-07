@@ -10,6 +10,7 @@ def products(request):
     }
     return render(request, 'products/products.html', context=context)
 
+
 def product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     context = {
