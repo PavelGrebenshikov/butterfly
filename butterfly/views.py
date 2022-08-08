@@ -22,4 +22,7 @@ def search_product(request):
         'products': products,
         'search_product': query
     }
+    
+    if query is None:
+        return render(request, 'products_found.html', context={'search_product':'Ошибка ввода запроса'})
     return render(request, 'products_found.html', context=context)
