@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.postgres.search import SearchVector, SearchRank
 
 from products.models import Category, Product
