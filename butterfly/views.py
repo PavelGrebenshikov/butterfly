@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.db.models import Q
 from django.contrib.postgres.search import SearchVector, SearchRank
 
 from products.models import Category, Product
