@@ -11,9 +11,9 @@ def products(request):
     return render(request, 'products/products.html', context=context)
 
 
-def product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+def product(request, name: str):
+    product = get_object_or_404(Product, name=name)
     context = {
-        'product': product,
+        'product': product
     }
     return render(request, 'products/product.html', context=context)

@@ -1,3 +1,4 @@
+from argparse import Namespace
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -13,7 +14,7 @@ urlpatterns = [
     # User management
     path("users/", include("butterfly.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    path("products/", include('butterfly.products.urls')),
+    path("products/", include('butterfly.products.urls', namespace='products')),
     path('/index', index),
     path('', index)
     # Your stuff: custom urls includes go here
