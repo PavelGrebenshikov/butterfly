@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.postgres.search import SearchVector, SearchRank
 
 from products.models import Category, Product
@@ -22,7 +22,4 @@ def search_product(request):
         'products': products,
         'search_product': query
     }
-    
-    if query is None:
-        return render(request, 'products_found.html', context={'search_product':'Ошибка ввода запроса'})
     return render(request, 'products_found.html', context=context)
