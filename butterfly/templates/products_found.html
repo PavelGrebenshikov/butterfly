@@ -9,7 +9,7 @@
 {% block content %}
    <div class="container">
         <div class="box">
-            <div class="title">Найдено товаров с именем:  {{ search_product }}. Количество: {{ products_count }} шт.</div>
+            <div class="title">Найдено товаров с именем:  {{ search_product }}. Количество: {{ products | length }} шт.</div>
             <div class="products-found">
                 <ul class="list">
                     {% if products %}
