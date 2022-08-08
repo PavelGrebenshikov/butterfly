@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/products-found.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+   <div class="container">
+        <div class="box">
+            <div class="title">Найдено товаров с именем:  {{ search_product }}. Количество: {{ products_count }} шт.</div>
+            <div class="products-found">
+                <ul class="list">
+                    {% if products %}
+                        {% for product in products %}
+                            <li><a href="{{ product.get_absolute_url }}">{{ product.name }}</a> | Количество в началии: 5 | Цена за шт: {{ product.price }} руб</li>
+                        {% endfor %}
+                    {% else %}
+                        <li style="text-align: center; font-size: 28px;">Продукт <span style="font-weight: bold;">{{ search_product }}</span> не найден.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+   </div>
+{% endblock content %}
