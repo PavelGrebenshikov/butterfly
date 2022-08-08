@@ -6,7 +6,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
-from butterfly.views import index
+from butterfly.views import index, search_product
 
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
@@ -16,7 +16,9 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("products/", include('butterfly.products.urls', namespace='products')),
     path('/index', index),
-    path('', index)
+    path('', index),
+    path('product/', search_product, name='search_product')
+    
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
