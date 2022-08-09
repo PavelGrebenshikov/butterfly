@@ -15,17 +15,19 @@
                 <div class="title">
                     {{ product.name }}
                 </div>
-                <div class="format">
-                    Формат: Флакон 300мл
-                </div>
+                {% if product.format %}
+                        <div class="format">
+                            Формат: {{ product.format }}
+                        </div>
+                {% endif %}
                 <div class="code-product">
-                    Код продукта: 3DBD#
+                    Код продукта: {{ product.vendor_code }}
                 </div>
                 <div class="count">
-                    Количество: 1
+                    Количество: {{ product.in_stock_count }}
                 </div>
                 <div class="price">
-                    Цена: 500 руб
+                    Цена: {{ product.price }} руб
                 </div>
                 <div class="add-to-basket">
                     <button class="add-to-basket__button">Добавить в корзину</button>

@@ -17,7 +17,8 @@ def search_product(request):
     query = request.GET.get('q')
     search_rank = SearchRank(search_vector, query)
 
-    products = Product.objects.annotate(rank=search_rank).order_by('-rank').values('name', 'price', 'rank')
+    products = Product.objects.annotate(rank=search_rank).order_by('-rank').values(
+        'name', 'price', 'in_stock_count', 'rank')
     context = {
         'products': products,
         'search_product': query

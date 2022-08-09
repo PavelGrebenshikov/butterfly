@@ -8,6 +8,12 @@
       <h3>{{ product.name }}</h3>
     </a>
   </div>
+  {% if product.format %}
+        <div class="products__quantity">
+          <span>{{ product.format }}</span>
+        </div>
+  {% endif %}
+
   <div class="products__price">
     <span>{{ product.price }} руб</span>
   </div>

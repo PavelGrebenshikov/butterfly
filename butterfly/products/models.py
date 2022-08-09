@@ -1,7 +1,7 @@
 from django.db.models import (
     Model, CharField, TextField, BooleanField,
     DecimalField, DateTimeField, ForeignKey, ManyToManyField,
-    ImageField, CASCADE
+    ImageField, PositiveSmallIntegerField, CASCADE
 )
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -36,11 +36,14 @@ class Subcategory(Model):
 class Product(Model):
     name = CharField(_('Product name'), max_length=100)
     description = TextField(_('Description'), blank=True)
-    price = DecimalField(_('Price'), max_digits=5, decimal_places=2)
+    price = DecimalField(_('Price'), max_digits=7, decimal_places=2)
     created_at = DateTimeField(_('Creation date'), auto_now_add=True)
     last_modified = DateTimeField(_('Last modifying'), auto_now=True)
     visible = BooleanField(_('Is visible'), default=True)
     image_url = ImageField(_('Image url'), upload_to='products/photos/', default='/static/images/product.png')
+    format = CharField(_('Product format'), max_length=100, blank=True)
+    vendor_code = CharField(_('Vendor code'), max_length=50)
+    in_stock_count = PositiveSmallIntegerField(_('Products in stock'), default=0)
 
     category = ManyToManyField(Category)
     subcategory = ManyToManyField(Subcategory)
