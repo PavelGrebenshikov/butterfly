@@ -14,6 +14,9 @@ class Category(Model):
     def __repr__(self):
         return f'<Category {self.name}>'
 
+    def get_absolute_url(self):
+        return reverse("products:category_products", kwargs={'name': self.name})
+
     class Meta:
         app_label = 'products'
         verbose_name = _('Category')
@@ -26,6 +29,9 @@ class Subcategory(Model):
 
     def __repr__(self):
         return f'<Subcategory {self.name}>'
+
+    def get_absolute_url(self):
+        return reverse("products:category_products", kwargs={'name': self.name})
 
     class Meta:
         app_label = 'products'
