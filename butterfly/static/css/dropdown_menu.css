@@ -16,6 +16,7 @@
 .dropdown__list {
     display: none;
     position: absolute;
+    width: max-content;
     font-size: 16px;
     background-color: var(--bg-color);
 }
