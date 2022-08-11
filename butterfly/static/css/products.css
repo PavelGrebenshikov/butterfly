@@ -48,12 +48,13 @@
     display: flex;
 }
 .categories {
-    width: 30%;
+    width: 20%;
 }
 .categories__title {
     margin: 10px 0px 0 0px;
     text-align: center;
     font-weight: bold;
+    color: var(--background-color);
 }
 .categories__choice {
     margin: 9px 0 0 0;
@@ -63,6 +64,7 @@
     font-weight: 500;
     font-size: 14px;
     margin: 9px 0 0 0;
+    color: var(--background-color);
 }
 .categories-choice__filter > a {
     color: var(--background-color);
@@ -76,28 +78,44 @@
 .range-price__form {
     margin: 50px 0 0 0;
 }
+.range-price__form > .range-title {
+    text-align: center;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+} 
 .range-price {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.range-price > label {
-    margin: 0 5px 0 5px;
-    font-size: 16px;
-}
-.range-price__show {
+.range-show {
     margin: 5px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.range-price__input {
-    width: 100px;
-    height: 30px;
+.range-show__input {
+    width: 50%;
+    height: 40px;
     cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid var(--background-color);
+    background-color: var(--background-color);
+    color: var(--bg-color);
+}
+.range-show__input:hover {
+    background-color: var(--bg-color);
+    color: var(--background-color);
+    transition: .3s;
 }
 .range-price > input {
-    color:var(--background-color)
+    margin: 0 0 0 5px;
+    color:var(--background-color);
+}
+.range-price > input::placeholder {
+    font-size: 14px;
+    color: var(--background-color);
 }
 input[type="text"] {
     width: 80px;
