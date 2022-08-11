@@ -39,10 +39,44 @@
     background-size: cover;
     object-fit: cover;
 }
-.sorted {
+.sorting {
     width: 100%;
     font-size: 18px;
     text-align: right;
+}
+.sorting__menu {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    list-style: none;
+    font-weight: bold;
+}
+.sorting__menu > li {
+    position: relative;
+    font-size: 18px;
+}
+.sorting__menu > li > a {
+    color: var(--background-color);
+}
+.sorting__menu > li:hover > .sorted__list {
+    display: block;
+}
+.sorting__list {
+    display: none;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.sorting__list > ul > li {
+    padding: 10px 10px 10px 14px;
+}
+.sorting__list > ul > li > a:hover {
+    border-bottom: 1px solid var(--background-color);
+}
+.sorting__list > ul {
+    list-style: none;
+    padding: 0;
 }
 .section {
     display: flex;
