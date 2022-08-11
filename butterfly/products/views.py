@@ -6,13 +6,13 @@ from products.models import Category, Product, Subcategory
 def products(request):
     context = {
         'categories': Category.objects.all(),
-        'products': Product.objects.all()[:5]
+        'products': Product.objects.filter(visible=True)[:5]
     }
     return render(request, 'products/products.html', context=context)
 
 
 def product(request, name: str):
-    product = get_object_or_404(Product, name=name)
+    product = get_object_or_404(Product, name=name, visible=True)
     context = {
         'product': product
     }
@@ -26,7 +26,7 @@ def category_products(request, name: str):
 
     context = {
         'categories': Category.objects.all(),
-        'products': category.product_set.all()
+        'products': category.product_set.filter(visible=True)
     }
 
     return render(request, 'products/products.html', context=context)
