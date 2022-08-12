@@ -2,7 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
 }
-a { 
+a {
     color: #222;
     text-decoration: none;
 }
@@ -141,7 +141,8 @@ select:-webkit-autofill:focus {
     justify-content: space-between;
     height: 100px;
 }
-.submenu > a {
+.submenu > a,
+a.products__full-page-button {
     width: 215px;
     height: 50px;
     display: flex;
@@ -152,10 +153,15 @@ select:-webkit-autofill:focus {
     color: var(--background-color);
     border: 1px solid var(--background-color);
 }
-.submenu > a:hover {
+.submenu > a:hover,
+a.products__full-page-button:hover {
     background-color: var(--background-color);
     color: var(--bg-color);
     transition: .3s;
+}
+
+a.products__full-page-button {
+    margin: 20px auto 0px auto;
 }
 
 /* pictures for presentation */
@@ -249,7 +255,7 @@ select:-webkit-autofill:focus {
 .products__quantity {
    color: var(--bg-white-color);
    text-align: center;
-   font-size: 16px; 
+   font-size: 16px;
 }
 .products__price {
     position: absolute;
