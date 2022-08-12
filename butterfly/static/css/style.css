@@ -215,6 +215,7 @@ select:-webkit-autofill:focus {
     align-items: center;
 }
 .product {
+    position: relative;
     margin: 0 40px 0 40px;
     width: 215px;
     height: 445px;
@@ -229,13 +230,21 @@ select:-webkit-autofill:focus {
     background-position: center;
     background-size: cover;
 }
+.product__image:hover img {
+    transform: scale(1.01);
+    transform: .5;
+}
 .products__title {
-    color: var(--bg-white-color);
     text-align: center;
     font-weight: bold;
 }
-.products__title > h3 {
+.products__title > a > h3 {
+    color: var(--bg-white-color);
     margin: 0;
+}
+.products__title:hover a h3 {
+    color: var(--bg-color);
+    transition: .3s;
 }
 .products__quantity {
    color: var(--bg-white-color);
@@ -243,13 +252,17 @@ select:-webkit-autofill:focus {
    font-size: 16px; 
 }
 .products__price {
-    padding-top: 25px;
+    position: absolute;
+    left: 60px;
+    bottom: 70px;
     color: var(--bg-white-color);
     text-align: center;
     font-size: 20px;
     font-weight: bold;
 }
 .products__basket {
+    position: absolute;
+    bottom: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
