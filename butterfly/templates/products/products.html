@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load breadcrumbs %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
@@ -13,7 +14,11 @@
         <div class="box">
             <div class="sidebar__breadcrumbs">
                 <div class="breadcrumbs-nav">
-                    Главная > Для лица
+                    {% block breadcrumbs %}
+                        {% breadcrumb_url 'Главная' 'home' %}
+                        <span>></span>
+                        {% breadcrumb_url 'Продукты' 'products:all_products' %}
+                    {% endblock breadcrumbs %}
                 </div>
             </div>
             <div class="sidebar__title">
