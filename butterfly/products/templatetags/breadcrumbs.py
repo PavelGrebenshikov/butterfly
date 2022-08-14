@@ -7,6 +7,7 @@ from django.template import VariableDoesNotExist
 
 register = template.Library()
 
+
 @register.tag
 def breadcrumb(parser, token):
     """
@@ -40,7 +41,7 @@ def breadcrumb_url(parser, token):
     """
 
     bits = token.split_contents()
-    if len(bits)==2:
+    if len(bits) == 2:
         return breadcrumb(parser, token)
 
     # Extract our extra title parameter
@@ -57,12 +58,12 @@ class BreadcrumbNode(Node):
         """
         First var is title, second var is url context variable
         """
-        self.vars = map(Variable,vars)
+        self.vars = map(Variable, vars)
 
     def render(self, context):
         title = self.vars[0].var
 
-        if title.find("'")==-1 and title.find('"')==-1:
+        if title.find("'") == -1 and title.find('"') == -1:
             try:
                 val = self.vars[0]
                 title = val.resolve(context)
@@ -70,12 +71,12 @@ class BreadcrumbNode(Node):
                 title = ''
 
         else:
-            title=title.strip("'").strip('"')
-            title=smart_str(title)
+            title = title.strip("'").strip('"')
+            title = smart_str(title)
 
         url = None
 
-        if len(self.vars)>1:
+        if len(self.vars) > 1:
             val = self.vars[1]
             try:
                 url = val.resolve(context)
@@ -94,15 +95,15 @@ class UrlBreadcrumbNode(Node):
     def render(self, context):
         title = self.title.var
 
-        if title.find("'")==-1 and title.find('"')==-1:
+        if title.find("'") == -1 and title.find('"') == -1:
             try:
                 val = self.title
                 title = val.resolve(context)
             except:
                 title = ''
         else:
-            title=title.strip("'").strip('"')
-            title=smart_text(title)
+            title = title.strip("'").strip('"')
+            title = smart_text(title)
 
         url = self.url_node.render(context)
         return create_crumb(title, url)
@@ -112,7 +113,7 @@ def create_crumb(title, url=None):
     """
     Helper function
     """
-    
+
     if url:
         crumb = "<a href='%s'>%s</a>" % (url, title)
     else:

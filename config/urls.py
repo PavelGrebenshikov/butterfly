@@ -14,8 +14,8 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("products/", include('butterfly.products.urls', namespace='products')),
     path('search/', search_product, name='search_product'),
-    path('index/', index),
-    path('', index)
+    path('index/', index, name='index'),
+    path('', index, name='home')
 
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
