@@ -6,19 +6,10 @@ from .forms import ProductsFilterForm
 
 def filtered_products(request):
     form = ProductsFilterForm(request.GET)
-    if form.is_valid():
-        price_from = form.cleaned_data['price_from']
-        price_to = form.cleaned_data['price_to']
-
-        filtered_products = Product.objects.filter(visible=True)
-        if price_from is not None:
-            filtered_products = filtered_products.filter(price__gte=price_from)
-        if price_to is not None:
-            filtered_products = filtered_products.filter(price__lte=price_to)
 
     context = {
         'categories': Category.objects.all(),
-        'products': filtered_products,
+        'products': form.get_filtered_products(),
         'form': form
     }
     return render(request, 'products/products.html', context=context)
