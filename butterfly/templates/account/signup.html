@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load breadcrumbs %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/registration.css' %}">
@@ -14,7 +15,13 @@
 <div class="container">
     <div class="sidebar">
         <div class="sidebar__breadcrumbs">
-            <h3>Главная > Регистрация</h3>
+            <h3>
+                {% block breadcrumbs %}
+                    {% breadcrumb_url 'Главная' 'home' %}
+                        <span>></span>
+                    {% breadcrumb_url 'Регистрация' 'account_signup' %}
+                {% endblock breadcrumbs %}
+            </h3>
         </div>
         <div class="sidebar__image">
             <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">

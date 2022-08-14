@@ -4,6 +4,7 @@
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load breadcrumbs %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
@@ -43,7 +44,13 @@
 <div class="container">
   <div class="sidebar">
       <div class="sidebar__breadcrumbs">
-          <h3>Главная > Авторизация</h3>
+          <h3>
+            {% block breadcrumbs %}
+              {% breadcrumb_url 'Главная' 'home' %}
+                <span>></span>
+              {% breadcrumb_url 'Авторизация' 'account_login' %}
+            {% endblock breadcrumbs %}
+          </h3>
       </div>
       <div class="sidebar__image">
           <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
