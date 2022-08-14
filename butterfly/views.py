@@ -7,7 +7,7 @@ from products.models import Category, Product
 def index(request):
     context = {
         'categories': Category.objects.all(),
-        'products': Product.objects.filter(visible=True)
+        'products': Product.objects.filter(visible=True)[:5]
     }
     return render(request, 'home.html', context=context)
 

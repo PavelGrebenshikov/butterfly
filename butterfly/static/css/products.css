@@ -117,7 +117,7 @@
     margin: 0 0 5px 0;
     font-size: 14px;
     font-weight: bold;
-} 
+}
 .range-price {
     display: flex;
     justify-content: center;
@@ -151,6 +151,6 @@
     font-size: 14px;
     color: var(--background-color);
 }
-input[type="text"] {
+input[type="number"] {
     width: 80px;
 }

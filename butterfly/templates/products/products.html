@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% load breadcrumbs %}
+
+{% comment %}
+    {% load breadcrumbs %}
+{% endcomment %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
@@ -14,11 +17,13 @@
         <div class="box">
             <div class="sidebar__breadcrumbs">
                 <div class="breadcrumbs-nav">
-                    {% block breadcrumbs %}
-                        {% breadcrumb_url 'Главная' 'home' %}
-                        <span>></span>
-                        {% breadcrumb_url 'Продукты' 'products:all_products' %}
-                    {% endblock breadcrumbs %}
+                    {% comment %}
+                        {% block breadcrumbs %}
+                            {% breadcrumb_url 'Главная' 'home' %}
+                            <span>></span>
+                            {% breadcrumb_url 'Продукты' 'products:all_products' %}
+                        {% endblock breadcrumbs %}
+                    {% endcomment %}
                 </div>
             </div>
             <div class="sidebar__title">
@@ -65,13 +70,15 @@
                 </div>
             </div>
             <div class="range">
-                <form class="range-price__form" action="#" method="post">
+                <form class="range-price__form" action="" method="get">
                     <div class="range-title">
-                        Стоймость товара
+                        Стоимость товара
                     </div>
                     <div class="range-price">
-                        <input type="text" placeholder="От">
-                        <input type="text" placeholder="До">
+                        {% for field in form %}
+                                {{ field }}
+                        {% endfor %}
+
                     </div>
                     <div class="range-show">
                         <input class="range-show__input" type="submit" value="Показать">
