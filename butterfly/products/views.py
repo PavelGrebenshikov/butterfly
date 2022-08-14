@@ -4,7 +4,7 @@ from products.models import Category, Product, Subcategory
 from .forms import ProductsFilterForm
 
 
-def filtered_products(request):
+def products(request):
     form = ProductsFilterForm(request.GET)
 
     context = {
@@ -28,9 +28,12 @@ def category_products(request, name: str):
     if not category:
         category = get_object_or_404(Subcategory, name=name)
 
+    form = ProductsFilterForm(request.GET)
+
     context = {
         'categories': Category.objects.all(),
-        'products': category.product_set.filter(visible=True)
+        'products': form.get_filtered_products(category.product_set),
+        'form': form
     }
 
     return render(request, 'products/products.html', context=context)

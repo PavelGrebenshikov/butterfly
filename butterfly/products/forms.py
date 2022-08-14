@@ -16,10 +16,12 @@ class ProductsFilterForm(Form):
         }
     ), required=False)
 
-    def get_filtered_products(self) -> QuerySet:
+    def get_filtered_products(
+            self,
+            products: QuerySet = Product.objects.filter(visible=True)) -> QuerySet:
         '''Returns a QuerySet with products filtered by form fields'''
 
-        filtered_products = Product.objects.filter(visible=True)
+        filtered_products = products.filter(visible=True)
         if self.is_valid():
             price_from = self.cleaned_data['price_from']
             price_to = self.cleaned_data['price_to']
