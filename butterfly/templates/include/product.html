@@ -2,6 +2,9 @@
 <div class="product">
   <div class="product__image">
     <img src="{{ product.get_image_url }}" alt="" srcset="" />
+    <div class="more-detailed">
+      <a href="{{ product.get_absolute_url }}">Подробнее</a>
+    </div>
   </div>
   <div class="products__title">
     <a href="{{ product.get_absolute_url }}">

@@ -240,6 +240,30 @@ a.products__full-page-button {
     transform: scale(1.01);
     transform: .5;
 }
+.more-detailed a {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: var(--background-color);
+    color: var(--bg-color);
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.product__image:hover .more-detailed a {
+    transition: .3s;
+    opacity: 1;
+}
+.more-detailed a:hover {
+    background-color: var(--bg-color);
+    color: var(--background-color);
+    transition: .3s;
+    border: 1px solid var(--background-color);
+}
 .products__title {
     text-align: center;
     font-weight: bold;
