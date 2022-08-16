@@ -29,7 +29,7 @@
                     {% else %}
                             {% breadcrumb 'Продукты' %}
                     {% endif %}
-                    
+
                     {% endblock breadcrumbs %}
                 </div>
             </div>
@@ -54,12 +54,10 @@
                 <a href="#">
                     Сортировка
                 </a>
-                <div class="sorting__list">
-                    <ul>
-                        <li><a href="#">Новинки</a></li>
-                        <li><a href="#">Популярные</a></li>
-                    </ul>
-                </div>
+                <form action="#" method="get">
+                    {{ sort_form.sort }}
+                    <input type="submit" value="Отсортировать">
+                </form>
             </li>
         </ul>
     </div>
@@ -82,7 +80,7 @@
                         Стоимость товара
                     </div>
                     <div class="range-price">
-                        {% for field in form %}
+                        {% for field in filter_form %}
                                 {{ field }}
                         {% endfor %}
 

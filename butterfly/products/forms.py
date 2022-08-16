@@ -1,4 +1,4 @@
-from django.forms import Form, IntegerField, NumberInput
+from django.forms import Form, IntegerField, NumberInput, ChoiceField
 from django.db.models import QuerySet
 
 from products.models import Product
@@ -32,3 +32,13 @@ class ProductsFilterForm(Form):
                 filtered_products = filtered_products.filter(price__lte=price_to)
 
         return filtered_products
+
+
+class ProductsSortForm(Form):
+    sort = ChoiceField(choices=[
+        ('price_asc', 'По возрастанию цены'),
+        ('price_desc', 'По убыванию цены'),
+        ('popular', 'По популярности'),
+        ('latest', 'По новизне'),
+        ('in_stock_count', 'По количеству товара')
+    ])
