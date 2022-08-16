@@ -31,6 +31,7 @@ def category_products(request, name: str):
     form = ProductsFilterForm(request.GET)
 
     context = {
+        'breadcrumb_obj': category,
         'categories': Category.objects.all(),
         'products': form.get_filtered_products(category.product_set),
         'form': form

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load breadcrumbs %}
+{% load gettype %}
+
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
@@ -15,9 +17,20 @@
             <div class="sidebar__breadcrumbs">
                 <div class="breadcrumbs-nav">
                     {% block breadcrumbs %}
-                        {% breadcrumb_url 'Главная' 'home' %}
-                        <span>></span>
-                        {% breadcrumb_url 'Продукты' 'products:all_products' %}
+
+                    {% breadcrumb_url 'Главная' 'home' %}
+                    <span>></span>
+
+                    {% if breadcrumb_obj|gettype == "Category" %}
+                            {% breadcrumb breadcrumb_obj.name %}
+                    {% elif breadcrumb_obj|gettype == 'Subcategory' %}
+                            {% breadcrumb_url breadcrumb_obj.category.name 'products:category_products' breadcrumb_obj.category.name %}
+                            <span>></span>
+                            {% breadcrumb breadcrumb_obj.name %}
+                    {% else %}
+                            {% breadcrumb 'Продукты' %}
+                    {% endif %}
+
                     {% endblock breadcrumbs %}
                 </div>
             </div>
