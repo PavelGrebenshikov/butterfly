@@ -218,11 +218,11 @@ a.products__full-page-button {
 }
 .wrap {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 .product {
     position: relative;
-    margin: 0 40px 0 40px;
     width: 215px;
     height: 445px;
     background-color: var(--background-color);

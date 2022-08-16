@@ -20,7 +20,6 @@
 
                     {% breadcrumb_url 'Главная' 'home' %}
                     <span>></span>
-
                     {% if breadcrumb_obj|gettype == "Category" %}
                             {% breadcrumb breadcrumb_obj.name %}
                     {% elif breadcrumb_obj|gettype == 'Subcategory' %}
@@ -30,7 +29,7 @@
                     {% else %}
                             {% breadcrumb 'Продукты' %}
                     {% endif %}
-
+                    
                     {% endblock breadcrumbs %}
                 </div>
             </div>
@@ -41,7 +40,7 @@
             </div>
             <div class="sidebar__products">
                 <div class="sidebar__found">
-                    Найдено продуктов: 123
+                    Найдено продуктов: {{ products|length }}
                 </div>
             </div>
         </div>
