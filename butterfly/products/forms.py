@@ -40,5 +40,28 @@ class ProductsSortForm(Form):
         ('price_desc', 'По убыванию цены'),
         ('popular', 'По популярности'),
         ('latest', 'По новизне'),
-        ('in_stock_count', 'По количеству товара')
-    ])
+    ], required=False)
+
+    def get_sorted_products(
+            self,
+            products: QuerySet = Product.objects.filter(visible=True)) -> QuerySet:
+
+        sorted_products = products.filter(visible=True)
+
+        if self.is_valid():
+            match self.cleaned_data['sort']:
+                case 'price_asc':
+                    sorted_products = sorted_products.order_by('price')
+                case 'price_desc':
+                    sorted_products = sorted_products.order_by('-price')
+                case 'popular':
+                    # TODO: Popular sorting
+                    pass
+
+                case 'latest':
+                    sorted_products = sorted_products.order_by('-created_at')
+
+                case _:
+                    sorted_products = sorted_products.order_by('price')
+
+        return sorted_products

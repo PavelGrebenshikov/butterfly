@@ -4,13 +4,16 @@ from products.models import Category, Product, Subcategory
 from .forms import ProductsFilterForm, ProductsSortForm
 
 
-def products(request):
+def all_products(request):
     filter_form = ProductsFilterForm(request.GET)
     sort_form = ProductsSortForm(request.GET)
 
+    products = filter_form.get_filtered_products()
+    products = sort_form.get_sorted_products(products)
+
     context = {
         'categories': Category.objects.all(),
-        'products': filter_form.get_filtered_products(),
+        'products': products,
         'filter_form': filter_form,
         'sort_form': sort_form
     }
@@ -33,10 +36,13 @@ def category_products(request, name: str):
     filter_form = ProductsFilterForm(request.GET)
     sort_form = ProductsSortForm(request.GET)
 
+    products = filter_form.get_filtered_products(category.product_set)
+    products = sort_form.get_sorted_products(products)
+
     context = {
         'breadcrumb_obj': category,
         'categories': Category.objects.all(),
-        'products': filter_form.get_filtered_products(category.product_set),
+        'products': products,
         'filter_form': filter_form,
         'sort_form': sort_form
     }
