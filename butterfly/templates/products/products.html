@@ -54,9 +54,9 @@
                 <a href="#">
                     Сортировка
                 </a>
-                <form action="" method="get">
+                <form action="" method="get" name="sort_form">
                     {{ sort_form.sort }}
-                    <input type="submit" value="Отсортировать">
+                    <input type="submit" value="Отсортировать" onclick="sendGetFormData('sort_form', event);">
                 </form>
             </li>
         </ul>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="range">
-                <form class="range-price__form" action="" method="get">
+                <form class="range-price__form" action="" method="get" name="filter_form">
                     <div class="range-title">
                         Стоимость товара
                     </div>
@@ -86,7 +86,7 @@
 
                     </div>
                     <div class="range-show">
-                        <input class="range-show__input" type="submit" value="Показать">
+                        <input class="range-show__input" type="submit" value="Показать" onclick="sendGetFormData('filter_form', event);">
                     </div>
                 </form>
             </div>
@@ -100,5 +100,7 @@
         </div>
     </section>
 </div>
+
+<script src="{% static 'js/products.js' %}"></script>
 
 {% endblock content %}
