@@ -9,10 +9,12 @@ from butterfly.views import index, search_product
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
-    # User management
+    # Apps' views
     path("users/", include("butterfly.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("products/", include('butterfly.products.urls', namespace='products')),
+    path('cart/', include(('butterfly.cart.urls', 'butterfly.cart'), namespace='cart')),
+    # Global views
     path('search/', search_product, name='search_product'),
     path('index/', index, name='index'),
     path('', index, name='home')

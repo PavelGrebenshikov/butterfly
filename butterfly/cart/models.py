@@ -11,6 +11,7 @@ class Cart(Model):
     session_key = CharField(max_length=40, blank=True)
 
     class Meta:
+        app_label = 'cart'
         unique_together = ('user', 'session_key',)
 
 
