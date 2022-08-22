@@ -19,9 +19,16 @@
                         <ul>
                             <li><a href="#">Корзина</a></li>
                             <li><a href="#">Настройки</a></li>
+                            <li><a href="{% url 'account_logout' %}">Выход</a></li>
                         </ul>
                     </div>
                 </div>
+                <style>
+                    .logout-account {
+                        position: absolute;
+                        bottom: 10px;
+                    }
+                </style>
             </div>
             <div class="about">
                 <div class="about__title">
