@@ -20,7 +20,7 @@
   <div class="products__price">
       {{ product.price }} руб
   </div>
-  <div class="products__basket">
-    <a href="#">В КОРЗИНУ</a>
+  <div class="products__basket" onclick="addProduct({{ product.id }});">
+    <a>В КОРЗИНУ</a>
   </div>
 </div>

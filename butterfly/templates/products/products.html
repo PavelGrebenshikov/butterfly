@@ -102,5 +102,7 @@
 </div>
 
 <script src="{% static 'js/products.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-url="{% url 'cart:add_product' %}" data-csrf="{{ csrf_token }}"></script>
 
 {% endblock content %}

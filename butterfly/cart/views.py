@@ -13,7 +13,10 @@ def add_product(request):
 
         product = get_object_or_404(Product, pk=product_id)
 
-        if request.user.is_authenticated():
+        if not request.session or not request.session.session_key:
+            request.session.save()
+
+        if request.user.is_authenticated:
             cart, _ = Cart.objects.update_or_create(
                 user=request.user,
                 defaults={'session_key': request.session.session_key}
@@ -32,6 +35,6 @@ def add_product(request):
         cart.save()
         cart_item.save()
 
-        return JsonResponse({'count': cart.items.count() + 1 if cart_item_created else cart.items.count()})
+        return JsonResponse({'count': cart.items.count()})
 
     return HttpResponseNotFound()
