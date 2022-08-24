@@ -7,12 +7,8 @@ from butterfly.users.models import User
 
 class Cart(Model):
     created_at = DateTimeField(auto_now_add=True)
-    user = OneToOneField(User, blank=True, null=True, related_name='cart', on_delete=CASCADE)
-    session_key = CharField(max_length=40, blank=True)
-
-    class Meta:
-        app_label = 'cart'
-        unique_together = ('user', 'session_key',)
+    user = OneToOneField(User, blank=True, null=True, related_name='cart',
+                         on_delete=CASCADE, unique=True)
 
 
 class CartItem(Model):

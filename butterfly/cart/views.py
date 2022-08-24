@@ -8,32 +8,31 @@ from butterfly.cart.models import Cart, CartItem
 def add_product(request):
     if request.method == 'POST' and request.is_ajax():
         product_id = request.POST.get('product_id', '')
-        if not product_id or not product_id.isdigit():
-            return HttpResponseNotFound()
-
         product = get_object_or_404(Product, pk=product_id)
 
         if not request.session or not request.session.session_key:
             request.session.save()
 
         if request.user.is_authenticated:
-            cart, _ = Cart.objects.update_or_create(
-                user=request.user,
-                defaults={'session_key': request.session.session_key}
-            )
+            cart, _ = Cart.objects.get_or_create(user=request.user)
 
         else:
-            cart, _ = Cart.objects.get_or_create(
-                session_key=request.session.session_key,
-                defaults={'user': None}
-            )
+            try:
+                cart = Cart.objects.get(
+                    pk=request.session.get('cart_id')
+                )
 
-        cart_item, cart_item_created = CartItem.objects.get_or_create(
+            except Cart.DoesNotExist:
+                cart = Cart(user=None)
+
+        cart.save()
+        cart_item, _ = CartItem.objects.get_or_create(
             cart=cart, product=product
         )
 
-        cart.save()
         cart_item.save()
+
+        request.session['cart_id'] = cart.id
 
         return JsonResponse({'count': cart.items.count()})
 
