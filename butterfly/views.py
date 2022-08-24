@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.postgres.search import SearchVector, SearchRank
 
-from products.models import Category, Product
+from butterfly.products.models import Category, Product
 
 
 def index(request):

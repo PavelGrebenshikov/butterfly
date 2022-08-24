@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from products.models import Category, Product, Subcategory
+from butterfly.products.models import Category, Product, Subcategory
 from .forms import ProductsFilterForm, ProductsSortForm
 
 
