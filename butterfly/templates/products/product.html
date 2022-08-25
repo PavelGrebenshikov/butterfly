@@ -6,39 +6,43 @@
 {% endblock styles %}
 
 {% block content %}
-    <div class="box">
-        <div class="wrap">
-            <div class="picture">
-                <img class="picture__image" src="{{ product.get_image_url }}" alt="Product image">
-            </div>
-            <div class="data">
-                <div class="title">
-                    {{ product.name }}
-                </div>
-                {% if product.format %}
-                        <div class="format">
-                            Формат: {{ product.format }}
-                        </div>
-                {% endif %}
-                <div class="code-product">
-                    Код продукта: {{ product.vendor_code }}
-                </div>
-                <div class="count">
-                    Количество: {{ product.in_stock_count }}
-                </div>
-                <div class="price">
-                    Цена: {{ product.price }} руб
-                </div>
-                <div class="add-to-basket">
-                    <button class="add-to-basket__button">Добавить в корзину</button>
-                </div>
-            </div>
+<div class="box">
+    <div class="wrap">
+        <div class="picture">
+            <img class="picture__image" src="{{ product.get_image_url }}" alt="Product image">
         </div>
-        <div class="description">
-            <div class="description-title">Описание</div>
-            <div class="description-text">
-                {{ product.description }}
+        <div class="data">
+            <div class="title">
+                {{ product.name }}
+            </div>
+            {% if product.format %}
+                    <div class="format">
+                        Формат: {{ product.format }}
+                    </div>
+            {% endif %}
+            <div class="code-product">
+                Код продукта: {{ product.vendor_code }}
+            </div>
+            <div class="count">
+                Количество: {{ product.in_stock_count }}
+            </div>
+            <div class="price">
+                Цена: {{ product.price }} руб
+            </div>
+            <div class="add-to-basket">
+                <button class="add-to-basket__button" onclick="addProduct({{ product.id }});">Добавить в корзину</button>
             </div>
         </div>
     </div>
+    <div class="description">
+        <div class="description-title">Описание</div>
+        <div class="description-text">
+            {{ product.description }}
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-url="{% url 'cart:add_product' %}" data-csrf="{{ csrf_token }}"></script>
+
 {% endblock content %}
