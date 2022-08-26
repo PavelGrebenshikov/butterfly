@@ -14,6 +14,9 @@ class Category(Model):
     def __repr__(self):
         return f'<Category {self.name}>'
 
+    def __str__(self):
+        return self.name
+
     def get_absolute_url(self):
         return reverse("products:category_products", kwargs={'name': self.name})
 
@@ -29,6 +32,9 @@ class Subcategory(Model):
 
     def __repr__(self):
         return f'<Subcategory {self.name}>'
+
+    def __str__(self):
+        return self.name
 
     def get_absolute_url(self):
         return reverse("products:category_products", kwargs={'name': self.name})
@@ -56,6 +62,9 @@ class Product(Model):
 
     def __repr__(self):
         return f'<Product {self.name}>'
+
+    def __str__(self):
+        return self.name
 
     def get_absolute_url(self):
         return reverse("products:product_page", kwargs={'name': self.name})

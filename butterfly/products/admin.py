@@ -15,10 +15,10 @@ class CategoryAdmin(admin.ModelAdmin):
     inlines = [SubcategoryInline]
 
     def subcategories_count(self, model: Category) -> int:
-        return len(model.subcategory_set.all())
+        return model.subcategory_set.count()
 
     def products_count(self, model: Category) -> int:
-        return len(model.product_set.all())
+        return model.product_set.count()
 
 
 @admin.register(Subcategory)
@@ -27,7 +27,7 @@ class SubcategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
     def products_count(self, model: Subcategory) -> int:
-        return len(model.product_set.all())
+        return model.product_set.count()
 
     def category_name(self, model: Subcategory) -> str:
         return model.category.name
