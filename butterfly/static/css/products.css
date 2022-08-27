@@ -55,11 +55,35 @@
     position: relative;
     font-size: 18px;
 }
-.sorting__menu > li > a {
-    color: var(--background-color);
-}
 .sorting__menu > li:hover > .sorted__list {
     display: block;
+}
+.sorting-form > select {
+    color: var(--bg-color);
+    background-color: var(--background-color);
+    cursor: pointer;
+    border-radius: 5px;
+    height: 40px;
+    border: none;
+}
+.sorting-form > select:active, select:focus{
+    outline:none
+}
+.sorting-form > input {
+    background-color: var(--bg-color);
+    color: var(--background-color);
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid var(--background-color);
+    border-radius: 5px;
+}
+.sorting-form > input:hover {
+    background-color: var(--background-color);
+    color: var(--bg-color);
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid var(--background-color);
+    transition: .3s;
 }
 .sorting__list {
     display: none;

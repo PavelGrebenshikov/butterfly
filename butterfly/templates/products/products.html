@@ -51,10 +51,7 @@
     <div class="sorting">
         <ul class="sorting__menu">
             <li>
-                <a href="#">
-                    Сортировка
-                </a>
-                <form action="" method="get" name="sort_form">
+                <form class="sorting-form" action="." method="get" name="sort_form">
                     {{ sort_form.sort }}
                     <input type="submit" value="Отсортировать" onclick="sendGetFormData('sort_form', event);">
                 </form>
@@ -83,7 +80,6 @@
                         {% for field in filter_form %}
                                 {{ field }}
                         {% endfor %}
-
                     </div>
                     <div class="range-show">
                         <input class="range-show__input" type="submit" value="Показать" onclick="sendGetFormData('filter_form', event);">
