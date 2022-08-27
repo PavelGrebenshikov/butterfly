@@ -1,8 +1,9 @@
-from django.db.models import (Model, DateTimeField, OneToOneField, CharField, ForeignKey,
+from django.db.models import (Model, DateTimeField, OneToOneField, ForeignKey,
                               CASCADE, PositiveSmallIntegerField)
+from django.http import HttpRequest
 
-from products.models import Product
 from butterfly.users.models import User
+from products.models import Product
 
 
 class Cart(Model):
@@ -10,10 +11,29 @@ class Cart(Model):
     user = OneToOneField(User, blank=True, null=True, related_name='cart',
                          on_delete=CASCADE, unique=True)
 
+    @staticmethod
+    def get_cart(request: HttpRequest) -> 'Cart':
+        '''Returns a Cart object by request.user'''
+
+        if request.user.is_authenticated:
+            cart, _ = Cart.objects.get_or_create(user=request.user)
+        else:
+            try:
+                cart = Cart.objects.get(
+                    pk=request.session.get('cart_id')
+                )
+
+            except Cart.DoesNotExist:
+                cart = Cart(user=None)
+
+        return cart
+
     def __repr__(self):
         return f'<Cart (User {self.user})>'
 
     def __str__(self):
+        '''Django uses __str__ method in django-admin
+        and we must implicitly define this method'''
         return self.__repr__()
 
 
