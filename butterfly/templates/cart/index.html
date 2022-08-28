@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load price_calculating %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Корзина</h1>
+    <hr>
+    {% for item in cart_items %}
+        <img src="{{ item.product.get_image_url }}" alt="Продукт" width="150">
+        <br>
+        <a href="{% url 'products:product_page' item.product.name %}">{{ item.product.name }}</a>
+        <p>Формат: {{ item.product.format }}</p>
+        <p>(-) {{ item.count }} (+)</p>
+        <p>{{ item.product.price | mul:item.count }} $</p>
+        <p>Убрать</p>
+        <p>В избранное</p>
+    {% endfor %}
+    <hr>
+    <h2>Итого</h2>
+    <p>{{ total_price }} $</p>
+    <button>Заказать</button>
+
+</div>
+
+{% endblock content %}
+

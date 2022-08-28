@@ -1,8 +1,19 @@
 from django.http import HttpResponseNotFound, JsonResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
+
 
 from products.models import Product
 from butterfly.cart.models import Cart, CartItem
+
+
+def index(request):
+    cart_items = Cart.get_cart(request).items.all()
+    total_price = sum(item.product.price * item.count for item in cart_items)
+    context = {
+        'cart_items': cart_items,
+        'total_price': total_price
+    }
+    return render(request, 'cart/index.html', context=context)
 
 
 def add_product(request):

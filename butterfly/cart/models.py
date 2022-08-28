@@ -13,7 +13,7 @@ class Cart(Model):
 
     @staticmethod
     def get_cart(request: HttpRequest) -> 'Cart':
-        '''Returns a Cart object by request.user'''
+        '''Returns a Cart object by request.user or cart id in request session'''
 
         if request.user.is_authenticated:
             cart, _ = Cart.objects.get_or_create(user=request.user)
