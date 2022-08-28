@@ -1,24 +1,11 @@
-from itertools import product
 import pytest
 
-from django.forms import Form
-
-from butterfly.products.models import Product
 from butterfly.products.forms import ProductsFilterForm, ProductsSortForm
 
 pytestmark = pytest.mark.django_db
 
 
 class TestProductsFilterForm():
-    
-    @pytest.fixture
-    def created_model_objects(self):
-        products =  [
-            Product.objects.create(name="First", price=10, visible=True),
-            Product.objects.create(name="Second", price=50, visible=True),
-            Product.objects.create(name="Third", price=100, visible=True)
-        ]
-        return products
     
     @pytest.mark.parametrize("min_price, max_price", [(40, 150)])
     def test_filtred_products(self, created_model_objects, min_price, max_price):
@@ -33,15 +20,6 @@ class TestProductsFilterForm():
             form.get_filtered_products()[1].name == "Third"
 
 class TestProductsSortForm():
-    
-    @pytest.fixture
-    def created_model_objects(self):
-        products = [
-            Product.objects.create(name="First", price=10, visible=True),
-            Product.objects.create(name="Second", price=50, visible=True),
-            Product.objects.create(name="Third", price=100, visible=True)
-        ]
-        return products
     
     @pytest.mark.parametrize("test_sort, price, product_name", [("sort", "price_desc", "Third"),
                                                                 ("sort", "price_asc", "First"),])
