@@ -1,7 +1,3 @@
-from cgi import print_exception
-from email.policy import default
-from itertools import product
-from unicodedata import category
 import pytest
 
 from butterfly.products.models import Category, Subcategory, Product
@@ -46,6 +42,7 @@ class TestSubcategoryModel():
     
     def test_subcategory_model_count(self):
         category = Category.objects.create(name="Category")
+        
         assert Subcategory.objects.count() == 0
         Subcategory.objects.create(name="Subcategory", category=category)
         assert Subcategory.objects.count() == 1
