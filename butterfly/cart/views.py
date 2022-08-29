@@ -1,6 +1,5 @@
-from django.http import HttpResponseNotFound, JsonResponse
+from django.http import HttpResponseNotFound, JsonResponse, Http404
 from django.shortcuts import get_object_or_404, render
-
 
 from products.models import Product
 from butterfly.cart.models import Cart, CartItem
@@ -33,3 +32,32 @@ def add_product(request):
         return JsonResponse({'count': cart.items.count()})
 
     return HttpResponseNotFound()
+
+
+def change_item_count(request):
+    if request.method == 'POST' and request.is_ajax():
+        product_id = request.POST.get('product_id')
+        product = get_object_or_404(Product, pk=product_id)
+
+        cart = Cart.get_cart(request)
+        item = get_object_or_404(cart.items, product=product)
+        sign = request.POST.get('sign')
+        if not (item.count <= 1 and sign == '-'):
+            match sign:
+                case '+':
+                    item.count += 1
+                case '-':
+                    item.count -= 1
+                case _:
+                    return Http404()
+
+            item.save()
+
+        return JsonResponse({'item': {
+            'name': item.product.name,
+            'count': item.count,
+            'price': item.product.price,
+            'total_price': sum(item.product.price * item.count for item in cart.items.all())
+        }})
+
+    return Http404()

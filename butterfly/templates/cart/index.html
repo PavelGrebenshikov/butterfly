@@ -13,21 +13,27 @@
     <h1>Корзина</h1>
     <hr>
     {% for item in cart_items %}
-        <img src="{{ item.product.get_image_url }}" alt="Продукт" width="150">
-        <br>
-        <a href="{% url 'products:product_page' item.product.name %}">{{ item.product.name }}</a>
-        <p>Формат: {{ item.product.format }}</p>
-        <p>(-) {{ item.count }} (+)</p>
-        <p>{{ item.product.price | mul:item.count }} $</p>
-        <p>Убрать</p>
-        <p>В избранное</p>
+        <div class="product__info">
+            <img src="{{ item.product.get_image_url }}" alt="Продукт" width="150">
+            <br>
+            <a href="{% url 'products:product_page' item.product.name %}">{{ item.product.name }}</a>
+            <p>Формат: {{ item.product.format }}</p>
+            <a onclick="changeItemCount({{ item.product.pk }}, '-');">-</a>
+            <p class="product__info_count">{{ item.count }}</p>
+            <a onclick="changeItemCount({{ item.product.pk }}, '+');">+</a>
+            <p class="product__info_price">{{ item.product.price | mul:item.count }}</p>
+            <p>Убрать</p>
+            <p>В избранное</p>
+        </div>
     {% endfor %}
     <hr>
     <h2>Итого</h2>
-    <p>{{ total_price }} $</p>
+    <p class="cart__total_price">{{ total_price }}</p>
     <button>Заказать</button>
 
 </div>
 
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-change-count-url="{% url 'cart:change_item_count' %}" data-csrf="{{ csrf_token }}"></script>
 {% endblock content %}
 
