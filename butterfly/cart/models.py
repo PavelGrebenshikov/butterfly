@@ -1,6 +1,6 @@
 from django.db.models import (Model, DateTimeField, OneToOneField, ForeignKey,
                               CASCADE, PositiveSmallIntegerField)
-from django.http import HttpRequest
+from django.http import HttpRequest, Http404
 
 from butterfly.users.models import User
 from products.models import Product
@@ -41,6 +41,30 @@ class CartItem(Model):
     count = PositiveSmallIntegerField(default=1)
     product = ForeignKey(Product, related_name='cart_items', on_delete=CASCADE)
     cart = ForeignKey(Cart, related_name='items', on_delete=CASCADE)
+
+    def change_count(self, sign: str) -> None:
+        if self._can_change_count(sign):
+            match sign:
+                case '+':
+                    self.count += 1
+                case '-':
+                    self.count -= 1
+                case _:
+                    raise Http404()
+
+            self.save()
+
+    def _can_change_count(self, sign: str) -> bool:
+        match sign:
+            case '+':
+                if self.product.in_stock_count <= self.count:
+                    return False
+
+            case '-':
+                if self.count <= 1:
+                    return False
+
+        return True
 
     def __repr__(self):
         return f'<CartItem (User {self.cart.user})>'

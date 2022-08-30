@@ -1,4 +1,4 @@
-from django.http import HttpResponseNotFound, JsonResponse, Http404
+from django.http import JsonResponse, Http404
 from django.shortcuts import get_object_or_404, render
 
 from products.models import Product
@@ -31,7 +31,7 @@ def add_product(request):
         request.session['cart_id'] = cart.id
         return JsonResponse({'count': cart.items.count()})
 
-    return HttpResponseNotFound()
+    return Http404()
 
 
 def change_item_count(request):
@@ -41,17 +41,9 @@ def change_item_count(request):
 
         cart = Cart.get_cart(request)
         item = get_object_or_404(cart.items, product=product)
-        sign = request.POST.get('sign')
-        if not (item.count <= 1 and sign == '-'):
-            match sign:
-                case '+':
-                    item.count += 1
-                case '-':
-                    item.count -= 1
-                case _:
-                    return Http404()
 
-            item.save()
+        sign = request.POST.get('sign')
+        item.change_count(sign)
 
         return JsonResponse({'item': {
             'name': item.product.name,
