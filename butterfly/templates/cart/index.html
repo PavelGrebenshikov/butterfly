@@ -22,7 +22,7 @@
             <p class="product__info_count">{{ item.count }}</p>
             <a onclick="changeItemCount({{ item.product.pk }}, '+');">+</a>
             <p class="product__info_price">{{ item.product.price | mul:item.count }}</p>
-            <p>Убрать</p>
+            <p onclick="deleteItem({{ item.product.pk }});">Убрать</p>
             <p>В избранное</p>
         </div>
     {% endfor %}
@@ -34,6 +34,6 @@
 </div>
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/cart.js' %}" data-change-count-url="{% url 'cart:change_item_count' %}" data-csrf="{{ csrf_token }}"></script>
+<script src="{% static 'js/cart.js' %}" data-change-count-url="{% url 'cart:change_item_count' %}" data-delete-url="{% url 'cart:delete_item' %}" data-csrf="{{ csrf_token }}"></script>
 {% endblock content %}
 

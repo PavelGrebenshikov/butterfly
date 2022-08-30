@@ -13,7 +13,7 @@ class Cart(Model):
 
     @staticmethod
     def get_cart(request: HttpRequest) -> 'Cart':
-        '''Returns a Cart object by request.user or cart id in request session'''
+        '''Returns a Cart object by request.user or cart id in request.session'''
 
         if request.user.is_authenticated:
             cart, _ = Cart.objects.get_or_create(user=request.user)
@@ -27,6 +27,10 @@ class Cart(Model):
                 cart = Cart(user=None)
 
         return cart
+
+    def get_total_price(self):
+        '''Returns total price of all items in cart'''
+        return sum(item.product.price * item.count for item in self.items.all())
 
     def __repr__(self):
         return f'<Cart (User {self.user})>'
@@ -43,6 +47,14 @@ class CartItem(Model):
     cart = ForeignKey(Cart, related_name='items', on_delete=CASCADE)
 
     def change_count(self, sign: str) -> None:
+        """Changes count field by sign
+
+        Args:
+            sign ('+' or '-'): Increment (+) or decrement (-) value
+
+        Raises:
+            Http404: If sign not '+' or not '-'
+        """
         if self._can_change_count(sign):
             match sign:
                 case '+':
@@ -55,6 +67,15 @@ class CartItem(Model):
             self.save()
 
     def _can_change_count(self, sign: str) -> bool:
+        """Checks that count can be changed by sign.
+        That means 1 <= new count <= product stock count.
+
+        Args:
+            sign ('+' or '-'): New count will be incremented (+) or decremented (-)
+
+        Returns:
+            bool
+        """
         match sign:
             case '+':
                 if self.product.in_stock_count <= self.count:

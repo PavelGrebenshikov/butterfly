@@ -39,8 +39,31 @@ function changeItemCount(product_id, sign) {
             price.html(prettyNumber(response.item.price * response.item.count));
 
             var total = $('.cart__total_price');
-            total.html(prettyNumber(response.item.total_price));
+            total.html(prettyNumber(response.total_price));
 
+        }
+    });
+}
+
+
+function deleteItem(product_id) {
+    var this_script = $('script[src*="/static/js/cart.js"]');
+    var url = this_script.attr('data-delete-url');
+    var csrf = this_script.attr('data-csrf');
+
+    $.post({
+        url: url,
+        data: {
+            product_id: product_id,
+            csrfmiddlewaretoken: csrf
+        },
+        success: function(response) {
+            var product_name = $(`a:contains("${response.item.name}")`);
+
+            product_name.parents('.product__info').remove();
+
+            var total = $('.cart__total_price');
+            total.html(prettyNumber(response.total_price));
         }
     });
 }
