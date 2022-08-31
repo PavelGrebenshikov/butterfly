@@ -131,7 +131,7 @@ select:-webkit-autofill:focus {
 .auth-form__button > input:hover {
     background-color: var(--background-color);
     color: var(--bg-color);
-    transition: .3s;    
+    transition: .3s;
 }
 .errors {
     width: 100%;

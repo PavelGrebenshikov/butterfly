@@ -10,7 +10,7 @@ function addProduct(product_id) {
             product_id: product_id,
             csrfmiddlewaretoken: csrf
         },
-        success: function(response) {
+        success: function (response) {
             console.log(response);
         }
     });
@@ -29,7 +29,7 @@ function changeItemCount(product_id, sign) {
             sign: sign,
             csrfmiddlewaretoken: csrf
         },
-        success: function(response) {
+        success: function (response) {
             var product_name = $(`a:contains("${response.item.name}")`);
 
             var count = product_name.siblings('.product__info_count');
@@ -57,13 +57,18 @@ function deleteItem(product_id) {
             product_id: product_id,
             csrfmiddlewaretoken: csrf
         },
-        success: function(response) {
+        success: function (response) {
             var product_name = $(`a:contains("${response.item.name}")`);
 
             product_name.parents('.product__info').remove();
 
             var total = $('.cart__total_price');
             total.html(prettyNumber(response.total_price));
+
+            if ($('.product__info').length == 0) {
+                $('.cart__total').remove();
+                $('.cart__products').html('Ваша корзина пока что пуста...');
+            }
         }
     });
 }
