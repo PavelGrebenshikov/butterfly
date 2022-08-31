@@ -9,7 +9,8 @@ def index(request):
     cart = Cart.get_cart(request)
     context = {
         'cart_items': cart.items.all(),
-        'total_price': cart.get_total_price()
+        'total_price': cart.get_total_price(),
+        'user': request.user
     }
     return render(request, 'cart/index.html', context=context)
 

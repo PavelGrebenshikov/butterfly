@@ -13,6 +13,14 @@
   <h1>Корзина</h1>
   <hr>
   {% if cart_items %}
+      {% if not user.is_authenticated %}
+          <!-- TODO: Красный фон с яркой красной обводкой -->
+          <div class="anonym-warning">
+            Войдите, чтобы ваша корзина не пропала.
+            Срок хранения корзины без авторизации 7 дней.
+          </div>
+      {% endif %}
+
       <div class="cart__products">
         {% for item in cart_items %}
             <div class="product__info">
@@ -29,7 +37,6 @@
             </div>
         {% endfor %}
       </div>
-
 
       <div class="cart__total">
         <hr>

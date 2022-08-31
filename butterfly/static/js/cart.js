@@ -68,6 +68,7 @@ function deleteItem(product_id) {
             if ($('.product__info').length == 0) {
                 $('.cart__total').remove();
                 $('.cart__products').html('Ваша корзина пока что пуста...');
+                $('.anonym-warning').remove();
             }
         }
     });
