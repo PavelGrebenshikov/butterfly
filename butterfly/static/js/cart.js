@@ -1,8 +1,9 @@
 
-function addProduct(product_id) {
+function addProduct(product_id, event) {
     var this_script = $('script[src*="/static/js/cart.js"]');
     var url = this_script.attr('data-url');
     var csrf = this_script.attr('data-csrf');
+    var button = event.target;
 
     $.post({
         url: url,
@@ -10,8 +11,15 @@ function addProduct(product_id) {
             product_id: product_id,
             csrfmiddlewaretoken: csrf
         },
-        success: function (response) {
-            console.log(response);
+        success: function (_) {
+            $(button)
+                .html(isFullButton(button) ? 'Перейти в кoрзину' : 'В КOРЗИНЕ')
+                .removeAttr('onclick')
+                .attr('href', '/cart/');
+
+            if (!isFullButton(button)) {
+                $(button).addClass('disabled');
+            }
         }
     });
 }
@@ -77,4 +85,9 @@ function deleteItem(product_id) {
 
 function prettyNumber(number) {
     return (+number).toFixed(2).toString().replace('.', ',');
+}
+
+
+function isFullButton(button) {
+    return $(button).hasClass('add-to-basket__button');
 }

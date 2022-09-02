@@ -1,4 +1,4 @@
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from products.models import Product
@@ -21,7 +21,7 @@ def add_product(request):
     POST args:
         product_id (int): Product pk
     Returns:
-        JsonResponse | Http404
+        HttpResponse | Http404
 
     """
     if request.method == 'POST' and request.is_ajax():
@@ -37,7 +37,7 @@ def add_product(request):
         cart_item.save()
 
         request.session['cart_id'] = cart.id
-        return JsonResponse({'count': cart.items.count()})
+        return HttpResponse()
 
     return Http404()
 
