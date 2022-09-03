@@ -35,8 +35,9 @@ def add_product(request):
             cart=cart, product=product
         )
         cart_item.save()
+        if request.user.is_anonymous:
+            request.session['cart_id'] = cart.id
 
-        request.session['cart_id'] = cart.id
         return HttpResponse()
 
     return Http404()

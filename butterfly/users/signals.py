@@ -6,7 +6,9 @@ from butterfly.cart.models import Cart
 
 @receiver(user_logged_in)
 def set_cart_owner(request, user, **kwargs):
-    if cart_id := request.session.get('cart_id'):
+    cart_id = request.session.get('cart_id')
+    user_cart = Cart.objects.filter(user=user).first()
+    if not user_cart and cart_id:
         cart = Cart.objects.get(
             pk=int(cart_id)
         )
