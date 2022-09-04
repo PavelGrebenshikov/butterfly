@@ -50,8 +50,6 @@ class ProductsSortForm(Form):
 
         if self.is_valid():
             match self.cleaned_data['sort']:
-                case 'price_asc':
-                    sorted_products = sorted_products.order_by('price')
                 case 'price_desc':
                     sorted_products = sorted_products.order_by('-price')
                 case 'popular':
