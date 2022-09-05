@@ -2,12 +2,16 @@ from django.shortcuts import render
 from django.contrib.postgres.search import SearchVector, SearchRank
 
 from butterfly.products.models import Category, Product
+from butterfly.cart.models import Cart
 
 
 def index(request):
+    cart_products_ids = [item.product.pk for item in Cart.get_cart(request).items.all()]
+
     context = {
         'categories': Category.objects.all(),
-        'products': Product.objects.filter(visible=True)[:5]
+        'products': Product.objects.filter(visible=True)[:5],
+        'cart_products_ids': cart_products_ids
     }
     return render(request, 'home.html', context=context)
 

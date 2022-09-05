@@ -19,3 +19,9 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
+
+    def __repr__(self):
+        return f'<User {self.username}>'
+
+    def __str__(self):
+        return self.username

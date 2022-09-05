@@ -1,66 +1,73 @@
 .box {
-    width: 100%;
-    height: calc(100vh - 100px);
+  width: 100%;
+  height: calc(100vh - 100px);
 }
 .wrap {
-    display: flex;
-    margin: 0 118px 0 118px;
+  display: flex;
+  margin: 0 118px 0 118px;
 }
-.picture, .data {
-    margin: 42px 0 0 0;
+.picture,
+.data {
+  margin: 42px 0 0 0;
 }
 .picture__image {
-    width: 300px;
-    height: 350px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 300px;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  border-radius: 5px;
 }
 .data {
-    width: 100%;
-    padding-left: 15px;
+  width: 100%;
+  padding-left: 15px;
 }
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #443A38;
-    margin-bottom: 13px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #443a38;
+  margin-bottom: 13px;
 }
-.format, .code-product, .count {
-    font-size: 20px;
-    color: #443A38;
-    font-weight: bold;
-    margin-top: 5px;
+.format,
+.code-product,
+.count {
+  font-size: 20px;
+  color: #443a38;
+  font-weight: bold;
+  margin-top: 5px;
 }
 .price {
-    color: #443A38;
-    font-weight: bold;
+  color: #443a38;
+  font-weight: bold;
 }
-.add-to-basket, .price {
-    margin-top: 20px;
+.add-to-basket,
+.price {
+  margin-top: 20px;
 }
 .add-to-basket__button {
-    width: 250px;
-    height: 50px;
-    border-radius: 50px;
-    background-color: #443A38;
-    color: #E5DCBE;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #443a38;
+  color: #e5dcbe;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
 }
 .description {
-    margin: 0 118px 0 118px;
+  margin: 0 118px 0 118px;
 }
 .description-title {
-    margin-top: 10px;
-    font-size: 36px;
-    color: #443A38;
-    font-weight: bold;
+  margin-top: 10px;
+  font-size: 36px;
+  color: #443a38;
+  font-weight: bold;
 }
 .description-text {
-    margin-top: 5px;
-    font-size: 20px;
+  margin-top: 5px;
+  font-size: 20px;
 }

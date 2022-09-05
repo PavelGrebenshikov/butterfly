@@ -12,15 +12,20 @@
     </a>
   </div>
   {% if product.format %}
-        <div class="products__quantity">
-          {{ product.format }}
-        </div>
+      <div class="products__quantity">
+        {{ product.format }}
+      </div>
   {% endif %}
 
   <div class="products__price">
       {{ product.price }} руб
   </div>
   <div class="products__basket">
-    <a href="#">В КОРЗИНУ</a>
+    {% if product.pk in cart_products_ids %}
+        <a class="disabled" href="{% url 'cart:index' %}">В КОРЗИНЕ</a>
+    {% else %}
+        <a onclick="addProduct({{ product.pk }}, event);">В КОРЗИНУ</a>
+    {% endif %}
+
   </div>
 </div>
