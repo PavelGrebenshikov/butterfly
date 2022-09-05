@@ -10,6 +10,9 @@ from django.utils.translation import gettext_lazy as _
 class Category(Model):
 
     name = CharField(_('Name of category'), max_length=30)
+    
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
         return f'<Category {self.name}>'
@@ -29,6 +32,9 @@ class Category(Model):
 class Subcategory(Model):
     category = ForeignKey(Category, on_delete=CASCADE)
     name = CharField(_('Name of subcategory'), max_length=50)
+    
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
         return f'<Subcategory {self.name}>'
@@ -59,6 +65,9 @@ class Product(Model):
 
     category = ManyToManyField(Category)
     subcategory = ManyToManyField(Subcategory)
+    
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
         return f'<Product {self.name}>'

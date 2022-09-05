@@ -272,6 +272,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "butterfly.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
 ACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSignupForm"}
+ACCOUNT_LOGOUT_ON_GET = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "butterfly.users.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html

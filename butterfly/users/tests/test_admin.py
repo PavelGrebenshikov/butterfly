@@ -14,7 +14,7 @@ class TestUserAdmin:
 
     def test_search(self, admin_client):
         url = reverse("admin:users_user_changelist")
-        response = admin_client.get(url, data={"q": "test"})
+        response = admin_client.get(url, data={"username": "test"})
         assert response.status_code == 200
 
     def test_add(self, admin_client):

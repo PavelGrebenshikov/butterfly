@@ -1,7 +1,7 @@
 from django.forms import Form, IntegerField, NumberInput, ChoiceField
 from django.db.models import QuerySet
 
-from products.models import Product
+from .models import Product
 
 
 class ProductsFilterForm(Form):

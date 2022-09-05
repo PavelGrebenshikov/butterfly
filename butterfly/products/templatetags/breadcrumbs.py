@@ -1,6 +1,6 @@
 from django import template
-from django.template import loader, Node, Variable
-from django.utils.encoding import smart_str, smart_text
+from django.template import Node, Variable
+from django.utils.encoding import smart_str
 from django.template.defaulttags import url
 from django.template import VariableDoesNotExist
 
@@ -103,7 +103,7 @@ class UrlBreadcrumbNode(Node):
                 title = ''
         else:
             title = title.strip("'").strip('"')
-            title = smart_text(title)
+            title = smart_str(title)
 
         url = self.url_node.render(context)
         return create_crumb(title, url)
