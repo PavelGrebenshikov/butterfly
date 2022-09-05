@@ -1,7 +1,7 @@
 from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
 
-from products.models import Product
+from butterfly.products.models import Product
 from butterfly.cart.models import Cart, CartItem
 
 

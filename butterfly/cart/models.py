@@ -3,7 +3,7 @@ from django.db.models import (Model, DateTimeField, OneToOneField, ForeignKey,
 from django.http import HttpRequest, Http404
 
 from butterfly.users.models import User
-from products.models import Product
+from butterfly.products.models import Product
 
 
 class Cart(Model):
