@@ -58,8 +58,26 @@
 .count__wrap {
     width: 100%;
     display: flex;
+    flex-direction: column;
+}
+.count__box {
+   margin: 15px 0 0 0;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.box {
+    font-size: 14px;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+.favorite, .remove {
+    margin: 0 10px 0 10px;
+}
+.favorite p, .remove p {
+    cursor: pointer;
 }
 .count__items {
     text-align: center;
