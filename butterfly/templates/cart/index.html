@@ -11,7 +11,6 @@
 
 <div class="container">
   <h1>Корзина</h1>
-  <hr>
   {% if cart_items %}
       {% if not user.is_authenticated %}
           <!-- TODO: Красный фон с яркой красной обводкой -->
@@ -20,30 +19,73 @@
             Срок хранения корзины без авторизации 7 дней.
           </div>
       {% endif %}
-
-      <div class="cart__products">
-        {% for item in cart_items %}
-            <div class="product__info">
-              <img src="{{ item.product.get_image_url }}" alt="Продукт" width="150">
-              <br>
-              <a href="{% url 'products:product_page' item.product.name %}">{{ item.product.name }}</a>
-              <p>Формат: {{ item.product.format }}</p>
-              <a onclick="changeItemCount({{ item.product.pk }}, '-');">-</a>
-              <p class="product__info_count">{{ item.count }}</p>
-              <a onclick="changeItemCount({{ item.product.pk }}, '+');">+</a>
-              <p class="product__info_price">{{ item.product.price | mul:item.count }}</p>
-              <p onclick="deleteItem({{ item.product.pk }});">Убрать</p>
-              <p>В избранное</p>
+      
+      <div class="cart">
+        <div class="cart__wrapper">
+          {% for item in cart_items %}
+            <div class="cart__products">
+                <div class="item">
+                    <div class="item__image">
+                        <img src="{{ item.product.get_image_url }}" alt="Продукт" width="150">
+                    </div>
+                    <div class="wrap">
+                        <div class="item__title">
+                            <a href="{% url 'products:product_page' item.product.name %}">{{ item.product.name }}</a>
+                        </div>
+                        <div class="item__format">
+                            <p>Формат: {{ item.product.format }}</p>
+                        </div>
+                    </div>
+                    <div class="count__wrap">
+                       <div class="count__box">
+                            <div class="count__minus">
+                                <a onclick="changeItemCount({{ item.product.pk }}, '-');">-</a>
+                            </div>
+                            <div class="count__items">
+                                {{ item.count }}
+                            </div>
+                            <div class="count__plus">
+                                <a onclick="changeItemCount({{ item.product.pk }}, '+');">+</a>
+                            </div>
+                       </div>
+                       <div class="box">
+                            <div class="favorite">
+                                <p>В избранное</p>
+                            </div>
+                            <div class="remove">
+                                <p onclick="deleteItem({{ item.product.pk }});">Убрать</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item__price">
+                        <p>{{ item.product.price | mul:item.count }}</p>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
-      </div>
-
-      <div class="cart__total">
-        <hr>
-        <h2>Итого</h2>
-        <p class="cart__total_price">{{ total_price }}</p>
-        <button>Заказать</button>
-      </div>
+          {% endfor %}
+        </div>
+        <div class="cart__total">
+            <div class="total__wrapper">
+                <div class="total__box">
+                    <div class="total">
+                        <h2>Итого</h2>
+                    </div>
+                    <div class="total__price">
+                        {{ total_price }}
+                    </div>
+                </div>
+                <div class="total__box">
+                    <div class="total">
+                        <p>Товары, {{ item.count }} шт.</p>
+                    </div>
+                    <div class="total__price">
+                        {{ total_price }}
+                    </div>
+                </div>
+                <button class="order-button">Заказать</button>
+            </div>
+        </div>
+    </div>
   {% else %}
       <div>Ваша корзина пока что пуста...</div>
   {% endif %}
