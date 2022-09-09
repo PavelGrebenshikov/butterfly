@@ -1,0 +1,35 @@
+body {
+    background-color: var(--bg-color);
+}
+h1 {
+    color: var(--background-color);
+    text-align: center;
+    margin: -10% 0 0 0;
+    padding: 0;
+}
+p {
+    text-align: center;
+    color: var(--background-color);
+}
+.confirm-email {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirm-form {
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    width: 50%;
+    height: 30px;
+    background-color: var(--background-color);
+    color: var(--bg-color);
+}
+.btn:hover {
+    background-color: var(--bg-color);
+    color: var(--background-color);
+    transition: .3s;
+}
