@@ -24,6 +24,9 @@
     width: 100%;
     display: flex;
 }
+.item__wrap {
+    width: 100%;
+}
 .item__image img {
     width: 150px;
     height: 100px;
