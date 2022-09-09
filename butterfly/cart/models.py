@@ -25,6 +25,7 @@ class Cart(Model):
 
             except Cart.DoesNotExist:
                 cart = Cart(user=None)
+                cart.save()
 
         return cart
 
