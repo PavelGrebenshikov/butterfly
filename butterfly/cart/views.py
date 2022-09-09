@@ -12,7 +12,7 @@ def index(request):
         'total_price': cart.get_total_price(),
         'user': request.user
     }
-    return render(request, 'cart/index.html', context=context)
+    return render(request, 'cart/cart.html', context=context)
 
 
 def add_product(request):
