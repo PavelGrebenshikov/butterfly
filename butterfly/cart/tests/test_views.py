@@ -84,3 +84,66 @@ class TestAddToCartView():
         session = client.session
         cart = Cart.objects.get(pk=session.get('cart_id'))
         cart.items.get(product_id=created_model_objects[0].pk)
+
+
+class TestChangeItemCountView():
+    fixtures = [created_model_objects]
+
+    def test_with_wrong_sign(self, client, created_model_objects):
+        cart = Cart.objects.create()
+        item = CartItem.objects.create(cart=cart, product=created_model_objects[0])
+
+        session = client.session
+        session['cart_id'] = cart.pk
+        session.save()
+
+        response = client.post(reverse('cart:change_item_count'),
+                               data={'product_id': item.product_id,
+                                     'sign': '*'},
+                               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+        assert response.status_code == 404
+
+    @pytest.mark.parametrize('sign', ['+', '-'])
+    def test_with_normal_sign(self, client, created_model_objects, sign):
+        cart = Cart.objects.create()
+        item = CartItem.objects.create(cart=cart, product=created_model_objects[0], count=2)
+
+        session = client.session
+        session['cart_id'] = cart.pk
+        session.save()
+
+        response = client.post(reverse('cart:change_item_count'),
+                               data={'product_id': item.product_id,
+                                     'sign': sign},
+                               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        json_response = response.json()
+        json_item = json_response['item']
+
+        assert response.status_code == 200
+
+        assert json_item['name'] == item.product.name
+        assert json_item['count'] == item.count + float(f'{sign}1')
+        assert float(json_item['price']) == item.product.price
+        assert float(json_response['total_price']) == float(json_item['price'])*float(json_item['count'])
+
+
+class TestDeleteItemView():
+    def test_delete(self, client, created_model_objects):
+        cart = Cart.objects.create()
+        item = CartItem.objects.create(cart=cart, product=created_model_objects[0])
+
+        session = client.session
+        session['cart_id'] = cart.pk
+        session.save()
+
+        response = client.post(reverse('cart:delete_item'),
+                               data={'product_id': item.product_id},
+                               HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+        json_response = response.json()
+
+        assert response.status_code == 200
+
+        assert json_response['item']['name'] == item.product.name
+        assert float(json_response['total_price']) == 0
