@@ -25,7 +25,9 @@ def add_product(request):
 
     """
     if request.method == 'POST' and request.is_ajax():
-        product_id = request.POST.get('product_id')
+        product_id = request.POST.get('product_id', '')
+        if not product_id.isdigit():
+            raise Http404()
         product = get_object_or_404(Product, pk=product_id)
 
         cart = Cart.get_cart(request)
@@ -40,7 +42,7 @@ def add_product(request):
 
         return HttpResponse()
 
-    return Http404()
+    raise Http404()
 
 
 def change_item_count(request):
@@ -69,7 +71,7 @@ def change_item_count(request):
             'price': item.product.price
         }, 'total_price': cart.get_total_price()})
 
-    return Http404()
+    raise Http404()
 
 
 def delete_item(request):
@@ -94,4 +96,4 @@ def delete_item(request):
             'name': item.product.name
         }, 'total_price': cart.get_total_price()})
 
-    return Http404
+    raise Http404
