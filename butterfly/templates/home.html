@@ -1,5 +1,8 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load newsletter_tags %}
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
 {% endblock styles %}
@@ -57,19 +60,7 @@
     </div>
     <div class="communication">
         <div class="wrapper">
-            <div class="subscribe">
-                <div class="subscribe__title">
-                    Подписаться на рассылку
-                </div>
-                <div class="subscribe-form">
-                    <form action="#" method="post">
-                        <input type="email" class="subscribe__input" name="email" id="email" placeholder="Введите Ваш Email">
-                        <div class="button-background">
-                            <button class="subscribe__button" type="submit"></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            {% newsletter_form %}
             <div class="contacts">
                 <div class="contact__phone">
                     7(495)787-76-72
