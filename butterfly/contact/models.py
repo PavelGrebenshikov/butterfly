@@ -1,7 +1,8 @@
-from tabnanny import verbose
 from django.db.models import (
     Model, EmailField, DateTimeField
 )
+
+from django.utils.translation import gettext_lazy as _
 
 class Subscription(Model):
     # Mail newsletter subscription

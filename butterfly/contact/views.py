@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
 
-# Create your views here.
+from .models import Subscription
+from .forms import SubscriptionForms
+
+class SubscribeView(CreateView):
+    model = Subscription
+    form_class = SubscriptionForms
+    success_url = "/"
