@@ -82,7 +82,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "butterfly.users",
     'butterfly.products',
-    'butterfly.cart'
+    'butterfly.cart',
+    'butterfly.contact',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -224,6 +225,9 @@ EMAIL_BACKEND = env(
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
+EMAIL_HOST="smtp.mail.com"
+EMAIL_HOST_USER="admin@mail.ru"
+EMAIL_HOST_PASSWORD="admin"
 
 # ADMIN
 # ------------------------------------------------------------------------------
