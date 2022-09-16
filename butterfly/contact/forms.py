@@ -1,13 +1,13 @@
 from django import forms
 
-from .models import Subscription
+from .models import Mail
 
 
 
 class SubscriptionForms(forms.ModelForm):
 
     class Meta:
-        model = Subscription
+        model = Mail
         fields = ("email", )
         widgets = {
             "email": forms.TextInput(attrs={"class": "subscribe__input", "placeholder": "Введите Email"}),
