@@ -46,10 +46,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build docker-compose
-        run: docker-compose -f base-compose.yaml -f local-compose.yaml build
+        run: |
+          touch config.env
+          docker-compose -f base-compose.yaml -f local-compose.yaml build
 
       - name: Run docker-compose
         run: docker-compose -f base-compose.yaml -f local-compose.yaml up -d
 
       - name: Test with pytest
-        run: docker-compose -f base-compose.yaml -f local-compose.yaml exec -w /app app pytest
+        run: docker-compose -f base-compose.yaml -f local-compose.yaml exec -T -w /app app pytest
