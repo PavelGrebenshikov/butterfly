@@ -9,7 +9,8 @@ from django.utils.translation import gettext_lazy as _
 
 @admin.register(SendMail)
 class SendMailAdmin(admin.ModelAdmin):
-    list_display = ['message',]
+    list_display = ['id', 'message', 'date']
+    list_filter = ['id', 'message', 'date']
 
 @admin.register(Mail)
 class MailAdmin(admin.ModelAdmin):
@@ -17,4 +18,3 @@ class MailAdmin(admin.ModelAdmin):
     list_display_links = ['date']
     list_filter = ['id', 'email', 'date']
     search_fields = ['email', 'date']
-    
