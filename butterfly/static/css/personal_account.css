@@ -36,7 +36,7 @@
 .navigation__menu-elem > ul > li > a {
     color: var(--bg-color);
 }
- 
+
 .navigation__menu {
     width: 335px;
     min-height: 200px;

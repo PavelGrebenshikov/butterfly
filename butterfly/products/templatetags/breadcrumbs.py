@@ -113,7 +113,7 @@ def create_crumb(title, url=None):
     """
 
     if url:
-        crumb = "<a href='{}'>{}</a>".format(url, title)
+        crumb = f"<a href='{url}'>{title}</a>"
     else:
         crumb = "&nbsp;&nbsp;%s" % (title)
 
