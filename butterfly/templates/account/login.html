@@ -3,12 +3,16 @@
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% load breadcrumbs %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock styles %}
 {% block head_title %}{% translate "Sign In" %}{% endblock %}
 
 {% block inner %}
-
-<h1>{% translate "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
 
@@ -35,25 +39,56 @@
 
   {% include "socialaccount/snippets/login_extra.html" %}
 
-{% else %}
-  {% if ACCOUNT_ALLOW_REGISTRATION %}
-    <p>
-      {% blocktranslate trimmed %}
-        If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.
-      {% endblocktranslate %}
-    </p>
-  {% endif %}
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% translate "Forgot Password?" %}</a>
-  <button class="primaryAction btn btn-primary" type="submit">{% translate "Sign In" %}</button>
-</form>
+<div class="container">
+  <div class="sidebar">
+      <div class="sidebar__breadcrumbs">
+          <h3>
+            {% block breadcrumbs %}
+              {% breadcrumb_url 'Главная' 'home' %}
+                <span>></span>
+              {% breadcrumb_url 'Авторизация' 'account_login' %}
+            {% endblock breadcrumbs %}
+          </h3>
+      </div>
+      <div class="sidebar__image">
+          <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
+      </div>
+  </div>
+  <div class="box">
+      <div class="title">
+          <div class="title__line"></div>
+          <div class="title__text">Авторизация</div>
+          <div class="title__line"></div>
+      </div>
+      <div class="authorization">
+        <form class="auth-form" method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.login }}
+            {{ form.password }}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            <div class="auth-form__recover">
+                <a href="{% url 'account_reset_password' %}">{% translate "Восстановить пароль" %}</a>
+            </div>
+            <div class="auth-form__button">
+              <input type="submit" value="Авторизоваться">
+            </div>
+        </form>
+        <div class="authorization__register-link">
+          Если у Вас нет аккаунта то <a href="{% url 'account_signup' %}">{% translate "Зарегистрироваться" %} </a>
+        </div>
+        <div class="errors" style="display: flex; justify-content: center; align-items: center;" >
+            {% if form.non_field_errors %}
+              <ul style="list-style: none; text-align: center;">
+                {% for error in form.non_field_errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+        </div>
+      </div>
+  </div>
+</div>
 
 {% endblock %}

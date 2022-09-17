@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% load breadcrumbs %}
+{% load gettype %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="container">
+    {% include 'include/dropdown_menu.html' %}
+    <div class="content">
+        <div class="box">
+            <div class="sidebar__breadcrumbs">
+                <div class="breadcrumbs-nav">
+                    {% block breadcrumbs %}
+
+                    {% breadcrumb_url 'Главная' 'home' %}
+                    <span>></span>
+                    {% if breadcrumb_obj|gettype == "Category" %}
+                            {% breadcrumb breadcrumb_obj.name %}
+                    {% elif breadcrumb_obj|gettype == 'Subcategory' %}
+                            {% breadcrumb_url breadcrumb_obj.category.name 'products:category_products' breadcrumb_obj.category.name %}
+                            <span>></span>
+                            {% breadcrumb breadcrumb_obj.name %}
+                    {% else %}
+                            {% breadcrumb 'Продукты' %}
+                    {% endif %}
+
+                    {% endblock breadcrumbs %}
+                </div>
+            </div>
+            <div class="sidebar__title">
+                <div class="sidebar__category">
+                    Средства для ухода за лицом
+                </div>
+            </div>
+            <div class="sidebar__products">
+                <div class="sidebar__found">
+                    Найдено продуктов: {{ products|length }}
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-background">
+            <img class="sidebar-background__image" src="{% static 'images/bg_items_page.jpg' %}" alt="Картинка косметики" srcset="">
+        </div>
+    </div>
+    <div class="sorting">
+        <ul class="sorting__menu">
+            <li>
+                <form class="sorting-form" action="." method="get" name="sort_form">
+                    {{ sort_form.sort }}
+                    <input type="submit" value="Отсортировать" onclick="sendGetFormData('sort_form', event);">
+                </form>
+            </li>
+        </ul>
+    </div>
+    <section class="section">
+        <div class="categories">
+            <div class="categories__title">
+                Фильтры
+            </div>
+            <div class="categories__choice">
+                <div class="categories-choice__filter">
+                    <a href="#">Новинки</a>
+                </div>
+                <div class="categories-choice__filter">
+                    <a href="#">Высокий рейтинг</a>
+                </div>
+            </div>
+            <div class="range">
+                <form class="range-price__form" action="" method="get" name="filter_form">
+                    <div class="range-title">
+                        Стоимость товара
+                    </div>
+                    <div class="range-price">
+                        {% for field in filter_form %}
+                                {{ field }}
+                        {% endfor %}
+                    </div>
+                    <div class="range-show">
+                        <input class="range-show__input" type="submit" value="Показать" onclick="sendGetFormData('filter_form', event);">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="products">
+            <div class="wrap">
+              {% for product in products %}
+                  {% include 'include/product.html' %}
+              {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{% static 'js/products.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-url="{% url 'cart:add_product' %}" data-csrf="{{ csrf_token }}"></script>
+
+{% endblock content %}

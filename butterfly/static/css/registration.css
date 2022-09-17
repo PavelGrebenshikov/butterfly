@@ -1,0 +1,125 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    background-color: var(--bg-color);
+}
+.sidebar {
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+.sidebar__breadcrumbs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar__breadcrumbs > h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--background-color);
+}
+.sidebar__image {
+    margin: 0 5px 0 5px;
+}
+.sidebar__image > img {
+    width: 100%;
+    height: 550px;
+    border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.box {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: var(--background-color);
+}
+.title {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title__text {
+    width: 20%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.title_line {
+    margin: 0 38px 0 38px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--bg-color);
+}
+.registration {
+    margin: 0 28px 0 28px;
+}
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+.registration-form > input {
+    margin: 10px 0 0 0;
+    border: 1px solid var(--bg-color);
+    background-color: var(--background-color);
+    color: var(--bg-color);
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 11px;
+    outline: none;
+}
+.registration-form > input::placeholder {
+    color: var(--bg-color);
+}
+.registration__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 0 0;
+}
+.registration__button > input {
+    width: 280px;
+    height: 40px;
+    background-color: var(--bg-color);
+    color: var(--background-color);
+    border: 1px solid var(--bg-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.registration__reg-button > input:hover {
+    background-color: var(--background-color);
+    color: var(--bg-color);
+    transition: .3s;
+}
+.selected-birth-day {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+select {
+    margin-top: 15px;
+    min-width: 50px;
+    width: 100px;
+    height: 30px;
+    margin: 10px 15px 10px 0px;
+    border-radius: 5px;
+    border: 1px solid var(--bg-color);
+    background-color: var(--background-color);
+    color: var(--bg-color);
+}
+.field-error {
+    font-size: 16px;
+    padding: 0;
+    margin: 2px 0 0 0;
+    color: rgb(201, 8, 8);
+}
+label {
+    margin: 10px 0 10px 0;
+    color: var(--bg-color);
+    border-radius: 5px;
+}

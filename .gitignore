@@ -272,3 +272,5 @@ tags
 butterfly/media/
 
 .pytest_cache/
+*.env
+postgres-data/

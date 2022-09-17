@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/dropdown_menu.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+
+<div class="container">
+    {% include "include/dropdown_menu.html" %}
+    <div class="background-image">
+        <img src="{% static 'images/for-store.jpg' %}" alt="background picture">
+    </div>
+    <div class="submenu">
+        <a href="#">ДЛЯ ЛИЦА</a>
+        <a href="#">ДЛЯ ТЕЛА</a>
+        <a href="#">ДЛЯ ВОЛОС</a>
+        <a href="#">ПАРФЮМЕРИЯ</a>
+    </div>
+    <div class="gallery">
+        <figure class="gallery__item gallery__item--1">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--2">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--3">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--3">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+        <figure class="gallery__item gallery__item--4">
+            <img src="{% static 'images/presentation.jpg' %}" alt="product" srcset="">
+        </figure>
+    </div>
+    <div class="line"></div>
+    <div class="products">
+        <div class="wrap">
+            {% for product in products %}
+                {% include 'include/product.html' %}
+            {% endfor %}
+        </div>
+        <a href="{% url 'products:all_products' %}" class="products__full-page-button">ВСЕ ПРОДУКТЫ</a>
+    </div>
+    <div class="about">
+        <div class="about__title">
+            Интернет-магазин косметики и парфюмерии Butterfly
+        </div>
+        <div class="about__text">
+                Косметика на основе натуральных ингредиентов — лучший подарок для вашей красоты. В официальном интернет-магазине «Ив Роше» вы найдете все, что нужно для ухода за лицом и телом, декоративную косметику, средства для волос, парфюмерию и аксессуары для домашних бьюти-процедур.
+                В магазинах натуральной косметики из Франции постоянно обновляется ассортимент и появляются новые продукты с улучшенными формулами. Соберите коллекцию своих любимых средств и порадуйте близких подарочными наборами.
+                В России открыты более 440 бутиков, 20 SPA-салонов и официальный интернет-магазин «Ив Роше», где можно приобрести французскую косметику с бесплатной доставкой в ваш город. Для покупателей действуют акции и бонусная программа. Мы дарим приятный подарок за каждую покупку.
+                Доставка осуществляется в Москву, Санкт-Петербург, Казань, Новосибирск и другие города России. При заказе от 2 490 рублей <span style="font-weight: bold;">мы доставим косметику «Ив Роше» бесплатно</span>.
+        </div>
+    </div>
+    <div class="communication">
+        <div class="wrapper">
+            <div class="subscribe">
+                <div class="subscribe__title">
+                    Подписаться на рассылку
+                </div>
+                <div class="subscribe-form">
+                    <form action="#" method="post">
+                        <input type="email" class="subscribe__input" name="email" id="email" placeholder="Введите Ваш Email">
+                        <div class="button-background">
+                            <button class="subscribe__button" type="submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="contacts">
+                <div class="contact__phone">
+                    7(495)787-76-72
+                </div>
+                <div class="working__hours">
+                    ежедневно с 8:00 до 22:00 по московскому времени
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="social">
+                <div class="social__text">
+                    Мы в социальных сетях
+                </div>
+                <div class="social__icons">
+                    <a href="#">
+                        <img src="{% static 'images/icons/vk_icon.svg' %}" alt="" srcset="">
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'images/icons/ok_icons.svg' %}" alt="" srcset="">
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'images/icons/github_icon.svg' %}" alt="" srcset="">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <div class="footer-menu__items">
+                    <ul class="footer-menu__list">
+                        <li><a href="#">Условия продажи</a></li>
+                        <li><a href="#">Персональные данные</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                    <ul class="footer-menu__list">
+                        <li><a href="#">Карта сайта</a></li>
+                        <li><a href="#">Магазины</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-url="{% url 'cart:add_product' %}" data-csrf="{{ csrf_token }}"></script>
+
+
+{% endblock content %}

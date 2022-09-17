@@ -2,21 +2,81 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% load breadcrumbs %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock styles %}
 
 {% block head_title %}{% translate "Signup" %}{% endblock %}
 
 {% block inner %}
-<h1>{% translate "Sign Up" %}</h1>
-
-<p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% translate "Sign Up" %} &raquo;</button>
-</form>
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebar__breadcrumbs">
+            <h3>
+                {% block breadcrumbs %}
+                    {% breadcrumb_url 'Главная' 'home' %}
+                        <span>></span>
+                    {% breadcrumb_url 'Регистрация' 'account_signup' %}
+                {% endblock breadcrumbs %}
+            </h3>
+        </div>
+        <div class="sidebar__image">
+            <img src="{% static 'images/bg_auth.png' %}" alt="cosmetic face picture">
+        </div>
+    </div>
+    <div class="box">
+        <div class="title">
+            <div class="title_line"></div>
+            <div class="title__text">Регистрация</div>
+            <div class="title_line"></div>
+        </div>
+        <div class="registration">
+            <form class="registration-form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error | lower }}</li>
+                    {% endfor %}
+                {% endif %}
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                        <p class="field-error">{{ error }}</p>
+                {% endfor %}
+                {{ form.password1 }}
+                    {% for error in form.password1.errors %}
+                            <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+                {{ form.password2 }}
+                    {% for error in form.password2.errors %}
+                                <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+                {% for field in form %}
+                    {% if field.name not in "password1,password2,email" %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                        {% if field.name == 'date_of_birth' %}
+                            {{ field.label_tag }}
+                            <div class="selected-birth-day">
+                                {{ form.date_of_birth }}
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="registration__button">
+                    <input type="submit" value="Создать личный кабинет">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

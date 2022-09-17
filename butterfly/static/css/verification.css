@@ -1,0 +1,20 @@
+body {
+    background-color: var(--bg-color);
+}
+h1 {
+    color: var(--background-color);
+    text-align: center;
+    margin: -10% 0 0 0;
+    padding: 0;
+}
+p {
+    text-align: center;
+    color: var(--background-color);
+}
+.verification {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

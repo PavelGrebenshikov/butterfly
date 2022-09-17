@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/personal_account.css' %}">
+    {% endblock styles %}
+
+    {% block content %}
+    <div class="personal">
+        <div class="box">
+            <div class="navigation">
+                <div class="navigation__photo">
+                    <div class="navigation__photo-elem">
+                        <img src="{% if user.image.url %}{{ user.image_url }}{% else %}{% static 'images/personal_photo.jpg' %}{% endif %}" alt="You'r photo">
+                    </div>
+                </div>
+                <div class="navigation__menu">
+                    <div class="navigation__menu-elem">
+                        <ul>
+                            <li><a href="#">Корзина</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="{% url 'account_logout' %}">Выход</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <style>
+                    .logout-account {
+                        position: absolute;
+                        bottom: 10px;
+                    }
+                </style>
+            </div>
+            <div class="about">
+                <div class="about__title">
+                    Информация о Вас
+                </div>
+                <ul>
+                    <li><b>Имя:</b> {{ user.first_name }}</li>
+                    <li><b>Фамилия:</b> {{ user.last_name }}</li>
+                    <li><b>Электронная почта:</b> {{ user.email }}</li>
+                    <li><b>Tелефон:</b>
+                        {% if user.phone_number %}
+                            {{ user.phone_number }}
+                        {% else %}
+                            Не указан
+                        {% endif %}
+                    </li>
+                    <li><b>Город:</b>
+                        {% if user.city %}
+                                {{ user.city }}
+                        {% else %}
+                                Не указан
+                        {% endif %}
+                    </li>
+                    <li><b>Дата рождения:</b>
+                        {% if user.date_of_birth %}
+                                {{ user.date_of_birth }}
+                        {% else %}
+                                Не указан
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="about__title">
+                    Информация об аккаунте
+                </div>
+                <ul>
+                    <li><b>Дата создания:</b> {{ user.date_joined  }}</li>
+                    <li><b>Дата последнего изменения:</b> {{ user.last_modified }}</li>
+                    <li><b>Дата последнего входа:</b> {{ user.last_login }}</li>
+                </ul>
+            </div>
+            <div class="notifications">
+                <div class="notifications__wrapper">
+                    <div class="notifications__wrapper-title">
+                        Уведомления
+                    </div>
+                    <!-- здесь блок со список уведомлений -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

@@ -1,4 +1,5 @@
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 from django.contrib.auth import get_user_model
 from factory import Faker, post_generation
@@ -9,7 +10,6 @@ class UserFactory(DjangoModelFactory):
 
     username = Faker("user_name")
     email = Faker("email")
-    name = Faker("name")
 
     @post_generation
     def password(self, create: bool, extracted: Sequence[Any], **kwargs):

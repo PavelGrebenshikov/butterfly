@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
+from django.db.models import CharField, DateField, DateTimeField, ImageField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -11,16 +11,19 @@ class User(AbstractUser):
     check forms.SignupForm and forms.SocialSignupForms accordingly.
     """
 
-    #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = None  # type: ignore
-    last_name = None  # type: ignore
+    city = CharField(_("City"), max_length=50, blank=True)
+    date_of_birth = DateField(_("Date of birth"), null=True)
+    phone_number = CharField(_("Phone number"), max_length=20, blank=True)
+    last_modified = DateTimeField(auto_now=True)
+    image_url = ImageField(
+        _("Image url"), upload_to="users/avatars/", default="/static/images/profile.png"
+    )
 
     def get_absolute_url(self):
-        """Get url for user's detail view.
-
-        Returns:
-            str: URL for user detail.
-
-        """
         return reverse("users:detail", kwargs={"username": self.username})
+
+    def __repr__(self):
+        return f"<User {self.username}>"
+
+    def __str__(self):
+        return self.username

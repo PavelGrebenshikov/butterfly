@@ -1,0 +1,17 @@
+<nav class="navigation">
+    <ul class="menu">
+        {% for category in categories %}
+                <li>
+                    <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                    <div class="dropdown__list">
+                        <ul>
+                            {% for subcategory in category.subcategory_set.all %}
+                                    <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </li>
+        {% endfor %}
+    </ul>
+</nav>

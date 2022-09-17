@@ -1,0 +1,33 @@
+body {
+    background-color: var(--bg-color);
+}
+.container {
+    margin: 0 auto;
+    min-height: calc(100vh - 100px);
+}
+.box {
+    width: 100%;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--background-color);
+}
+.list {
+    list-style: none;
+}
+.list > li {
+    margin: 5px 0 5px 0;
+}
+.list > li > a {
+    color: var(--background-color);
+    font-size: 18px;
+}
+.list > li > a:hover {
+    color: rgb(31, 65, 179);
+    transition: .3s;
+}

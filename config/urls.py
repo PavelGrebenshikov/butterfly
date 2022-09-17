@@ -3,18 +3,21 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
-from django.views.generic import TemplateView
+
+from butterfly.views import index, search_product
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
-    # User management
+    # Apps' views
     path("users/", include("butterfly.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("products/", include("butterfly.products.urls", namespace="products")),
+    path("cart/", include(("butterfly.cart.urls", "butterfly.cart"), namespace="cart")),
+    # Global views
+    path("search/", search_product, name="search_product"),
+    path("index/", index, name="index"),
+    path("", index, name="home")
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

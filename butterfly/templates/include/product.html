@@ -1,0 +1,31 @@
+{% load static %}
+<div class="product">
+  <div class="product__image">
+    <img src="{{ product.get_image_url }}" alt="" srcset="" />
+    <div class="more-detailed">
+      <a href="{{ product.get_absolute_url }}">Подробнее</a>
+    </div>
+  </div>
+  <div class="products__title">
+    <a href="{{ product.get_absolute_url }}">
+      <h3>{{ product.name|truncatechars:50 }}</h3>
+    </a>
+  </div>
+  {% if product.format %}
+      <div class="products__quantity">
+        {{ product.format }}
+      </div>
+  {% endif %}
+
+  <div class="products__price">
+      {{ product.price }} руб
+  </div>
+  <div class="products__basket">
+    {% if product.pk in cart_products_ids %}
+        <a class="disabled" href="{% url 'cart:index' %}">В КОРЗИНЕ</a>
+    {% else %}
+        <a onclick="addProduct({{ product.pk }}, event);">В КОРЗИНУ</a>
+    {% endif %}
+
+  </div>
+</div>

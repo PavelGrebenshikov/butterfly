@@ -1,0 +1,31 @@
+version: "3.6"
+
+services:
+  app:
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://butterfly:butterfly@db/butterfly
+    env_file:
+      - config.env
+    networks:
+      - default
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    restart: always
+
+  db:
+    environment:
+      POSTGRES_USER: butterfly
+      POSTGRES_PASSWORD: butterfly
+      POSTGRES_DB: butterfly
+    image: postgres:14.4-alpine
+    networks:
+      - default
+    ports:
+      - 5405:5432
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

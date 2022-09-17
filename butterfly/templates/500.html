@@ -1,11 +1,22 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock styles %}
+
 {% block title %}Server Error{% endblock %}
 
 {% block content %}
-<h1>Ooops!!! 500</h1>
-
-<h3>Looks like something went wrong!</h3>
-
-<p>We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.</p>
-{% endblock content %}
+<div class="box" style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 100px); background-color: #E5DCBE;">
+    <div class="wrap" style="font-size: 32px; font-weight: bold; text-align: center; color: #443A38;">
+         <div class="title">
+             <h2 style="margin: -50px 0 0 0; padding: 0;">Упс!!! 500</h2>
+             <h3>Похоже, что-то пошло не так!</h3>
+             <p>Мы автоматически отслеживаем эти ошибки, но если проблема не устранена, не стесняйтесь обращаться к нам. А пока попробуйте освежиться.</p>
+         </div>
+    </div>
+ </div>
+ {% endblock content %}
