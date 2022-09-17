@@ -8,46 +8,107 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30, verbose_name='Name of category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=30, verbose_name="Name of category"),
+                ),
             ],
             options={
-                'verbose_name': 'Category',
-                'verbose_name_plural': 'Categories',
+                "verbose_name": "Category",
+                "verbose_name_plural": "Categories",
             },
         ),
         migrations.CreateModel(
-            name='Subcategory',
+            name="Subcategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='Name of subcategory')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=50, verbose_name="Name of subcategory"),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.category",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Subcategory',
-                'verbose_name_plural': 'Subcategories',
+                "verbose_name": "Subcategory",
+                "verbose_name_plural": "Subcategories",
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Product name')),
-                ('description', models.TextField(blank=True, verbose_name='Description')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=5, verbose_name='Price')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Creation date')),
-                ('last_modified', models.DateTimeField(auto_now=True, verbose_name='Last modifying')),
-                ('visible', models.BooleanField(default=True, verbose_name='Is visible')),
-                ('image_url', models.ImageField(default='/static/images/product.png', upload_to='products/photos/', verbose_name='Image url')),
-                ('category', models.ManyToManyField(to='products.Category')),
-                ('subcategory', models.ManyToManyField(to='products.Subcategory')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="Product name")),
+                (
+                    "description",
+                    models.TextField(blank=True, verbose_name="Description"),
+                ),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=5, verbose_name="Price"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Creation date"
+                    ),
+                ),
+                (
+                    "last_modified",
+                    models.DateTimeField(auto_now=True, verbose_name="Last modifying"),
+                ),
+                (
+                    "visible",
+                    models.BooleanField(default=True, verbose_name="Is visible"),
+                ),
+                (
+                    "image_url",
+                    models.ImageField(
+                        default="/static/images/product.png",
+                        upload_to="products/photos/",
+                        verbose_name="Image url",
+                    ),
+                ),
+                ("category", models.ManyToManyField(to="products.Category")),
+                ("subcategory", models.ManyToManyField(to="products.Subcategory")),
             ],
         ),
     ]

@@ -1,9 +1,7 @@
 from django import template
-from django.template import Node, Variable
-from django.utils.encoding import smart_str
+from django.template import Node, Variable, VariableDoesNotExist
 from django.template.defaulttags import url
-from django.template import VariableDoesNotExist
-
+from django.utils.encoding import smart_str
 
 register = template.Library()
 
@@ -46,7 +44,7 @@ def breadcrumb_url(parser, token):
 
     # Extract our extra title parameter
     title = bits.pop(1)
-    token.contents = ' '.join(bits)
+    token.contents = " ".join(bits)
 
     url_node = url(parser, token)
 
@@ -67,8 +65,8 @@ class BreadcrumbNode(Node):
             try:
                 val = self.vars[0]
                 title = val.resolve(context)
-            except:
-                title = ''
+            except VariableDoesNotExist:
+                title = ""
 
         else:
             title = title.strip("'").strip('"')
@@ -81,7 +79,7 @@ class BreadcrumbNode(Node):
             try:
                 url = val.resolve(context)
             except VariableDoesNotExist:
-                print('URL does not exist', val)
+                print("URL does not exist", val)
                 url = None
 
         return create_crumb(title, url)
@@ -99,8 +97,8 @@ class UrlBreadcrumbNode(Node):
             try:
                 val = self.title
                 title = val.resolve(context)
-            except:
-                title = ''
+            except VariableDoesNotExist:
+                title = ""
         else:
             title = title.strip("'").strip('"')
             title = smart_str(title)
@@ -115,7 +113,7 @@ def create_crumb(title, url=None):
     """
 
     if url:
-        crumb = "<a href='%s'>%s</a>" % (url, title)
+        crumb = "<a href='{}'>{}</a>".format(url, title)
     else:
         crumb = "&nbsp;&nbsp;%s" % (title)
 

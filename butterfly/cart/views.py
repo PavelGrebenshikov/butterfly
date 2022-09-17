@@ -1,18 +1,18 @@
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
-from butterfly.products.models import Product
 from butterfly.cart.models import Cart, CartItem
+from butterfly.products.models import Product
 
 
 def index(request):
     cart = Cart.get_cart(request)
     context = {
-        'cart_items': cart.items.all(),
-        'total_price': cart.get_total_price(),
-        'user': request.user
+        "cart_items": cart.items.all(),
+        "total_price": cart.get_total_price(),
+        "user": request.user,
     }
-    return render(request, 'cart/cart.html', context=context)
+    return render(request, "cart/cart.html", context=context)
 
 
 def add_product(request):
@@ -24,8 +24,8 @@ def add_product(request):
         HttpResponse | Http404
 
     """
-    if request.method == 'POST' and request.is_ajax():
-        product_id = request.POST.get('product_id', '')
+    if request.method == "POST" and request.is_ajax():
+        product_id = request.POST.get("product_id", "")
         if not product_id.isdigit():
             raise Http404()
         product = get_object_or_404(Product, pk=product_id)
@@ -33,12 +33,10 @@ def add_product(request):
         cart = Cart.get_cart(request)
         cart.save()
 
-        cart_item, _ = CartItem.objects.get_or_create(
-            cart=cart, product=product
-        )
+        cart_item, _ = CartItem.objects.get_or_create(cart=cart, product=product)
         cart_item.save()
         if request.user.is_anonymous:
-            request.session['cart_id'] = cart.id
+            request.session["cart_id"] = cart.id
 
         return HttpResponse()
 
@@ -55,21 +53,26 @@ def change_item_count(request):
         JsonResponse | Http404
 
     """
-    if request.method == 'POST' and request.is_ajax():
-        product_id = request.POST.get('product_id')
+    if request.method == "POST" and request.is_ajax():
+        product_id = request.POST.get("product_id")
         product = get_object_or_404(Product, pk=product_id)
 
         cart = Cart.get_cart(request)
         item = get_object_or_404(cart.items, product=product)
 
-        sign = request.POST.get('sign')
+        sign = request.POST.get("sign")
         item.change_count(sign)
 
-        return JsonResponse({'item': {
-            'name': item.product.name,
-            'count': item.count,
-            'price': item.product.price
-        }, 'total_price': cart.get_total_price()})
+        return JsonResponse(
+            {
+                "item": {
+                    "name": item.product.name,
+                    "count": item.count,
+                    "price": item.product.price,
+                },
+                "total_price": cart.get_total_price(),
+            }
+        )
 
     raise Http404()
 
@@ -83,8 +86,8 @@ def delete_item(request):
         JsonResponse | Http404
 
     """
-    if request.method == 'POST' and request.is_ajax():
-        product_id = request.POST.get('product_id')
+    if request.method == "POST" and request.is_ajax():
+        product_id = request.POST.get("product_id")
         product = get_object_or_404(Product, pk=product_id)
 
         cart = Cart.get_cart(request)
@@ -92,8 +95,8 @@ def delete_item(request):
 
         item.delete()
 
-        return JsonResponse({'item': {
-            'name': item.product.name
-        }, 'total_price': cart.get_total_price()})
+        return JsonResponse(
+            {"item": {"name": item.product.name}, "total_price": cart.get_total_price()}
+        )
 
     raise Http404

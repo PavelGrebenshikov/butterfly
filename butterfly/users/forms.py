@@ -2,8 +2,8 @@ from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
+from django.forms import CharField, DateField, RegexField, SelectDateWidget, TextInput
 from django.utils.translation import gettext_lazy as _
-from django.forms import CharField, DateField, RegexField, TextInput, SelectDateWidget
 
 User = get_user_model()
 
@@ -34,46 +34,41 @@ class UserSignupForm(SignupForm):
     Check UserSocialSignupForm for accounts created from social.
     """
 
-    first_name = CharField(widget=TextInput(
-        attrs={
-            'placeholder': _('First name'),
-            'autocomplete': 'city'
-        }))
-    last_name = CharField(widget=TextInput(
-        attrs={
-            'placeholder': _('Last name'),
-            'autocomplete': 'city'
-        }))
-    city = CharField(widget=TextInput(
-        attrs={
-            'placeholder': _('City (optional)'),
-            'autocomplete': 'city'
-        }
-    ), required=False)
-
-    date_of_birth = DateField(
-        label=_('Date of birth (optional)'),
+    first_name = CharField(
+        widget=TextInput(attrs={"placeholder": _("First name"), "autocomplete": "city"})
+    )
+    last_name = CharField(
+        widget=TextInput(attrs={"placeholder": _("Last name"), "autocomplete": "city"})
+    )
+    city = CharField(
+        widget=TextInput(
+            attrs={"placeholder": _("City (optional)"), "autocomplete": "city"}
+        ),
         required=False,
-        widget=SelectDateWidget(
-            years=range(2010, 1920, -1),
-            empty_label=(_('Day'), _('Month'), _('Year'))
-        )
     )
 
-    phone_number = RegexField(widget=TextInput(
-        attrs={
-            'placeholder': _('Phone number (optional)'),
-            'autocomplete': 'phone'
-        }),
-        regex=r'^\+?\d{1,3}\s?\(?\d{3}\)?\s?\d{3}[- ]?\d{2}[- ]?\d{2}$',
-        required=False)
+    date_of_birth = DateField(
+        label=_("Date of birth (optional)"),
+        required=False,
+        widget=SelectDateWidget(
+            years=range(2010, 1920, -1), empty_label=(_("Day"), _("Month"), _("Year"))
+        ),
+    )
+
+    phone_number = RegexField(
+        widget=TextInput(
+            attrs={"placeholder": _("Phone number (optional)"), "autocomplete": "phone"}
+        ),
+        regex=r"^\+?\d{1,3}\s?\(?\d{3}\)?\s?\d{3}[- ]?\d{2}[- ]?\d{2}$",
+        required=False,
+    )
 
     def save(self, request):
-        user = super(UserSignupForm, self).save(request)
+        user = super().save(request)
 
-        user.city = self.cleaned_data['city']
-        user.date_of_birth = self.cleaned_data['date_of_birth']
-        user.phone_number = self.cleaned_data['phone_number']
+        user.city = self.cleaned_data["city"]
+        user.date_of_birth = self.cleaned_data["date_of_birth"]
+        user.phone_number = self.cleaned_data["phone_number"]
 
         user.save()
         return user

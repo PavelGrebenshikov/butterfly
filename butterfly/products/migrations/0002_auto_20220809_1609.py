@@ -6,29 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0001_initial'),
+        ("products", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='format',
-            field=models.CharField(blank=True, max_length=100, verbose_name='Product format'),
+            model_name="product",
+            name="format",
+            field=models.CharField(
+                blank=True, max_length=100, verbose_name="Product format"
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='in_stock_count',
-            field=models.PositiveSmallIntegerField(default=0, verbose_name='Products in stock'),
+            model_name="product",
+            name="in_stock_count",
+            field=models.PositiveSmallIntegerField(
+                default=0, verbose_name="Products in stock"
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='vendor_code',
-            field=models.CharField(default='#000000', max_length=50, verbose_name='Vendor code'),
+            model_name="product",
+            name="vendor_code",
+            field=models.CharField(
+                default="#000000", max_length=50, verbose_name="Vendor code"
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='product',
-            name='price',
-            field=models.DecimalField(decimal_places=2, max_digits=7, verbose_name='Price'),
+            model_name="product",
+            name="price",
+            field=models.DecimalField(
+                decimal_places=2, max_digits=7, verbose_name="Price"
+            ),
         ),
     ]

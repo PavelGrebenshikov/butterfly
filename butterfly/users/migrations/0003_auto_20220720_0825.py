@@ -6,28 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0002_auto_20220720_0813'),
+        ("users", "0002_auto_20220720_0813"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='city',
-            field=models.CharField(blank=True, max_length=50, verbose_name='City'),
+            model_name="user",
+            name="city",
+            field=models.CharField(blank=True, max_length=50, verbose_name="City"),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='date_of_birth',
-            field=models.DateField(null=True, verbose_name='Date of birth'),
+            model_name="user",
+            name="date_of_birth",
+            field=models.DateField(null=True, verbose_name="Date of birth"),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='image_url',
-            field=models.TextField(default='/static/profile.png', verbose_name='Image url'),
+            model_name="user",
+            name="image_url",
+            field=models.TextField(
+                default="/static/profile.png", verbose_name="Image url"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='phone_number',
-            field=models.CharField(blank=True, max_length=20, verbose_name='Phone number'),
+            model_name="user",
+            name="phone_number",
+            field=models.CharField(
+                blank=True, max_length=20, verbose_name="Phone number"
+            ),
         ),
     ]
