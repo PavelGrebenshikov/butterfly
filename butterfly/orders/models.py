@@ -16,6 +16,10 @@ class Order(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     status = CharField(max_length=50, default="created")
 
+    def get_amount(self) -> int:
+        """Returns order amount"""
+        return sum(item.product.price * item.count for item in self.items.all())
+
 
 class OrderItem(Model):
     count = PositiveSmallIntegerField(default=1)

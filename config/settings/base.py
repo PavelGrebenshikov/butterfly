@@ -1,6 +1,7 @@
 """
 Base settings to build other settings files upon.
 """
+from email.policy import default
 from pathlib import Path
 
 import environ
@@ -82,7 +83,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "butterfly.users",
     "butterfly.products",
-    "butterfly.cart"
+    "butterfly.cart",
+    "butterfly.orders",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -281,3 +283,5 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1396424)
+FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")

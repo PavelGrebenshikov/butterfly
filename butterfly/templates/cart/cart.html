@@ -82,7 +82,10 @@
                         {{ total_price }}
                     </div>
                 </div>
-                <button class="order-button">Заказать</button>
+                <form action="{% url 'orders:create' %}" method="post">
+                  {% csrf_token %}
+                  <button class="order-button">Заказать</button>
+                </form>
             </div>
         </div>
     </div>
