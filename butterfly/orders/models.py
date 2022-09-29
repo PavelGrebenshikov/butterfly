@@ -20,8 +20,20 @@ class Order(Model):
         """Returns order amount"""
         return sum(item.product.price * item.count for item in self.items.all())
 
+    def __repr__(self):
+        return f"<Order (User {self.user}) ({self.items.count()} products)>"
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class OrderItem(Model):
     count = PositiveSmallIntegerField(default=1)
     product = ForeignKey(Product, related_name="order_items", on_delete=CASCADE)
     order = ForeignKey(Order, related_name="items", on_delete=CASCADE)
+
+    def __repr__(self):
+        return f"<Order item ({self.product})>"
+
+    def __str__(self):
+        return self.__repr__()
