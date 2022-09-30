@@ -70,6 +70,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    "dbmail",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -225,9 +226,12 @@ EMAIL_BACKEND = env(
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
-EMAIL_HOST="smtp.mail.com"
-EMAIL_HOST_USER="admin@mail.ru"
-EMAIL_HOST_PASSWORD="admin"
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 # ADMIN
 # ------------------------------------------------------------------------------
@@ -285,3 +289,10 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+DB_MAILER_ALLOWED_MODELS_ON_ADMIN = [
+    'MailFromEmailCredential',
+    'MailFromEmail',
+    'MailTemplate',
+    'MailLog',
+    'MailBcc',
+]
