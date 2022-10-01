@@ -14,8 +14,7 @@ def generate_order_data(order: Order) -> dict[str, str]:
         dict: order data
     """
     data = {
-        # TODO: replace by uuid
-        "order_id": "//".join(["orderidprefix", str(order.pk)]),
+        "order_id": str(order.unique_id),
         "order_desc": generate_order_desc(order),
         "currency": "RUB",
         "amount": str(int(order.get_amount() * 100)),
