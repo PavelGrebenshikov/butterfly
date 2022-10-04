@@ -283,5 +283,5 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1396424)
+FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1397120)
 FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
