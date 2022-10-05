@@ -4,7 +4,7 @@ from cloudipsp import Api, Checkout
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,6 +12,13 @@ from butterfly.cart.models import Cart
 from butterfly.orders.models import Order
 
 from .payment import check_signature, generate_order_data
+
+
+@login_required
+def index(request):
+    orders = request.user.orders.order_by("-created_at")
+    context = {"orders": orders}
+    return render(request, "orders/orders.html", context=context)
 
 
 @login_required

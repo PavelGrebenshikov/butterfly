@@ -17,7 +17,8 @@
                 <div class="navigation__menu">
                     <div class="navigation__menu-elem">
                         <ul>
-                            <li><a href="#">Корзина</a></li>
+                            <li><a href="{% url 'cart:index' %}">Корзина</a></li>
+                            <li><a href="{% url 'orders:index' %}">Заказы</a></li>
                             <li><a href="#">Настройки</a></li>
                             <li><a href="{% url 'account_logout' %}">Выход</a></li>
                         </ul>

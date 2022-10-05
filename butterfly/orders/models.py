@@ -16,7 +16,7 @@ from butterfly.users.models import User
 class Order(Model):
     unique_id = UUIDField(default=uuid.uuid4, editable=False)
     created_at = DateTimeField(auto_now_add=True)
-    user = ForeignKey(User, on_delete=CASCADE)
+    user = ForeignKey(User, related_name="orders", on_delete=CASCADE)
     status = CharField(max_length=50, default="created")
 
     def get_amount(self) -> int:
