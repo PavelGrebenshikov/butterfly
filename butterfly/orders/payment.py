@@ -29,6 +29,19 @@ def generate_order_data(order: Order, request: HttpRequest) -> dict[str, str]:
     return data
 
 
+def check_signature(request: HttpRequest) -> bool:
+    """Checks fondy request signature. See https://docs.fondy.eu/ru/docs/page/3/#chapter-3-5
+
+    Args:
+        request (HttpRequest): request with POST order data
+
+    Returns:
+        bool: signature is valid
+    """
+    signature = request.POST.get("signature")
+    return signature == generate_signature(get_cleaned_request_data(request))
+
+
 def generate_signature(params: dict[str, str]) -> str:
     """Generates signature for fondy. See https://docs.fondy.eu/ru/docs/page/3/#chapter-3-5
 
@@ -48,19 +61,6 @@ def generate_signature(params: dict[str, str]) -> str:
     signature = hashlib.sha1(raw_signature.encode("utf-8")).hexdigest()
 
     return signature
-
-
-def check_signature(request: HttpRequest) -> bool:
-    """Checks fondy request signature. See https://docs.fondy.eu/ru/docs/page/3/#chapter-3-5
-
-    Args:
-        request (HttpRequest): request with POST order data
-
-    Returns:
-        bool: signature is valid
-    """
-    signature = request.POST.get("signature")
-    return signature == generate_signature(get_cleaned_request_data(request))
 
 
 def generate_order_desc(order: Order) -> str:
@@ -91,6 +91,6 @@ def get_cleaned_request_data(request: HttpRequest) -> dict[str, str]:
         dict[str, str]: cleaned data
     """
     cleaned_data = dict(map(lambda item: (item[0], item[1]), request.POST.items()))
-    cleaned_data["signature"] = ""
-    cleaned_data["response_signature_string"] = ""
+    del cleaned_data["signature"]
+    del cleaned_data["response_signature_string"]
     return cleaned_data
