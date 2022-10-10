@@ -57,6 +57,4 @@ def approve_payment(request):
             order.save()
             return redirect(reverse("users:redirect"))
 
-        raise Http404()
-
     raise Http404()

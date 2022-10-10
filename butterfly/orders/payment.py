@@ -24,7 +24,7 @@ def generate_order_data(order: Order, request: HttpRequest) -> dict[str, str]:
         "response_url": request.build_absolute_uri(reverse("orders:approve_payment")),
     }
     signature = generate_signature(params=data)
-    data = {**data, "signature": signature}
+    data["signature"] = signature
 
     return data
 
@@ -77,8 +77,8 @@ def generate_order_desc(order: Order) -> str:
         return order.items.all()[0].product.name
     elif count == 2:
         return ", ".join([i.product.name for i in order.items.all()])
-    else:
-        return f"{count} products"
+
+    return f"{count} products"
 
 
 def get_cleaned_request_data(request: HttpRequest) -> dict[str, str]:
