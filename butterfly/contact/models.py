@@ -74,7 +74,7 @@ class SendingMessages(Model):
             recipients = list(
                 Subscription.objects.all().values_list("email", flat=True)
             )
-            mass_send_mail(
+            mass_send_mail.delay(
                 self.template.sender.name,
                 self.template.message,
                 self.template.sender.email,
