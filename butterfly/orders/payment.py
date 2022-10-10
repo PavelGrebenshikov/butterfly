@@ -91,6 +91,8 @@ def get_cleaned_request_data(request: HttpRequest) -> dict[str, str]:
         dict[str, str]: cleaned data
     """
     cleaned_data = dict(map(lambda item: (item[0], item[1]), request.POST.items()))
-    del cleaned_data["signature"]
-    del cleaned_data["response_signature_string"]
+    if "signature" in cleaned_data:
+        del cleaned_data["signature"]
+    if "response_signature_string" in cleaned_data:
+        del cleaned_data["response_signature_string"]
     return cleaned_data

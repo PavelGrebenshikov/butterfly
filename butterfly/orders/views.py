@@ -34,6 +34,7 @@ def create(request):
             order.items.create(product=i.product, count=i.count)
 
         cart.items.all().delete()
+        cart.delete()
 
         api = Api(
             merchant_id=settings.FONDY_MERCHANT_ID,
@@ -52,7 +53,7 @@ def create(request):
 def approve_payment(request):
     if request.method == "POST":
         payment_data = request.POST
-        order = get_object_or_404(Order, unique_id=uuid.UUID(payment_data["order_id"]))
+        order = get_object_or_404(Order, unique_id=payment_data.get("order_id"))
         if check_signature(request):
             order.status = payment_data["order_status"]
             order.save()
