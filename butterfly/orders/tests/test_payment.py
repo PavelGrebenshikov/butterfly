@@ -42,6 +42,6 @@ def test_get_cleaned_request_data():
 
 def test_generate_signature():
     signature = hashlib.sha1(
-        f"{settings.FONDY_SECRET_KEY}|{settings.FONDY_MERCHANT_ID}|data".encode("utf-8")
+        f"{settings.FONDY_SECRET_KEY}|{settings.FONDY_MERCHANT_ID}|data".encode()
     ).hexdigest()
     assert generate_signature({"some": "data"}) == signature

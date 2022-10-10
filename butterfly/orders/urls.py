@@ -2,7 +2,6 @@ from django.urls import path
 
 from .views import approve_payment, create, index
 
-
 app_name = "orders"
 urlpatterns = [
     path("", index, name="index"),

@@ -1,16 +1,12 @@
-from enum import unique
-import hashlib
-
+import pytest
 from django.urls import reverse
-from django.conf import settings
+
+from butterfly.cart.models import Cart, CartItem
+from butterfly.orders.models import Order
 from butterfly.orders.payment import generate_signature
 from butterfly.products.models import Product
 from butterfly.products.tests.conftest import created_model_objects
 from butterfly.users.tests.factories import UserFactory
-import pytest
-
-from butterfly.orders.models import Order
-from butterfly.cart.models import Cart, CartItem
 
 pytestmark = pytest.mark.django_db
 

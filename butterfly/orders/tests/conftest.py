@@ -1,8 +1,8 @@
 import pytest
 
-from butterfly.users.tests.factories import UserFactory
 from butterfly.orders.models import Order
 from butterfly.products.tests.conftest import created_model_objects
+from butterfly.users.tests.factories import UserFactory
 
 fixtures = [created_model_objects]
 

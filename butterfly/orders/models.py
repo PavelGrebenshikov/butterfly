@@ -1,3 +1,5 @@
+import uuid
+
 from django.db.models import (
     CASCADE,
     CharField,
@@ -7,7 +9,6 @@ from django.db.models import (
     PositiveSmallIntegerField,
     UUIDField,
 )
-import uuid
 
 from butterfly.products.models import Product
 from butterfly.users.models import User
