@@ -25,6 +25,7 @@ class Subscription(Model):
         return self.email
 
     class Meta:
+        ordering = ["date"]
         app_label = "contact"
         verbose_name = _("Email")
         verbose_name_plural = _("Emails")
@@ -68,6 +69,7 @@ class SendingMessages(Model):
     template = ForeignKey(MailTemplate, on_delete=CASCADE)
     emails = ManyToManyField(Subscription, blank=True)
     send_to_everyone = BooleanField(_("Отправить всем"), default=False)
+    date = DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs) -> None:
         if self.send_to_everyone:
@@ -86,6 +88,7 @@ class SendingMessages(Model):
         return f"{self.template}"
 
     class Meta:
+        ordering = ["date"]
         app_label = "contact"
         verbose_name = "Sending mail"
         verbose_name_plural = "Sending mails"
