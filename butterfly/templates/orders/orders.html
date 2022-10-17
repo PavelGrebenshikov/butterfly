@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load price_calculating %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="container">
+  <h1>Заказы ({{ orders | length }})</h1>
+  <div class="orders">
+    {% for order in orders %}
+        <div class="order">
+          <div class="order__products">
+            <p class="order__total_price"><b>{{ order.get_amount }}
+              &#8381;</b></p>
+            <p>{{ order.created_at }}</p>
+            {% for item in order.items.all %}
+                <p><b>{{ item.product.name }}</b> x {{item.count}} | {{ item.product.price|mul:item.count }} &#8381;</p>
+            {% endfor %}
+          </div>
+
+          {% if order.status == "created" %}
+              <div class="order__status" style="color: grey; border: 2px solid grey;">СОЗДАН</div>
+          {% elif order.status == "declined" %}
+              <div class="order__status" style="color: red; border: 2px solid red;">ОТКЛОНЁН</div>
+          {% elif order.status == "approved" %}
+              <div class="order__status" style="color: green; border: 2px solid green;">ПРИНЯТ</div>
+          {% endif %}
+
+        </div>
+    {% endfor %}
+
+  </div>
+</div>
+{% endblock content %}

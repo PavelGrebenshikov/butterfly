@@ -13,7 +13,8 @@ urlpatterns = [
     path("users/", include("butterfly.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("products/", include("butterfly.products.urls", namespace="products")),
-    path("cart/", include(("butterfly.cart.urls", "butterfly.cart"), namespace="cart")),
+    path("cart/", include("butterfly.cart.urls", namespace="cart")),
+    path("orders/", include("butterfly.orders.urls", namespace="orders")),
     # Global views
     path("search/", search_product, name="search_product"),
     path("index/", index, name="index"),
