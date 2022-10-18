@@ -10,15 +10,18 @@ from butterfly.cart.models import CartItem
 def add_product(request):
     if request.method == "POST" and request.is_ajax():
         product_id = request.POST.get("product_id", "")
+        print("first")
         if not product_id.isdigit():
             raise Http404()
+
+        print("second")
         product = get_object_or_404(Product, pk=product_id)
 
         user = request.user
-        if not user.favourites.filter(product=product):
-            user.favourites.create(product=product)
+        if not user.favourites.filter(id=product_id):
+            user.favourites.add(product)
 
-        CartItem.object.filter(product=product, cart=user.cart).delete()
+        CartItem.objects.filter(product=product, cart=user.cart).delete()
 
         return JsonResponse(
             {

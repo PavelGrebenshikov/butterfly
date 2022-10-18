@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from butterfly.users.forms import UserAdminChangeForm, UserAdminCreationForm
+from butterfly.users.models import User
 
 User = get_user_model()
 
@@ -43,9 +44,24 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (
             _("Important dates"),
-            {"fields": ("last_login", "date_joined", "last_modified")},
+            {
+                "fields": (
+                    "last_login",
+                    "date_joined",
+                    "last_modified",
+                ),
+            },
+        ),
+        (
+            _("Purchases"),
+            {
+                "fields": ("favourites"),
+            },
         ),
     )
     readonly_fields = ("last_modified",)
     list_display = ["username", "first_name", "last_name", "is_superuser"]
     search_fields = ["name"]
+
+    def cart_items(self, model: User):
+        return model.cart.items.all()

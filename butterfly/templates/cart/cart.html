@@ -50,7 +50,7 @@
                        </div>
                        <div class="box">
                             <div class="favorite">
-                                <p>В избранное</p>
+                                <p onclick="addProductToFavourites({{ item.product.pk }});">В избранное</p>
                             </div>
                             <div class="remove">
                                 <p onclick="deleteItem({{ item.product.pk }});">Убрать</p>
@@ -95,6 +95,8 @@
 </div>
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/favourites.js' %}" data-csrf="{{ csrf_token }}"
+ data-add-product-url="{% url 'favourites:add_product' %}"></script>
 <script src="{% static 'js/cart.js' %}" data-change-count-url="{% url 'cart:change_item_count' %}"
   data-delete-url="{% url 'cart:delete_item' %}" data-csrf="{{ csrf_token }}"></script>
 {% endblock content %}
