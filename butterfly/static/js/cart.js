@@ -39,14 +39,15 @@ function changeItemCount(product_id, sign) {
         },
         success: function (response) {
             var product_name = $(`a:contains("${response.item.name}")`);
+            var item = product_name.parent().parent().parent()
 
-            var count = product_name.siblings('.product__info_count');
+            var count = item.find('.count__items');
             count.html(response.item.count);
 
-            var price = product_name.siblings('.product__info_price');
+            var price = item.find('.item__price p');
             price.html(prettyNumber(response.item.price * response.item.count));
 
-            var total = $('.cart__total_price');
+            var total = $('.total__price');
             total.html(prettyNumber(response.total_price));
 
         }
@@ -68,14 +69,14 @@ function deleteItem(product_id) {
         success: function (response) {
             var product_name = $(`a:contains("${response.item.name}")`);
 
-            product_name.parents('.product__info').remove();
+            product_name.parents('.cart__products').remove();
 
-            var total = $('.cart__total_price');
+            var total = $('.total__price');
             total.html(prettyNumber(response.total_price));
 
-            if ($('.product__info').length == 0) {
-                $('.cart__total').remove();
-                $('.cart__products').html('Ваша корзина пока что пуста...');
+            if ($('.cart__products').length == 0) {
+                $('.cart').remove();
+                $('.container').append('<div>Ваша корзина пока что пуста...</div>');
                 $('.anonym-warning').remove();
             }
         }

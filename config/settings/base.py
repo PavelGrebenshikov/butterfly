@@ -81,9 +81,10 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "butterfly.users",
-    'butterfly.products',
-    'butterfly.cart',
-    'butterfly.contact',
+    "butterfly.products",
+    "butterfly.cart",
+    "butterfly.orders",
+    "butterfly.contact",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -146,8 +147,6 @@ MIDDLEWARE = [
 
 # STATIC
 # ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
@@ -288,6 +287,9 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1397120)
+FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
+
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = '6379'
 # CELERY settings
@@ -297,5 +299,4 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-
 

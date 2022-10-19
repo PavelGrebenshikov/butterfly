@@ -11,11 +11,7 @@ from django.urls import reverse
 from butterfly.users.forms import UserAdminChangeForm
 from butterfly.users.models import User
 from butterfly.users.tests.factories import UserFactory
-from butterfly.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from butterfly.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 

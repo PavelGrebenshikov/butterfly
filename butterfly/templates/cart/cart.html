@@ -19,7 +19,7 @@
             Срок хранения корзины без авторизации 7 дней.
           </div>
       {% endif %}
-      
+
       <div class="cart">
         <div class="cart__wrapper">
           {% for item in cart_items %}
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="item__price">
-                        <p>{{ item.product.price | mul:item.count }}</p>
+                        <p>{{ item.product.price | mul:item.count }}&#8381;</p>
                     </div>
                 </div>
             </div>
@@ -79,10 +79,13 @@
                         <p>Товары, {{ item.count }} шт.</p>
                     </div>
                     <div class="total__price">
-                        {{ total_price }}
+                        {{ total_price }} &#8381;
                     </div>
                 </div>
-                <button class="order-button">Заказать</button>
+                <form action="{% url 'orders:create' %}" method="post">
+                  {% csrf_token %}
+                  <button class="order-button">Заказать</button>
+                </form>
             </div>
         </div>
     </div>

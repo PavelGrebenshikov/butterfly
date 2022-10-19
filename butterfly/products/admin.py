@@ -10,8 +10,8 @@ class SubcategoryInline(admin.StackedInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'subcategories_count', 'products_count']
-    search_fields = ['name']
+    list_display = ["name", "subcategories_count", "products_count"]
+    search_fields = ["name"]
     inlines = [SubcategoryInline]
 
     def subcategories_count(self, model: Category) -> int:
@@ -23,8 +23,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category_name', 'products_count']
-    search_fields = ['name']
+    list_display = ["name", "category_name", "products_count"]
+    search_fields = ["name"]
 
     def products_count(self, model: Subcategory) -> int:
         return model.product_set.count()
@@ -35,10 +35,10 @@ class SubcategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'categories_names']
-    search_fields = ['name']
+    list_display = ["name", "price", "categories_names"]
+    search_fields = ["name"]
 
     def categories_names(self, model: Product) -> str:
         categories_set = model.category.all()
         categories_names = [category.name for category in categories_set]
-        return ', '.join(categories_names)
+        return ", ".join(categories_names)

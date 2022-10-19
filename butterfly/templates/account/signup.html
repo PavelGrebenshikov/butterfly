@@ -54,7 +54,7 @@
                                 <p class="field-error">{{ error }}</p>
                     {% endfor %}
                 {% for field in form %}
-                    {% if field.name not in "password1,password2,email" %} 
+                    {% if field.name not in "password1,password2,email" %}
                         {% for error in field.errors %}
                             <p class="field-error">{{ error }}</p>
                         {% endfor %}
@@ -66,8 +66,8 @@
                         {% else %}
                             {{ field }}
                         {% endif %}
-                    {% endif %}     
-                {% endfor %}    
+                    {% endif %}
+                {% endfor %}
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}

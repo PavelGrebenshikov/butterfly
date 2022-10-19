@@ -1,0 +1,28 @@
+.container h1 {
+  padding: 0;
+  font-size: 28px;
+  color: var(--background-color);
+  margin: 20px 0 0 0;
+}
+
+div.order {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #edeef0;
+}
+
+p.order__total_price {
+  font-size: 22px;
+}
+
+div.order__status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  width: 150px;
+  border-radius: 8px;
+}

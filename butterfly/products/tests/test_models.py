@@ -1,12 +1,11 @@
 import pytest
 
-from butterfly.products.models import Category, Subcategory, Product
+from butterfly.products.models import Category, Product, Subcategory
 
 pytestmark = pytest.mark.django_db
 
 
-class TestCategoryModel():
-
+class TestCategoryModel:
     def test_get_absolute_url(self):
 
         assert Category.objects.count() == 0
@@ -27,14 +26,15 @@ class TestCategoryModel():
         assert Category.objects.count() == 1
 
 
-class TestSubcategoryModel():
-
+class TestSubcategoryModel:
     def test_get_absolute_url(self):
         category = Category.objects.create(name="Category")
         subcategory = Subcategory.objects.create(name="Subcategory", category=category)
 
         assert Category.objects.count() and Subcategory.objects.count() == 1
-        assert subcategory.get_absolute_url() == f"/products/categories/{subcategory.name}"
+        assert (
+            subcategory.get_absolute_url() == f"/products/categories/{subcategory.name}"
+        )
 
     def test_subcategory_model_str(self):
         category = Category.objects.create(name="Category")
@@ -50,8 +50,7 @@ class TestSubcategoryModel():
         assert Subcategory.objects.count() == 1
 
 
-class TestProductModel():
-
+class TestProductModel:
     def test_product_model_str(self):
         product = Product.objects.create(name="First product", price=20)
 
@@ -68,8 +67,13 @@ class TestProductModel():
 
         assert product.get_absolute_url() == f"/products/{product.name}"
 
-    @pytest.mark.parametrize("image_url, result", [("default.png", "/media/default.png"),
-                                                   ("/static/default.png", "/static/default.png")])
+    @pytest.mark.parametrize(
+        "image_url, result",
+        [
+            ("default.png", "/media/default.png"),
+            ("/static/default.png", "/static/default.png"),
+        ],
+    )
     def test_get_image_url(self, image_url, result):
         product = Product.objects.create(price=0, image_url=image_url)
 

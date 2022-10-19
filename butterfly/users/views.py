@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
-from django.shortcuts import render
 
 User = get_user_model()
 
@@ -21,7 +21,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get(self, request, username):
         if self.is_current_user(username):
             user = self.request.user
-            return render(request, 'users/personal_account.html', context={'user': user})
+            return render(
+                request, "users/personal_account.html", context={"user": user}
+            )
         return super().get(request, username)
 
 

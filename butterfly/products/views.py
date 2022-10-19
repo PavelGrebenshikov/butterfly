@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
-from butterfly.products.models import Category, Product, Subcategory
 from butterfly.cart.models import Cart
+from butterfly.products.models import Category, Product, Subcategory
+
 from .forms import ProductsFilterForm, ProductsSortForm
 
 
@@ -15,24 +16,21 @@ def all_products(request):
     cart_products_ids = [item.product.pk for item in Cart.get_cart(request).items.all()]
 
     context = {
-        'categories': Category.objects.all(),
-        'products': products,
-        'filter_form': filter_form,
-        'sort_form': sort_form,
-        'cart_products_ids': cart_products_ids
+        "categories": Category.objects.all(),
+        "products": products,
+        "filter_form": filter_form,
+        "sort_form": sort_form,
+        "cart_products_ids": cart_products_ids,
     }
-    return render(request, 'products/products.html', context=context)
+    return render(request, "products/products.html", context=context)
 
 
 def product(request, name: str):
     product = get_object_or_404(Product, name=name, visible=True)
     cart_products_ids = [item.product.pk for item in Cart.get_cart(request).items.all()]
 
-    context = {
-        'product': product,
-        'cart_products_ids': cart_products_ids
-    }
-    return render(request, 'products/product.html', context=context)
+    context = {"product": product, "cart_products_ids": cart_products_ids}
+    return render(request, "products/product.html", context=context)
 
 
 def category_products(request, name: str):
@@ -49,12 +47,12 @@ def category_products(request, name: str):
     cart_products_ids = [item.product.pk for item in Cart.get_cart(request).items.all()]
 
     context = {
-        'breadcrumb_obj': category,
-        'categories': Category.objects.all(),
-        'products': products,
-        'filter_form': filter_form,
-        'sort_form': sort_form,
-        'cart_products_ids': cart_products_ids
+        "breadcrumb_obj": category,
+        "categories": Category.objects.all(),
+        "products": products,
+        "filter_form": filter_form,
+        "sort_form": sort_form,
+        "cart_products_ids": cart_products_ids,
     }
 
-    return render(request, 'products/products.html', context=context)
+    return render(request, "products/products.html", context=context)

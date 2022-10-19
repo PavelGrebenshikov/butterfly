@@ -10,8 +10,8 @@ RUN apk update && \
     libffi-dev jpeg-dev zlib-dev \
     git bash
 
-
-RUN pip install -r /app/requirements/local.txt
+# use deprecated only for broken cloudipsp package
+RUN pip install -r /app/requirements/local.txt --use-deprecated=backtrack-on-build-failures
 
 COPY . /app
 WORKDIR /app
