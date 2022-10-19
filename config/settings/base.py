@@ -226,10 +226,10 @@ EMAIL_BACKEND = env(
 EMAIL_TIMEOUT = 5
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST = "smtp.mail.ru"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 # ADMIN
 # ------------------------------------------------------------------------------
@@ -290,13 +290,12 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1397120)
 FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
 
-REDIS_HOST = '127.0.0.1'
-REDIS_PORT = '6379'
+REDIS_HOST = env.str("REDIS_HOST", default="localhost")
+REDIS_PORT = env.str("REDIS_PORT", default="6379")
 # CELERY settings
-CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-
+CELERY_BROKER_URL = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_BROKER_TRANSPORT_OPTION = {"visibility_timeout": 3600}
+CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
