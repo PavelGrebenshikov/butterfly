@@ -55,7 +55,7 @@ class UserAdmin(auth_admin.UserAdmin):
         (
             _("Purchases"),
             {
-                "fields": ("favourites"),
+                "fields": ("favourites",),
             },
         ),
     )

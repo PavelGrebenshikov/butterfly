@@ -1,155 +1,153 @@
-.container h1 {
-    padding: 0;
-    font-size: 28px;
-    color: var(--background-color);
-    margin: 20px 0 0 0;
-}
 .cart {
-    display: flex;
+  display: flex;
 }
 .cart__wrapper {
-    margin: 20px 0 0 0;
-    width: 100%;
+  margin: 20px 0 0 0;
+  width: 100%;
 }
 .cart__products {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .cart__total {
-    margin: 20px 0 0 0;
-    width: 40%;
+  margin: 20px 0 0 0;
+  width: 40%;
 }
 .item {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 .item__wrap {
-    width: 100%;
+  width: 100%;
 }
 .item__image img {
-    width: 150px;
-    height: 100px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
+  width: 150px;
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
 }
 .item__wrap {
-    width: 100%;
-    margin: 0 0 0 20px;
+  width: 100%;
+  margin: 0 0 0 20px;
 }
 .item__title {
-    overflow: hidden;
-    max-height: 80px;
+  overflow: hidden;
+  max-height: 80px;
 }
 .item__title a {
-    font-size: 24px;
-    color: var(--background-color);
-    font-weight: bold;
+  font-size: 24px;
+  color: var(--background-color);
+  font-weight: bold;
 }
 .item__title a:hover {
-    color: #b9af8c;
-    transition: .3s;
+  color: #b9af8c;
+  transition: 0.3s;
 }
 .item__format {
-    font-size: 14px;
+  font-size: 14px;
 }
 .item__format > p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .item__price > p {
-    margin: 0 15px 0 0;
+  margin: 0 15px 0 0;
 }
 .count__wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .count__box {
-    margin: 15px 0 0 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 15px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .box {
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.favorite, .remove {
-    margin: 0 10px 0 10px;
+.favorite,
+.remove {
+  margin: 0 10px 0 10px;
 }
-.favorite p, .remove p {
-    cursor: pointer;
+.favorite p,
+.remove p {
+  cursor: pointer;
 }
 .count__items {
-    text-align: center;
-    font-weight: bold;
-    width: 10%;
+  text-align: center;
+  font-weight: bold;
+  width: 10%;
 }
-.count__minus a, .count__plus a {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--background-color);
-    color: var(--bg-color);
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
+.count__minus a,
+.count__plus a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  color: var(--bg-color);
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
 }
-.count__minus a:hover, .count__plus a:hover {
-    background-color: var(--bg-color);
-    color: var(--background-color);
-    transition: .3s;
+.count__minus a:hover,
+.count__plus a:hover {
+  background-color: var(--bg-color);
+  color: var(--background-color);
+  transition: 0.3s;
 }
 
 /* total block */
 
 .total__wrapper {
-    position: sticky;
-    top: 100px;
-    left: 0;
-    display: flex;
-    flex-direction: column;
+  position: sticky;
+  top: 100px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
 }
 .total__box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .total {
-    width: 100%;
-    font-size: 18px;
-    color: var(--background-color);
-    font-weight: bold;
+  width: 100%;
+  font-size: 18px;
+  color: var(--background-color);
+  font-weight: bold;
 }
 .total h2 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .total__price {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
 }
 .order-button {
-    width: 318px;
-    height: 50px;
-    border-radius: 5px;
-    border: 1px solid var(--background-color);
-    background-color: var(--bg-color);
-    color: var(--background-color);
-    font-weight: bold;
-    cursor: pointer;
+  width: 318px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid var(--background-color);
+  background-color: var(--bg-color);
+  color: var(--background-color);
+  font-weight: bold;
+  cursor: pointer;
 }
 .order-button:hover {
-    background-color: var(--background-color);
-    color: var(--bg-color);
-    transition: .3s;
+  background-color: var(--background-color);
+  color: var(--bg-color);
+  transition: 0.3s;
 }

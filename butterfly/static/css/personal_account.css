@@ -1,75 +1,75 @@
 .personal {
-    width: 100%;
-    height: calc(100vh - 130px);
+  width: 100%;
+  height: calc(100vh - 130px);
 }
 .box {
-    display: flex;
-    margin: 30px 118px 0 118px;
+  display: flex;
+  margin: 30px 118px 0 118px;
 }
 .navigation {
-    width: 100%;
+  width: 100%;
 }
 .navigation__photo-elem > img {
-    width: 335px;
-    height: 335px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border: 3px solid var(--background-color);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
+  width: 335px;
+  height: 335px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 3px solid var(--background-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
 }
 .navigation__menu-elem {
-    padding: 10px 0 0 0;
+  padding: 10px 0 0 0;
 }
 .navigation__menu-elem > ul {
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 .navigation__menu-elem > ul > li {
-    text-decoration: none;
-    padding: 20px 0 0 0;
+  text-decoration: none;
+  padding: 10px 0 10px 0;
 }
 .navigation__menu-elem > ul > li > a {
-    color: var(--bg-color);
+  color: var(--bg-color);
 }
 
 .navigation__menu {
-    width: 335px;
-    min-height: 200px;
-    border-radius: 5px;
-    background-color: var(--background-color);
+  width: 335px;
+  min-height: 200px;
+  border-radius: 5px;
+  background-color: var(--background-color);
 }
 .about {
-    width: 100%;
+  width: 100%;
 }
 .about__title {
-    padding: 11px 0 0 0;
-    text-align: center;
-    font-weight: bold;
+  padding: 11px 0 0 0;
+  text-align: center;
+  font-weight: bold;
 }
 .about > ul {
-    list-style: none;
+  list-style: none;
 }
 .about > ul > li {
-    color: var(--background-color);
-    font-size: 14px;
+  color: var(--background-color);
+  font-size: 14px;
 }
 .notifications {
-    width: 100%;
-    margin-left: 20px;
+  width: 100%;
+  margin-left: 20px;
 }
 .notifications__wrapper {
-    width: 100%;
-    height: 380px;
-    border-radius: 5px;
-    background-color: var(--bg-color);
+  width: 100%;
+  height: 380px;
+  border-radius: 5px;
+  background-color: var(--bg-color);
 }
 .notifications__wrapper-title {
-    padding: 11px 0 0 0;
-    text-align: center;
-    color: var(--background-color);
+  padding: 11px 0 0 0;
+  text-align: center;
+  color: var(--background-color);
 }

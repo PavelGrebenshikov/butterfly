@@ -1,5 +1,5 @@
-from django.shortcuts import get_object_or_404
-from django.http import Http404, JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.http import Http404, HttpRequest, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from butterfly.products.models import Product
@@ -7,7 +7,7 @@ from butterfly.cart.models import CartItem
 
 
 @login_required
-def add_product(request):
+def add_product(request: HttpRequest):
     if request.method == "POST" and request.is_ajax():
         product_id = request.POST.get("product_id", "")
         print("first")
@@ -31,3 +31,11 @@ def add_product(request):
         )
 
     raise Http404()
+
+
+def index(request: HttpRequest):
+    favourites = request.user.favourites.all()
+    context = {
+        "favourites": favourites,
+    }
+    return render(request, "favourites/favourites.html", context=context)
