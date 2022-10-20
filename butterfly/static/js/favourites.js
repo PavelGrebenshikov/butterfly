@@ -16,7 +16,7 @@ function addProductToFavourites(product_id) {
             product_name.parents('.cart__products').remove();
 
             var total = $('.total__price');
-            total.html(prettyNumber(response.total_price));
+            total.html(prettyNumber(response.cart_total_price));
 
             if ($('.cart__products').length == 0) {
                 $('.cart').remove();
