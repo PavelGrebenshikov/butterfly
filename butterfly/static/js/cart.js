@@ -1,9 +1,9 @@
 
 function addProduct(product_id, event) {
-    var this_script = $('script[src*="/static/js/cart.js"]');
-    var url = this_script.attr('data-url');
-    var csrf = this_script.attr('data-csrf');
-    var button = event.target;
+    const this_script = $('script[src*="/static/js/cart.js"]');
+    const url = this_script.attr('data-url');
+    const csrf = this_script.attr('data-csrf');
+    const button = event.target;
 
     $.post({
         url: url,
@@ -56,9 +56,9 @@ function changeItemCount(product_id, sign) {
 
 
 function deleteItem(product_id) {
-    var this_script = $('script[src*="/static/js/cart.js"]');
-    var url = this_script.attr('data-delete-url');
-    var csrf = this_script.attr('data-csrf');
+    const this_script = $('script[src*="/static/js/cart.js"]');
+    const url = this_script.attr('data-delete-url');
+    const csrf = this_script.attr('data-csrf');
 
     $.post({
         url: url,
@@ -85,7 +85,7 @@ function deleteItem(product_id) {
 
 
 function prettyNumber(number) {
-    return (+number).toFixed(2).toString().replace('.', ',');
+    return (+number).toFixed(2).toString().replace('.', ',') + "&#8381;";
 }
 
 

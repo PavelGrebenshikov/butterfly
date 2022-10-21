@@ -6,8 +6,9 @@ from django.db.models import (
     OneToOneField,
     PositiveSmallIntegerField,
 )
-from django.http import Http404, HttpRequest
+from django.http import HttpRequest
 
+from butterfly.exceptions import HttpErrorException
 from butterfly.products.models import Product
 from butterfly.users.models import User
 
@@ -68,7 +69,7 @@ class CartItem(Model):
                 case "-":
                     self.count -= 1
                 case _:
-                    raise Http404()
+                    raise HttpErrorException(400)
 
             self.save()
 

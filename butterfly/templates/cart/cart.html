@@ -50,7 +50,7 @@
                        </div>
                        <div class="box">
                             <div class="favorite">
-                                <p>В избранное</p>
+                                <p onclick="addProductToFavourites({{ item.product.pk }});">В избранное</p>
                             </div>
                             <div class="remove">
                                 <p onclick="deleteItem({{ item.product.pk }});">Убрать</p>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="item__price">
-                        <p>{{ item.product.price | mul:item.count }}</p>
+                        <p>{{ item.product.price | mul:item.count }}&#8381;</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         <h2>Итого</h2>
                     </div>
                     <div class="total__price">
-                        {{ total_price }}
+                        {{ total_price }}&#8381;
                     </div>
                 </div>
                 <div class="total__box">
@@ -79,10 +79,13 @@
                         <p>Товары, {{ item.count }} шт.</p>
                     </div>
                     <div class="total__price">
-                        {{ total_price }}
+                        {{ total_price }}&#8381;
                     </div>
                 </div>
-                <button class="order-button">Заказать</button>
+                <form action="{% url 'orders:create' %}" method="post">
+                  {% csrf_token %}
+                  <button class="order-button">Заказать</button>
+                </form>
             </div>
         </div>
     </div>
@@ -92,6 +95,8 @@
 </div>
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/favourites.js' %}" data-csrf="{{ csrf_token }}"
+ data-add-product-url="{% url 'favourites:add_product' %}"></script>
 <script src="{% static 'js/cart.js' %}" data-change-count-url="{% url 'cart:change_item_count' %}"
   data-delete-url="{% url 'cart:delete_item' %}" data-csrf="{{ csrf_token }}"></script>
 {% endblock content %}

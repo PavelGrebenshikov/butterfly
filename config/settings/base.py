@@ -82,7 +82,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "butterfly.users",
     "butterfly.products",
-    "butterfly.cart"
+    "butterfly.cart",
+    "butterfly.orders",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -141,12 +142,12 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Custom Middlewares
+    "butterfly.middlewares.exceptions.ExceptionToHttpResponse",
 ]
 
 # STATIC
 # ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
@@ -281,3 +282,5 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1397120)
+FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
