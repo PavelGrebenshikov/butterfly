@@ -1,12 +1,9 @@
-from django.http import (
-    HttpResponse,
-    JsonResponse,
-)
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from butterfly.cart.models import Cart, CartItem
-from butterfly.products.models import Product
 from butterfly.exceptions import HttpErrorException
+from butterfly.products.models import Product
 
 
 def index(request):

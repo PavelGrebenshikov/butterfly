@@ -6,9 +6,9 @@ from django.db.models import (
     OneToOneField,
     PositiveSmallIntegerField,
 )
-from django.http import HttpResponseBadRequest, HttpRequest
-from butterfly.exceptions import HttpErrorException
+from django.http import HttpRequest
 
+from butterfly.exceptions import HttpErrorException
 from butterfly.products.models import Product
 from butterfly.users.models import User
 

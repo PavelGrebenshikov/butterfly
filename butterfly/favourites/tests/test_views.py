@@ -1,5 +1,5 @@
-from django.shortcuts import reverse
 import pytest
+from django.shortcuts import reverse
 
 from butterfly.products.tests.conftest import created_model_objects
 from butterfly.users.tests.factories import UserFactory

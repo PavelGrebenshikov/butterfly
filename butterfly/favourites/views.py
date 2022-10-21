@@ -1,13 +1,10 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import (
-    HttpRequest,
-    JsonResponse,
-)
 from django.contrib.auth.decorators import login_required
-from butterfly.exceptions import HttpErrorException
+from django.http import HttpRequest, JsonResponse
+from django.shortcuts import get_object_or_404, render
 
+from butterfly.cart.models import Cart, CartItem
+from butterfly.exceptions import HttpErrorException
 from butterfly.products.models import Product
-from butterfly.cart.models import CartItem, Cart
 
 
 @login_required

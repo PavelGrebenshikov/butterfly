@@ -1,10 +1,9 @@
-from butterfly.exceptions import HttpErrorException
 import pytest
 from django.contrib.auth.models import AnonymousUser
-from django.http import Http404
 from django.test import RequestFactory
 
 from butterfly.cart.models import Cart, CartItem
+from butterfly.exceptions import HttpErrorException
 from butterfly.products.models import Product
 from butterfly.products.tests.conftest import created_model_objects
 from butterfly.users.tests.factories import UserFactory
