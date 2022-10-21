@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/favourites.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="container">
+  <h1>Избранное ({{ favourites | length }})</h1>
+  <div class="orders">
+    <div class="products">
+      <div class="wrap">
+        {% for favourite in favourites %}
+            {% include "include/product.html" with product=favourite %}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}" data-url="{% url 'cart:add_product' %}" data-csrf="{{ csrf_token }}"></script>
+{% endblock content %}
+

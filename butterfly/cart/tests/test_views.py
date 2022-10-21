@@ -58,19 +58,19 @@ class TestAddToCartView:
     def test_get_request(self, client):
         response = client.get(reverse("cart:add_product"))
 
-        assert response.status_code == 404
+        assert response.status_code == 405
 
     def test_post_request_without_ajax(self, client):
         response = client.post(reverse("cart:add_product"))
 
-        assert response.status_code == 404
+        assert response.status_code == 405
 
     def test_without_product_id(self, client):
         response = client.post(
             reverse("cart:add_product"), HTTP_X_REQUESTED_WITH="XMLHttpRequest"
         )
 
-        assert response.status_code == 404
+        assert response.status_code == 400
 
     def test_with_wrong_product_id(self, client):
         response = client.post(
@@ -79,7 +79,7 @@ class TestAddToCartView:
             HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
-        assert response.status_code == 404
+        assert response.status_code == 400
 
     def test_with_real_product_id(self, client, created_model_objects):
         response = client.post(
@@ -112,7 +112,7 @@ class TestChangeItemCountView:
             HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
 
-        assert response.status_code == 404
+        assert response.status_code == 400
 
     @pytest.mark.parametrize("sign", ["+", "-"])
     def test_with_normal_sign(self, client, created_model_objects, sign):
