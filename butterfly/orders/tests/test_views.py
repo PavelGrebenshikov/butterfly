@@ -31,7 +31,7 @@ class TestOrderCreateView:
         client.force_login(user)
         response = client.get(reverse("orders:create"))
 
-        assert response.status_code == 404
+        assert response.status_code == 405
 
     def test_with_empty_cart(self, client):
         user = UserFactory()
@@ -39,7 +39,7 @@ class TestOrderCreateView:
         client.force_login(user)
         response = client.post(reverse("orders:create"))
 
-        assert response.status_code == 404
+        assert response.status_code == 400
 
     def test_with_cart(self, client, created_model_objects: list[Product]):
         user = UserFactory()
@@ -65,15 +65,19 @@ class TestApprovePaymentView:
         client.force_login(user)
         response = client.get(reverse("orders:approve_payment"))
 
-        assert response.status_code == 404
+        assert response.status_code == 405
 
     def test_without_signature(self, client):
         user = UserFactory()
+        order = Order.objects.create(user=user)
+        data = {
+            "order_id": order.unique_id,
+        }
 
         client.force_login(user)
-        response = client.post(reverse("orders:approve_payment"))
+        response = client.post(reverse("orders:approve_payment"), data=data)
 
-        assert response.status_code == 404
+        assert response.status_code == 400
 
     def test_with_signature(self, client):
         user = UserFactory()

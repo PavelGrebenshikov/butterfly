@@ -71,7 +71,7 @@
                         <h2>Итого</h2>
                     </div>
                     <div class="total__price">
-                        {{ total_price }}
+                        {{ total_price }}&#8381;
                     </div>
                 </div>
                 <div class="total__box">
@@ -79,7 +79,7 @@
                         <p>Товары, {{ item.count }} шт.</p>
                     </div>
                     <div class="total__price">
-                        {{ total_price }} &#8381;
+                        {{ total_price }}&#8381;
                     </div>
                 </div>
                 <form action="{% url 'orders:create' %}" method="post">

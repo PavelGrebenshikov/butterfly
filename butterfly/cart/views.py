@@ -1,8 +1,12 @@
-from django.http import Http404, HttpResponse, JsonResponse
+from django.http import (
+    HttpResponse,
+    JsonResponse,
+)
 from django.shortcuts import get_object_or_404, render
 
 from butterfly.cart.models import Cart, CartItem
 from butterfly.products.models import Product
+from butterfly.exceptions import HttpErrorException
 
 
 def index(request):
@@ -21,13 +25,12 @@ def add_product(request):
     POST args:
         product_id (int): Product pk
     Returns:
-        HttpResponse | Http404
-
+        Http404 | HttpResponseNotAllowed | HttpResponseBadRequest
     """
     if request.method == "POST" and request.is_ajax():
         product_id = request.POST.get("product_id", "")
         if not product_id.isdigit():
-            raise Http404()
+            raise HttpErrorException(400)
         product = get_object_or_404(Product, pk=product_id)
 
         cart = Cart.get_cart(request)
@@ -40,7 +43,7 @@ def add_product(request):
 
         return HttpResponse()
 
-    raise Http404()
+    raise HttpErrorException(405)
 
 
 def change_item_count(request):
@@ -50,7 +53,7 @@ def change_item_count(request):
         product_id (int): Product pk
         sign ('+' or '-'): Increment (+) or decrement (-) value
     Returns:
-        JsonResponse | Http404
+        JsonResponse | Http404 | HttpResponseNotAllowed
 
     """
     if request.method == "POST" and request.is_ajax():
@@ -74,7 +77,7 @@ def change_item_count(request):
             }
         )
 
-    raise Http404()
+    raise HttpErrorException(405)
 
 
 def delete_item(request):
@@ -83,7 +86,7 @@ def delete_item(request):
     POST args:
         product_id (int): Product pk
     Returns:
-        JsonResponse | Http404
+        JsonResponse | Http404 | HttpResponseNotAllowed
 
     """
     if request.method == "POST" and request.is_ajax():
@@ -99,4 +102,4 @@ def delete_item(request):
             {"item": {"name": item.product.name}, "total_price": cart.get_total_price()}
         )
 
-    raise Http404
+    raise HttpErrorException(405)

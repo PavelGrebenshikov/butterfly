@@ -1,6 +1,10 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import Http404, HttpRequest, JsonResponse
+from django.http import (
+    HttpRequest,
+    JsonResponse,
+)
 from django.contrib.auth.decorators import login_required
+from butterfly.exceptions import HttpErrorException
 
 from butterfly.products.models import Product
 from butterfly.cart.models import CartItem, Cart
@@ -11,7 +15,7 @@ def add_product(request: HttpRequest):
     if request.method == "POST" and request.is_ajax():
         product_id = request.POST.get("product_id", "")
         if not product_id.isdigit():
-            raise Http404()
+            raise HttpErrorException(400)
 
         product = get_object_or_404(Product, pk=product_id)
 
@@ -29,7 +33,7 @@ def add_product(request: HttpRequest):
             }
         )
 
-    raise Http404()
+    raise HttpErrorException(405)
 
 
 def index(request: HttpRequest):

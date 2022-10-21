@@ -1,8 +1,8 @@
 
 function addProductToFavourites(product_id) {
-    var this_script = $('script[src*="/static/js/favourites.js"]');
-    var url = this_script.attr('data-add-product-url');
-    var csrf = this_script.attr('data-csrf');
+    const this_script = $('script[src*="/static/js/favourites.js"]');
+    const url = this_script.attr('data-add-product-url');
+    const csrf = this_script.attr('data-csrf');
 
     $.post({
         url: url,

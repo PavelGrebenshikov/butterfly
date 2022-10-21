@@ -142,6 +142,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Custom Middlewares
+    "butterfly.middlewares.exceptions.ExceptionToHttpResponse",
 ]
 
 # STATIC

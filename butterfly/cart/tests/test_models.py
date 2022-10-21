@@ -1,3 +1,4 @@
+from butterfly.exceptions import HttpErrorException
 import pytest
 from django.contrib.auth.models import AnonymousUser
 from django.http import Http404
@@ -107,5 +108,5 @@ class TestCartItemModel:
 
         item = CartItem(product=Product.objects.get(name="First"), cart=cart, count=1)
 
-        with pytest.raises(Http404):
+        with pytest.raises(HttpErrorException):
             item.change_count("Just wrong argument!")
