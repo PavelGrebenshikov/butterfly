@@ -1,12 +1,12 @@
 from cloudipsp import Api, Checkout
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from butterfly.cart.models import Cart
+from butterfly.exceptions import HttpErrorException
 from butterfly.orders.models import Order
 
 from .payment import check_signature, generate_order_data
@@ -24,7 +24,7 @@ def create(request):
     if request.method == "POST":
         cart = Cart.get_cart(request)
         if not cart.items.count():
-            raise Http404()
+            raise HttpErrorException(400)
 
         order = Order(user=request.user)
         order.save()
@@ -44,7 +44,7 @@ def create(request):
         url = checkout.url(data).get("checkout_url")
         return redirect(url)
 
-    raise Http404()
+    raise HttpErrorException(405)
 
 
 @csrf_exempt
@@ -57,4 +57,6 @@ def approve_payment(request):
             order.save()
             return redirect(reverse("users:redirect"))
 
-    raise Http404()
+        raise HttpErrorException(400)
+
+    raise HttpErrorException(405)

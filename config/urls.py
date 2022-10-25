@@ -16,6 +16,7 @@ urlpatterns = [
     path("cart/", include(("butterfly.cart.urls", "butterfly.cart"), namespace="cart")),
     path("orders/", include("butterfly.orders.urls", namespace="orders")),
     path("contact/", include(("butterfly.contact.urls", "butterfly.contact"), namespace="contact")),
+    path("favourites/", include("butterfly.favourites.urls", namespace="favourites")),
     # Global views
     path("search/", search_product, name="search_product"),
     path("index/", index, name="index"),

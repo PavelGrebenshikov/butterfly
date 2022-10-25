@@ -1,7 +1,15 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField, DateField, DateTimeField, ImageField
+from django.db.models import (
+    CharField,
+    DateField,
+    DateTimeField,
+    ImageField,
+    ManyToManyField,
+)
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from butterfly.products.models import Product
 
 
 class User(AbstractUser):
@@ -18,6 +26,8 @@ class User(AbstractUser):
     image_url = ImageField(
         _("Image url"), upload_to="users/avatars/", default="/static/images/profile.png"
     )
+
+    favourites = ManyToManyField(Product)
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
