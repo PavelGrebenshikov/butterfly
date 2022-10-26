@@ -32,12 +32,12 @@ class Subscription(Model):
 
 
 class MailSender(Model):
-    name = CharField(_("Название"), null=True, max_length=150)
+    name = CharField(_("Name"), null=True, max_length=150)
     email = CharField(
-        _("Адрес электронной почты"),
+        _("E-mail address"),
         max_length=150,
         null=True,
-        help_text="Почта для отправки сообщений",
+        help_text="Mail for sending messages",
     )
 
     def __str__(self) -> str:
@@ -50,11 +50,11 @@ class MailSender(Model):
 
 
 class MailTemplate(Model):
-    template = CharField(_("Шаблон"), null=True, blank=True, max_length=150)
-    topic = CharField(_("Тема"), null=True, blank=True, max_length=150)
+    template = CharField(_("Template"), null=True, blank=True, max_length=150)
+    topic = CharField(_("Topic"), null=True, blank=True, max_length=150)
     sender = ForeignKey(MailSender, null=True, blank=True, on_delete=CASCADE)
-    message = TextField(_("Сообщение"), null=True, blank=True)
-    slug = SlugField(_("Индефикатор"), null=True, blank=True)
+    message = TextField(_("Message"), null=True, blank=True)
+    slug = SlugField(_("Identifier"), null=True, blank=True)
 
     def __str__(self) -> str:
         return self.template
@@ -68,7 +68,7 @@ class MailTemplate(Model):
 class SendingMessages(Model):
     template = ForeignKey(MailTemplate, on_delete=CASCADE)
     emails = ManyToManyField(Subscription, blank=True)
-    send_to_everyone = BooleanField(_("Отправить всем"), default=False)
+    send_to_everyone = BooleanField(_("Send to everyone"), default=False)
     date = DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs) -> None:
@@ -90,5 +90,5 @@ class SendingMessages(Model):
     class Meta:
         ordering = ["date"]
         app_label = "contact"
-        verbose_name = "Sending mail"
-        verbose_name_plural = "Sending mails"
+        verbose_name = _("Sending mail")
+        verbose_name_plural = _("Sending mails")

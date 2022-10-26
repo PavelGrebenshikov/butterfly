@@ -44,7 +44,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 DATABASES = {
     "default": env.db(
         "DATABASE_URL",
-        default="postgres://postgres",
+        default="postgres:///butterfly",
     ),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -227,8 +227,8 @@ EMAIL_BACKEND = env(
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.mail.ru"
+EMAIL_USE_TLS = env.str("EMAIL_USE_TLS", default=True)
+EMAIL_HOST = env.str("EMAIL_HOST", default="smtp.mail.ru")
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
@@ -295,9 +295,9 @@ FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
 REDIS_HOST = env.str("REDIS_HOST", default="localhost")
 REDIS_PORT = env.str("REDIS_PORT", default="6379")
 # CELERY settings
-CELERY_BROKER_URL = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_BROKER_TRANSPORT_OPTION = {"visibility_timeout": 3600}
-CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST + ":" + REDIS_PORT + "/0"
+CELERY_RESULT_BACKEND = "redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"

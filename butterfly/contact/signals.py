@@ -13,6 +13,6 @@ def send_mail_user(sender, instance, action, *args, **kwargs):
                 instance.template.sender.name,
                 instance.template.message,
                 instance.template.sender.email,
-                [email for email in instance.emails.all()],
+                list(instance.emails.all()),
                 fail_silently=False,
             )
