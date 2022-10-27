@@ -1,0 +1,14 @@
+<div class="subscribe">
+  <div class="subscribe__title">
+      Подписаться на рассылку
+  </div>
+  <div class="subscribe-form">
+      <form action="{% url 'contact:newsletter' %}" method="post">
+          {% csrf_token %}
+          {{ newsletter_form }}
+          <div class="button-background">
+              <button class="subscribe__button" type="submit"></button>
+          </div>
+      </form>
+  </div>
+</div>

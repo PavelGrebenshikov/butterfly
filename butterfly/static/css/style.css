@@ -354,6 +354,9 @@ a.products__full-page-button {
   font-size: 20px;
   font-weight: bold;
 }
+.subscribe-form {
+  margin: 5px 0 0 0;
+}
 .subscribe-form > form {
   display: flex;
 }
@@ -361,19 +364,22 @@ a.products__full-page-button {
   width: 380px;
   height: 50px;
   border-radius: 5px;
+  border: 1px solid black;
+}
+.subscribe__input:focus {
+  outline: none;
 }
 .button-background {
   position: relative;
   left: -20px;
   width: 55px;
-  height: 54px;
+  height: 52.2px;
   background-color: var(--background-color);
   border: 1px solid var(--background-color);
-  border-radius: 5px;
 }
 .subscribe__button {
   width: 55px;
-  height: 55px;
+  height: 52.2px;
   border: none;
   display: flex;
   background: url("../images/icons/arrow_icon.svg") no-repeat center;
