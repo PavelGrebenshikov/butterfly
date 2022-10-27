@@ -227,9 +227,9 @@ EMAIL_BACKEND = env(
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
-EMAIL_USE_TLS = env.str("EMAIL_USE_TLS", default=True)
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", True)
 EMAIL_HOST = env.str("EMAIL_HOST", default="smtp.mail.ru")
-EMAIL_PORT = 587
+EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 
