@@ -85,6 +85,7 @@ LOCAL_APPS = [
     "butterfly.cart",
     "butterfly.orders",
     "butterfly.contact",
+    "butterfly.comments",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -290,7 +291,10 @@ SOCIALACCOUNT_FORMS = {"signup": "butterfly.users.forms.UserSocialSignupForm"}
 # Your stuff...
 # ------------------------------------------------------------------------------
 FONDY_MERCHANT_ID = env.int("FONDY_MERCHANT_ID", default=1397120)
-FONDY_SECRET_KEY = env.str("FONDY_SECRET_KEY", default="test")
+FONDY_SECRET_KEY = env.str(
+    "FONDY_SECRET_KEY",
+    default="Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/ ",
+)
 
 REDIS_HOST = env.str("REDIS_HOST", default="localhost")
 REDIS_PORT = env.str("REDIS_PORT", default="6379")
