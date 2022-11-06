@@ -16,4 +16,4 @@ class Comment(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     product = ForeignKey(Product, on_delete=CASCADE)
     text = TextField(null=False)
-    rating = PositiveSmallIntegerField(null=True)
+    rating = PositiveSmallIntegerField(null=True, blank=True)
