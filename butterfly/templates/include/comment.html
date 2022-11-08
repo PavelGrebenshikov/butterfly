@@ -1,0 +1,7 @@
+<div class="comment">
+  <p class="comment__username">{{ comment.user.username }}</p>
+  {% if comment.rating %}
+    <p class="comment__rating">Rating: {{ comment.rating }}</p>
+  {% endif %}
+  <p>{{ comment.text }}</p>
+</div>
