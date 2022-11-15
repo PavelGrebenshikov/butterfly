@@ -1,7 +1,25 @@
+{% load math %}
+
 <div class="comment">
-  <p class="comment__username">{{ comment.user.username }}</p>
+  <span class="comment__username">{{ comment.user.username }}</span>
   {% if comment.rating %}
-    <p class="comment__rating">Rating: {{ comment.rating }}</p>
+    <span class="comment__rating">
+      {% with ''|center:comment.rating as range %}
+          {% for _ in range %}
+              &#9733;
+          {% endfor %}
+      {% endwith %}
+      {% with 5|minus:comment.rating as empty_stars%}
+          {% with ''|center:empty_stars as range %}
+              {% for _ in range %}
+                  &#9734;
+              {% endfor %}
+          {% endwith %}
+      {% endwith %}
+
+
+    </span>
   {% endif %}
-  <p>{{ comment.text }}</p>
+  <p class="comment__date">{{ comment.created_at }}</p>
+  <p class="comment__text">{{ comment.text }}</p>
 </div>

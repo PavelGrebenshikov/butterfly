@@ -71,3 +71,22 @@
   margin-top: 5px;
   font-size: 20px;
 }
+
+.comment__username {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--background-color);
+}
+
+.comment__text {
+  margin-left: 20px;
+}
+
+.comment__rating {
+  color: #FFCF40;
+}
+
+.comment__date {
+  font-size: 15px;
+  color: "#777777";
+}
